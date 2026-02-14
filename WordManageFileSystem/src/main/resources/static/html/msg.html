@@ -84,11 +84,11 @@
         <div class="postMsgMainBar_leftMainBar_upMainBar_textMainBar">个人资料</div>
         <!-- 头像 -->
         <div class="postMsgMainBar_leftMainBar_upMainBar_imgMainBar">
-          <div class="imgMainBar"><img src="../home_Img/【哲风壁纸】明星-章若楠 (1).png" alt=""></div>
+          <div class="imgMainBar" id="imgShow"></div>
         </div>
 
         <!-- 昵称 -->
-        <div class="nameTextMainBar">小卡爱吃糖</div>
+        <div class="nameTextMainBar" id="nameShow"></div>
 
         <!-- 介绍文本 -->
         <div class="IntroductionTextMainBar">
@@ -122,7 +122,7 @@
 
       <!-- 保存 -->
       <div class="postMsgMainBar_rightMainBar_saveMainBar">
-        <button>保存</button>
+        <button onclick="postMagApi()">保存</button>
       </div>
 
       <!-- 填写信息主栏 -->

@@ -21,6 +21,15 @@ public class Result<T> {
     private Integer currentPage;
     private T data;
 
+    //全局异常
+    public static Result exception(String message) {
+        Result result = new Result();
+        result.setCode(500);
+        result.setMsg(null);
+        result.setData(message);
+        return result;
+    }
+
     //setting数据
     public Result settingSuccess(SettingBody data){
         Result result = new Result();

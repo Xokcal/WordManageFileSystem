@@ -45,7 +45,7 @@ public class ReportImpl implements ReportService {
 
     /*处理每凌晨0点更新数据*/
     @Transactional
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void refreshOverLookDataInZeroOClock(){
         int[] getOverLookNewData = getOverLookTextDataOriginalData();//获得最新数据数组
         //获得更改好的单一数组
@@ -68,8 +68,8 @@ public class ReportImpl implements ReportService {
         Integer userTotal = reportMapper.getUserTotal();
         if (CheckValidUtil.isNull(publicWordTotal)||CheckValidUtil.isNull(userAccuracyAvgNoDecimal)
                 ||CheckValidUtil.isNull(userTotal)){
-            log.error("\"数据总览\"文本数据 数据为空");
-            return null;
+            log.error("数据总览，文本数据，数据为空");
+            throw new RuntimeException("数据总览，文本数据，数据为空");
         }
         int userAccuracyAvgToInteger = Integer.parseInt(String.valueOf(userAccuracyAvgNoDecimal)); //数据库是int类型
         OverLookOriginalData overLookOriginalData = new OverLookOriginalData(publicWordTotal
@@ -89,6 +89,7 @@ public class ReportImpl implements ReportService {
         OverLookSingleData reportDataTableSingle = reportMapper.getReportDataTableSingle(name);
         if (CheckValidUtil.isNull(reportDataTableSingle)){
             log.error("获取数据可视化的“数据总览” 数据{} 的单一数据 为null",name);
+            throw new RuntimeException("获取数据可视化的“数据总览”的单一数据 为null");
         }
         return reportDataTableSingle; //result: [352, 675, 523, 645, 689]
     }
@@ -116,8 +117,8 @@ public class ReportImpl implements ReportService {
         Integer userTotal = reportMapper.getUserTotal();
         if (CheckValidUtil.isNull(publicWordTotal)||CheckValidUtil.isNull(userAccuracyAvg)
                 ||CheckValidUtil.isNull(userTotal)){
-            log.error("\"数据总览\"文本数据 数据为空");
-            return null;
+            log.error("数据总览，文本数据，数据为空");
+            throw new RuntimeException("数据总览，文本数据，数据为空");
         }
         BigDecimal userAccuracyAvgFormatTwo = commonTool.doubleToBigDecimalNoDecimal(userAccuracyAvg);
         String userAccuracyAvgResult = String.valueOf(userAccuracyAvgFormatTwo) + "%";
@@ -132,7 +133,7 @@ public class ReportImpl implements ReportService {
         List<Map<String, Object>> userAccuracyGroupByData = reportMapper.getUserAccuracyGroupByData(userId);
         if (CheckValidUtil.isValid(userAccuracyGroupByData)){
             log.warn("用户{} 获得 准确率EChart图表数据处理出现问题",userId);
-            return null;
+            throw  new RuntimeException("用户获得准确率EChart图表数据处理出现问题");
         }
         List<AccuracyGroupByBody> collect = userAccuracyGroupByData.stream().map(resultMap -> {
             AccuracyGroupByBody accuracyGroupByBody = new AccuracyGroupByBody((Long) resultMap.get("num")
@@ -149,7 +150,7 @@ public class ReportImpl implements ReportService {
         CheckReportBody checkReportBody = reportMapper.getCheckReportBody(userId);
         if (CheckValidUtil.isNull(checkReportBody)){
             log.error("获取每日抽查单词可视化EChart数据有问题！！");
-            return null;
+            throw new RuntimeException("获取每日抽查单词可视化EChart数据为空");
         }
         List<Integer> data = stringTemoTool.sqlJsonArrayStringToListInteger((String) checkReportBody.getData());
         List<CheckEchartJson> checkEchartJsonList = new ArrayList<>();

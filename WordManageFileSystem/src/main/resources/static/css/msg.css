@@ -650,6 +650,8 @@ body {
     margin-top: 20px;
     border-radius: 4px;
     margin: 0px;
+    animation: beginningAni 1.5s ease 0s forwards;
+    visibility: visible;
 }
 
 /* 个人中心文本 */
@@ -770,9 +772,12 @@ body {
     align-items: center;
     /* border-radius: 4px; */
     /* border: 0.2px solid rgb(232, 232, 232); */
+    border: none;
+    background: none;
     margin-top: 4%;
     border-radius: 4px;
-
+    animation: beginningAni 1.5s ease 0s forwards;
+    visibility: visible;
 }
 
 .postMsgMainBar_leftMainBar_Button button{
@@ -789,6 +794,8 @@ body {
     /* 文字设置 */
     color: rgb(96, 96, 96);
     font-weight: 480;
+    animation: beginningAni 1.5s ease 0s forwards;
+    visibility: visible;
 }
 
 .postMsgMainBar_leftMainBar_Button button:hover{
@@ -820,6 +827,8 @@ body {
     border-radius: 4px;
     margin: 0px;
     margin-left: 2.5%;
+    animation: beginningAni 1.5s ease 0s forwards;
+    visibility: visible;
 }
 
 /* 顶部栏 */
