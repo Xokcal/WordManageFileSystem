@@ -252,7 +252,7 @@ public class WordImpl implements WordService {
         }
         if (wordWithUserId.getUserId() != 1) {
             log.error("您不是管理员，不可处理公共单词");
-            return null;
+            throw new RuntimeException("您不是管理员，不可处理公共单词！！");
         }
         try {
             Integer result = wordMapper.updatePublicVocabulary(wordWithUserId.getWord(), wordWithUserId.getMeaning(),
