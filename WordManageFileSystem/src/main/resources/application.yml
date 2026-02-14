@@ -35,7 +35,3 @@ logging:
 
 aliyun:
   oss:
-    endpoint : oss-cn-beijing.aliyuncs.com
-    accessKeyId : ${ALIYUN_OSS_ACCESS_KEY_ID:请配置阿里云AccessKeyID}
-    accessKeySecret : ${ALIYUN_OSS_ACCESS_KEY_SECRET:请配置阿里云AccessKeySecret}
-    bucketName : java-web-xiaoka
