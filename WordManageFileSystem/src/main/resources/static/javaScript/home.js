@@ -403,11 +403,11 @@ function differentData() {
         })
 }
 
-// setInterval(accuracyExhibit, 1000);
-// setInterval(getNewWordTotal, 1000);
-// setInterval(getWordTotal, 1000);
-// setInterval(getMistakeTotal, 1000);
-// setInterval(differentData, 1000);
+setInterval(accuracyExhibit, 1000);
+setInterval(getNewWordTotal, 1000);
+setInterval(getWordTotal, 1000);
+setInterval(getMistakeTotal, 1000);
+setInterval(differentData, 1000);
 
 
 // 以下是更新/修改单词处理
@@ -589,7 +589,7 @@ queryAttachConditionDoc.addEventListener('click', async () => {
     if (!words || words === null){
         alert("查询单词为null！");
     }else{
-        alert(words);
+
     }
     const getHasSearchTotal = dataWord.hasSearchTotal;
     var getHasSearchTotalDoc = document.getElementById('hasSearchTotal');
