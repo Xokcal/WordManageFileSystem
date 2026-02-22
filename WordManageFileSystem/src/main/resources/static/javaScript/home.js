@@ -7,6 +7,96 @@ let currentPage = 1;
 //当前按钮状态
 let currentChecked = 1;
 
+// ========== 核心弹窗：极简粉色款（showMiniToast） ==========
+function injectToastStyle() {
+    if (document.getElementById('mini-toast-style')) return;
+    const style = document.createElement('style');
+    style.id = 'mini-toast-style';
+    style.innerHTML = `
+        /* 极简粉色弹窗 - 更精致的简洁风格 */
+        .mini-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 22px; /* 精简内边距，更小巧 */
+            background: #fff;
+            border: 1px solid #fce4ec; /* 更浅的粉色边框，更柔和 */
+            border-radius: 6px; /* 更精致的小圆角 */
+            box-shadow: 0 1px 6px rgba(255, 105, 180, 0.15); /* 更轻的阴影，不抢眼 */
+            z-index: 9999;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
+            /* 更丝滑的动画 */
+            animation: slideIn 0.25s ease-out forwards, fadeOut 0.25s ease-in 3.75s forwards;
+        }
+        /* 粉色小标识 - 更细更精致 */
+        .mini-toast::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px; /* 缩窄竖线，更简洁 */
+            background: #ff80ab; /* 更温柔的粉色，不刺眼 */
+            border-radius: 6px 0 0 6px;
+        }
+        /* 滑入动画 - 更自然 */
+        @keyframes slideIn {
+            0% { top: -30px; opacity: 0; transform: translateX(-50%) scale(0.98); }
+            100% { top: 20px; opacity: 1; transform: translateX(-50%) scale(1); }
+        }
+        /* 渐隐动画 - 更丝滑 */
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: translateX(-50%) scale(1); }
+            100% { opacity: 0; transform: translateX(-50%) scale(0.98); }
+        }
+
+        /* ========== 功能型弹窗（showMessage）也优化成简洁风格 ========== */
+        .msg-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 9px 20px;
+            border-radius: 6px;
+            color: #fff;
+            z-index: 9999;
+            font-size: 14px;
+            text-align: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.25s ease;
+            opacity: 1;
+        }
+        /* 不同类型的颜色 - 更柔和的色调 */
+        .msg-toast.success { background: #7ccc62; }
+        .msg-toast.warning { background: #f0b95e; }
+        .msg-toast.error { background: #f87272; }
+        .msg-toast.info { background: #64b5f6; }
+    `;
+    document.head.appendChild(style);
+}
+
+// 极简粉色弹窗函数（保留核心逻辑，样式优化）
+function showMiniToast(content, duration = 3000) {
+    injectToastStyle();
+    // 移除旧弹窗，避免叠加
+    const oldToast = document.querySelector('.mini-toast');
+    if (oldToast) oldToast.remove();
+    // 创建新弹窗
+    const toast = document.createElement('div');
+    toast.className = 'mini-toast';
+    toast.innerHTML = content;
+    document.body.appendChild(toast);
+    // 自动消失
+    setTimeout(() => {
+        toast.remove();
+    }, duration);
+}
+
 //滑块按钮
 const switchDom = document.getElementById('savePageSwitch');
 const savePromptDoc = document.getElementById('savePrompt');
@@ -172,7 +262,7 @@ queryAllWordDoc.addEventListener('click', async () => {
     const totalPage = getResult.totalPage; //一共页数
     const currentPageData = getResult.currentPage; //得到保存的当前页码
 
-    page.value = parseInt(currentPageData , 10);
+    page.value = parseInt(currentPageData, 10);
 
     totalPageDoc.innerHTML = totalPage; //一共页数赋值
     saveTotalPage = totalPage;
@@ -403,11 +493,11 @@ function differentData() {
         })
 }
 
-setInterval(accuracyExhibit, 1000);
-setInterval(getNewWordTotal, 1000);
-setInterval(getWordTotal, 1000);
-setInterval(getMistakeTotal, 1000);
-setInterval(differentData, 1000);
+// setInterval(accuracyExhibit, 1000);
+// setInterval(getNewWordTotal, 1000);
+// setInterval(getWordTotal, 1000);
+// setInterval(getMistakeTotal, 1000);
+// setInterval(differentData, 1000);
 
 
 // 以下是更新/修改单词处理
@@ -449,10 +539,9 @@ function cancelUpdate() {
 
 //确认更新/修改
 
-function updateHandle() {
+async function updateHandle() {
     //设置json格式
     const wordWithUserId = {
-        userId: userId,
         id: wordId,
         word: document.getElementById('wordUpdate').value,
         meaning: document.getElementById('meaningUpdate').value,
@@ -461,23 +550,23 @@ function updateHandle() {
         similarWord: document.getElementById('similarWordUpdate').value,
         phrase: document.getElementById('phraseUpdate').value
     };
-    axios.post('http://localhost:8080/word/update', wordWithUserId).then(response => {
-        const result = response.data;
-        if (result === 1) {
-            alert("id为 " + wordId + " 的单词修改成功！！")
-            wordId = 0;
-            cancelUpdate();
-            queryAllWordDoc.click();
-            return;
-        } else {
-            alert("id为 " + wordId + " 的单词修改失败！！")
-            wordId = 0;
-            cancelUpdate();
-            queryAllWordDoc.click();
-            return;
-        }
-    });
-
+    const token = localStorage.getItem("token")
+    const response = await axios.post('http://localhost:8080/word/update', wordWithUserId, {headers: {userToken: token}});
+    const result = response.data;
+    const data = result.data;
+    if (result === 1) {
+        showMiniToast("单词修改成功！！")
+        wordId = 0;
+        cancelUpdate();
+        queryAllWordDoc.click();
+        return;
+    } else {
+        showMiniToast("您不是管理员，无法修改单词！！")
+        wordId = 0;
+        cancelUpdate();
+        queryAllWordDoc.click();
+        return;
+    }
 }
 
 
@@ -489,10 +578,9 @@ function openAddBar() {
 }
 
 //处理添加
-function addHandle() {
+async function addHandle() {
     //设置json格式
     const addPublicBody = {
-        userId: userId,
         id: wordId,
         word: document.getElementById('wordAdd').value,
         meaning: document.getElementById('meaningAdd').value,
@@ -501,45 +589,51 @@ function addHandle() {
         similarWord: document.getElementById('similarWordAdd').value,
         phrase: document.getElementById('phraseAdd').value
     };
-    axios.post('http://localhost:8080/word/publicAdd', addPublicBody).then(response => {
-        const result = response.data;
-        if (result === 1) {
-            alert("id为 " + wordId + " 的单词添加成功！！")
-            wordId = 0;
-            cancelUpdate();
-            queryAllWordDoc.click();
-            cancelAdd();
-            return;
-        } else {
-            alert("id为 " + wordId + " 的单词添加失败！！")
-            wordId = 0;
-            cancelUpdate();
-            queryAllWordDoc.click();
-            return;
-        }
-    });
-
+    const token = localStorage.getItem("token");
+    const response = await axios.post('http://localhost:8080/word/publicAdd', addPublicBody, {headers: {userToken: token}})
+    const result = response.data;
+    if (result === 1) {
+        showMiniToast("单词添加成功！！")
+        wordId = 0;
+        cancelUpdate();
+        queryAllWordDoc.click();
+        cancelAdd();
+        return;
+    } else {
+        showMiniToast("单词添加失败！！")
+        wordId = 0;
+        cancelUpdate();
+        queryAllWordDoc.click();
+        return;
+    }
 }
 
 //取消显示
 function cancelAdd() {
     document.getElementById('add').style.display = "none";
+
+    document.getElementById('wordAdd').value = "";
+    document.getElementById('meaningAdd').value = "";
+    document.getElementById('partOfSpeechAdd').value = "";
+    belongGrade: document.getElementById('belongGradeAdd').value = "";
+    similarWord: document.getElementById('similarWordAdd').value = "";
+    phrase: document.getElementById('phraseAdd').value = "";
 }
 
 
 //删除公共单词 根据单词id
 //删除公共单词 根据单词id
 //删除公共单词 根据单词id
-function deletePublicWord(id) {
+async function deletePublicWord(id) {
     alert("当前要删除的单词是" + id);
-    axios.delete('http://localhost:8080/word/deletePublicWord', {params: {id: id}})
-        .then(response => {
-            const result = response.data;
-            const msg = result.data;
-            //提示删除
-            alert(msg);
-            queryAllWordDoc.click();
-        });
+    const token = localStorage.getItem("token")
+    const response = await axios.delete('http://localhost:8080/word/deletePublicWord',
+        {params: {id: id}, headers: {userToken: token}})
+    const result = response.data;
+    const msg = result.data;
+    //提示删除
+    showMiniToast(msg);
+    queryAllWordDoc.click();
 }
 
 window.deletePublicWord = deletePublicWord;
@@ -581,14 +675,14 @@ queryAttachConditionDoc.addEventListener('click', async () => {
 
     const token = localStorage.getItem("token");
     const response = await axios.post('http://localhost:8080/word/queryWord',
-        queryBody ,
-        {headers : { userToken : token}});
+        queryBody,
+        {headers: {userToken: token}});
 
     const dataWord = response.data; //所有数据
     const words = dataWord.data; //单词集合结果
-    if (!words || words === null){
+    if (!words || words === null) {
         alert("查询单词为null！");
-    }else{
+    } else {
 
     }
     const getHasSearchTotal = dataWord.hasSearchTotal;

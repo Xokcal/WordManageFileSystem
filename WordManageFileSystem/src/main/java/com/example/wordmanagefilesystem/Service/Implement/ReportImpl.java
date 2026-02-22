@@ -174,7 +174,7 @@ public class ReportImpl implements ReportService {
         int i = 1;
         while (i < data.length){
             data[i - 1] = data[i];
-            i++ ;
+            i++;
         }
         data[i - 1] = newData;
         return data;

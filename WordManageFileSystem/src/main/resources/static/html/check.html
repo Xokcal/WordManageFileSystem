@@ -107,17 +107,17 @@
                 <span class="quiz-title-test">单词智能抽查</span>
             </div>
             <div class="quiz-stats">
-                <span>剩余次数：<span id="leftCount">3</span></span>
-                <span>正确：<span id="correct">0</span></span>
-                <span>正确率：<span id="rate">33%</span></span>
+                <span>剩余次数：<span id="leftCount"></span></span>
+                <span>正确：<span id="correct"></span></span>
+                <span>正确率：<span id="rate"></span>%</span>
             </div>
             <div class="quiz-word" id="currentWord">请点击开始</div>
             <input type="text" class="quiz-answer-input" id="userAnswer" placeholder="请输入中文意思" autocomplete="off">
             <div class="quiz-btn-group">
-                <button class="quiz-btn btn-danger" onclick="startCheck()">立即开始</button>
+                <button class="quiz-btn btn-danger" onclick="startCheck()" id="start_btn">立即开始</button>
                 <button class="quiz-btn btn-success" onclick="nextWord()">下一个</button>
                 <button class="quiz-btn btn-warning" onclick="shut()">结束本次</button>
-                <button class="quiz-btn btn-primary" onclick="submitAnswer()">提交答案</button>
+                <button class="quiz-btn btn-primary" onclick="submitAnswer()" id="submition_btn">提交答案</button>
             </div>
         </div>
 

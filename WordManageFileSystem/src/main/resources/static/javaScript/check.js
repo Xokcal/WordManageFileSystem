@@ -96,15 +96,37 @@ var timeSelectDoc = document.getElementById('timeSelect');
 var currentWordDoc = document.getElementById('currentWord');
 var userAnswerDoc = document.getElementById('userAnswer');
 var historyListDoc = document.getElementById('historyList');
+//
+var start_btnDoc = document.getElementById('start_btn');
+var submition_btn = document.getElementById('submition_btn');
 
 
 //全局单词数组
 let wordArr = null;
 let curr = null;
 let index = 0;
+let currRightCount = 0; //当前正确数
+
+//实时数据显示
+var leftCountDoc = document.getElementById('leftCount');
+var correctDoc = document.getElementById('correct');
+var rateDoc = document.getElementById('rate');
+
+//剩余次数 =（总次数 - （索引 + 1））
+//准确率 = （正确数 / 当前已抽查总数）* 100
+
+
+//初始先让提交不可按
+submition_btn.disabled = true;
+submition_btn.style.backgroundColor = "#ccc";
 
 //开始抽查
 async function startCheck() {
+    start_btnDoc.disabled = true; //关闭按钮控制
+    start_btnDoc.style.backgroundColor = "#ccc" //同时改变按钮颜色
+    submition_btn.disabled = false; //提交按钮
+    submition_btn.style.backgroundColor = "#409eff";
+    leftCountDoc.innerHTML =parseInt(timeSelectDoc.value) - (index + 1); //剩余次数
     const res = await axios.get('http://localhost:8080/check',
         {params: {pageSize: parseInt(timeSelectDoc.value)}})
     const result = res.data;
@@ -112,26 +134,40 @@ async function startCheck() {
     console.log(wordArr);
     showMiniToast("开始抽查，本次抽查次数为：" + parseInt(timeSelectDoc.value) + "次");
     currentWordPrint();
+
 }
 
+//打印当前抽查到的单词
 function currentWordPrint(){
     curr = wordArr[index];
     currentWordDoc.innerHTML = curr.word;
 }
 
+//停止时一系列操作
 function shut(){
     curr = null;
     index = 0;
+    currRightCount = 0;
+    correctDoc.innerHTML = 0;
     currentWordDoc.innerHTML = "请点击开始";
     showMiniToast("已经结束本次抽查！！");
     historyListDoc.innerHTML = ``;
+    start_btnDoc.disabled = false; //关闭按钮控制
+    start_btnDoc.style.backgroundColor = "#ac7ae3" //同时改变按钮颜色
+    submition_btn.disabled = true; //提交按钮
+    submition_btn.style.backgroundColor = "#ccc";
+    leftCountDoc.innerHTML = "";
+    rateDoc.innerHTML = null;
+    clearInput();
 }
 
+//用户提交时处理
 async function submitAnswer() {
-    if (index >= parseInt(timeSelectDoc.value)) {
-        index = 0;
+    if (index + 1 === parseInt(timeSelectDoc.value)) {
+        shut();
         return;
     }
+    console.log("当前索引"+index);
     submitionBody = {
         word : wordArr[index].word,
         inputMeaning : String(userAnswerDoc.value)
@@ -147,6 +183,8 @@ async function submitAnswer() {
     clearInput();
     if (isRight === true){
         showMiniToast("回答正确！！");
+        currRightCount ++;
+        correctDoc.innerHTML = parseInt(currRightCount);
         var row = ` <div class='history-item' >
             ${wordArr[index].word} —— <span style='color:green'>${userAnswerDoc.value}</span>（正确：${wordArr[index].meaning}）
             </div>`;
@@ -162,8 +200,14 @@ async function submitAnswer() {
 
     index++;
     currentWordPrint();
+    leftCountDoc.innerHTML =parseInt(timeSelectDoc.value) - (index + 1); //剩余次数
+
+    //准确率
+    const accuracy = (parseInt(currRightCount) / parseInt(index)) * 100;
+    rateDoc.innerHTML = accuracy.toFixed(1);
 }
 
+//input输入框处理
 function clearInput(){
     userAnswerDoc.value = "";
     userAnswerDoc.focus();

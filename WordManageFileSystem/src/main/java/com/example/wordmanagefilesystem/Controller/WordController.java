@@ -92,8 +92,9 @@ public class WordController {
     /*
     * 根据单词id删除公共单词*/
     @DeleteMapping("/deletePublicWord")
-    public Result deletePublicWordById(@RequestParam Integer id){
-        String msg = wordImpl.deletePublicWordById(id);
+    public Result deletePublicWordById(@RequestParam Integer id , @RequestHeader("userToken") String token){
+        Claims claims = jwtTool.parseToken(token);
+        String msg = wordImpl.deletePublicWordById(id , (Integer)claims.get("id"));
         Result result = new Result();
         Result success = result.success(msg);
         return success;
@@ -102,11 +103,12 @@ public class WordController {
     /*
     * 新增公共单词*/
     @PostMapping("/publicAdd")
-    public Integer addPublicWord(@RequestBody Word word){
+    public Integer addPublicWord(@RequestBody Word word , @RequestHeader("userToken") String token){
+        Claims claims = jwtTool.parseToken(token);
         if (!CheckValidUtil.isWordValid(word)){
             return null;
         }
-        return wordImpl.addPublicWord(word);
+        return wordImpl.addPublicWord(word , (Integer)claims.get("id"));
     }
 
     /*
@@ -190,7 +192,9 @@ public class WordController {
 
     /*修改公共单词*/
     @PostMapping("/update")
-    public Integer updatePublicVocabulary(@RequestBody WordWithUserId wordWithUserId) {
+    public Integer updatePublicVocabulary(@RequestBody WordWithUserId wordWithUserId , @RequestHeader("userToken") String token) {
+        Claims claims = jwtTool.parseToken(token);
+        wordWithUserId.setUserId((Integer) claims.get("id"));
         log.info("用户{} 更新了单词{}", wordWithUserId.getUserId(), wordWithUserId.getWord());
         Integer integer = wordImpl.updatePublicVocabulary(wordWithUserId);
         return integer;

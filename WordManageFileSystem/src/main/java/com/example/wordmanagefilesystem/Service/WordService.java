@@ -9,8 +9,8 @@ import java.util.List;
 public interface WordService {
     List<Word> getAllWordPage(Integer page , Integer pageSize , Integer userId);
     public Integer updatePublicVocabulary(WordWithUserId wordWithUserId );
-    public String deletePublicWordById(Integer id);
-    public Integer addPublicWord(Word word);
+    public String deletePublicWordById(Integer id , Integer userId);
+    public Integer addPublicWord(Word word , Integer userId);
     public WordAccuracyCombineVocabulary updateAccuracy(UpdateAccuracyJson updateAccuracyJson);
     Double getUserAverageAccuracy(Integer userId);
     String queryMeaningByWord(String word);

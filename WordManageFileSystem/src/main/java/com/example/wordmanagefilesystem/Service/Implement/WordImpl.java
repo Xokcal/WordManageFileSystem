@@ -273,11 +273,15 @@ public class WordImpl implements WordService {
 
     //添加公共单词
     @Override
-    public Integer addPublicWord(Word word) {
+    public Integer addPublicWord(Word word , Integer userId) {
+        if (userId != 1){
+            log.error("添加公共单词，用户不是管理员，不予添加！！");
+            throw new RuntimeException("添加公共单词，非管理员添加！！");
+        }
         Integer resultRow = wordMapper.addPublicWord(word.getWord(), word.getMeaning()
                 , word.getPartOfSpeech(), word.getBelongGrade(), word.getSimilarWord(), word.getPhrase());
         if (CheckValidUtil.isNull(resultRow)) {
-            return null;
+            throw new RuntimeException("添加公共单词，数据为空！！");
         }
         refreshWordCacheByWordAndId();
         refreshCheckWordCache();
@@ -286,12 +290,16 @@ public class WordImpl implements WordService {
 
     //删除公共单词 根据单词id
     @Override
-    public String deletePublicWordById(Integer id) {
+    public String deletePublicWordById(Integer id , Integer userId){
+        if (userId != 1){
+            log.error("删除公共单词，用户不是管理员！！");
+            throw new RuntimeException("删除公共单词，用户不是管理员！！");
+        }
         Integer result = wordMapper.deletePublicWordById(id);
 
         if (CheckValidUtil.isNull(result)) {
             log.error("删除公共单词的结果为null{}", result);
-            return null;
+            throw new RuntimeException("删除公共单词的结果为null");
         }
         if (result > 0) {
             //通过缓存获取单词word
