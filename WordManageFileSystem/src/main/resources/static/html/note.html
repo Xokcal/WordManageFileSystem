@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../home_Img/【哲风壁纸】国风元素-奇幻国风copy.png" type="image/x-icon">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../css/check.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="../css/note.css">
     <title>Document</title>
 </head>
 
@@ -53,14 +54,15 @@
                 <li><a href="home.html"><button><img src="../home_Img/房子.png" alt="">
                     <p>华词表</p>
                 </button></a></li>
-                <li><a href="check.html"><button
-                        style="background-color: white;box-shadow: 0px 2px 9px rgba(151, 151, 151, 0.393);">
-                    <img src="../home_Img/对话框.png" alt="">
-                    <p style="color: rgba(77, 14, 148, 0.737);">词亦抽</p>
-                    </h4>
+                <li><a href="check.html"><button><img src="../home_Img/对话框.png" alt="">
+                    <p>词亦抽</p>
                 </button></a></li>
-                <li><a href="note.html"><button><img src="../home_Img/抽查检查.png" alt="">
-                    <p>孤词薄</p>
+
+                <li><a href="note.html"><button
+                        style="background-color: white;box-shadow: 0px 2px 9px rgba(151, 151, 151, 0.393);">
+                    <img src="../home_Img/抽查检查.png" alt="">
+                    <p style="color: rgba(77, 14, 148, 0.737);">孤词薄</p>
+                    </h4>
                 </button></a></li>
                 <li><a href="look"><button><img src="../home_Img/阅读.png" alt="">
                     <p>阅速摘</p>
@@ -91,47 +93,41 @@
     </div>
 </aside>
 
-<!-- 抽查主内容栏 -->
+<!-- 主内容栏 -->
 <div class="checkMainBar">
-
-    <div class="quiz-container">
-        <div class="quiz-card">
-            <div class="quiz-title">
-                <select name="" id="timeSelect">
-                    <option value="">自定义</option>
-                    <option value="25" selected>25次</option>
-                    <option value="50">50次</option>
-                    <option value="75">75次</option>
-                    <option value="100">100次</option>
-                </select>
-                <span class="quiz-title-test">单词智能抽查</span>
-            </div>
-            <div class="quiz-stats">
-                <span>剩余次数：<span id="leftCount"></span></span>
-                <span>正确：<span id="correct"></span></span>
-                <span>正确率：<span id="rate"></span>%</span>
-            </div>
-            <div class="quiz-word" id="currentWord">请点击开始</div>
-            <input type="text" class="quiz-answer-input" id="userAnswer" placeholder="请输入中文意思" autocomplete="off">
-            <div class="quiz-btn-group">
-                <button class="quiz-btn btn-danger" onclick="startCheck()" id="start_btn">立即开始</button>
-                <button class="quiz-btn btn-success" onclick="nextWord()">下一个</button>
-                <button class="quiz-btn btn-warning" onclick="shut()">结束本次</button>
-                <button class="quiz-btn btn-primary" onclick="submitAnswer()" id="submition_btn">提交答案</button>
-            </div>
+    <div class="addNoteBookMainBar">
+        <div class="addNoteBookMainBar_title">
+            <img src="../home_Img/书本 (4).png" alt=""> <h3>单词本·词集</h3>
+            <div class="showNoteCount"><img src="../home_Img/记录.png" alt=""><h5><span class="noteCountSpan">10</span>本笔记</h5></div>
         </div>
 
-        <div class="history-card">
-            <div class="history-title">已抽查单词</div>
-            <div id="historyList">
-            </div>
+        <div class="addNoteBookMainBar_inputLine1">
+            <div class="inputImgAbs"><img src="../home_Img/添加关注(话题) (2).png" alt=""></div>
+            <input type="text" placeholder="请输入新增笔记本的名称"> <button></button>
+
+            <div class="inputImgAbsDelete"><img src="../home_Img/搜索-copy.png" alt=""></div>
+            <input type="text" placeholder="搜索笔记本"> <span class="deleteButSpan"><button></button></span>
+
+            <span class="clearBut"><button></button></span>
         </div>
     </div>
 
+    <!-- 添加item和echart -->
+    <div class="itemMainAndEchartMainBar">
+        <!-- item -->
+        <div class="itemMain">
+            <div class="itemMain_title"><img src="../home_Img/细目表.png" alt=""><h4>词本细目</h4></div>
+            <div class="itemMain_body">
+                <div class="item"></div>
+            </div>
+        </div>
 
-
+        <!-- Echart -->
+        <div class="echartMainBar" id="noteData"></div>
+    </div>
 </div>
-</body>
-<script src="../javaScript/check.js"></script>
 
+</body>
+
+<script src="../javaScript/note.js"></script>
 </html>

@@ -493,11 +493,11 @@ function differentData() {
         })
 }
 
-// setInterval(accuracyExhibit, 1000);
-// setInterval(getNewWordTotal, 1000);
-// setInterval(getWordTotal, 1000);
-// setInterval(getMistakeTotal, 1000);
-// setInterval(differentData, 1000);
+setInterval(accuracyExhibit, 1000);
+setInterval(getNewWordTotal, 1000);
+setInterval(getWordTotal, 1000);
+setInterval(getMistakeTotal, 1000);
+setInterval(differentData, 1000);
 
 
 // 以下是更新/修改单词处理
