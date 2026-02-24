@@ -951,7 +951,7 @@ body {
     align-items: center;
     flex-direction: column;
     border-radius: 4px;
-    padding: 10px;
+    padding: 25px;
     transition: 0.2s;
     animation: beginningAni 1.5s ease 0.15s forwards ;
     visibility: visible;
@@ -1002,13 +1002,107 @@ body {
 }
 
 /* rgb(237, 244, 249) */
+/* rgb(237, 244, 249) */
+/* rgb(237, 244, 249) */
 .itemMain_body .item{
     position: relative;
     width: 100%;
-    height: 45px;
-    background-color: rgba(237, 244, 249, 0.84);
+    height: 35px;
+    /* background-color: white; */
+    border-left: 2px solid rgb(144, 106, 184);
+    /* border-bottom: 1px solid rgb(144, 106, 184); */
+    /* border: 0.5 solid rgb(30, 30, 30); */
+    /* border-bottom: 2px solid rgb(173, 145, 203); */
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgba(159, 132, 205, 0.635);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: 0.2s;
+    margin-bottom: 4px;
+}
+
+.item:hover{
+    box-shadow: 0px 2px 3px rgba(137, 107, 189, 0.559);
+}
+
+.item img{
+    position: relative;
+    width: 23px;
+    height: 23px;
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+.item h4{
+    color: #646464;
+    font-size: 13px;
+    margin-left: 7px;
+}
+
+.item h5{
+    color: #455971;
+    font-size: 10px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+/* 准确率 */
+.item .accuracy{
+    position: relative;
+    width: auto;
+    height: 19px;
+    display: flex;
+    background-color: rgba(8, 31, 100, 0.473);
+    /* border: 0.4px solid rgba(81, 197, 170, 0.808); */
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 10px;
+
+}
+
+.accuracy h5{
+    color: white;
+    font-size: 10px;
+    font-weight: 400;
+    margin-right: 10px;
+}
+
+.item button{
+    position: absolute;
+    width: 40px;
+    height: 26px;
+    background-color: #c8defc5b;
+    outline: none;
+    border: 0.6px solid rgb(127, 184, 234);
+    margin-left: 390px;
     border-radius: 4px;
-    box-shadow: 0px 0px 3px rgba(214, 213, 213, 0.635);
+    font-size: 11.5px;
+    color: #1a5ed5;
+    transition: 0.15s;
+}
+
+.item button::before{
+    content: '';
+    background-image: url("../home_Img/打开文件.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.item button:hover::before{
+    background-image: url("../home_Img/打开文件 (1).png");
+}
+
+.item button:hover{
+    background-color: #4979bcc1;
+    border: 0.6px solid rgb(127, 184, 234);
+    transform: translateY(-1px);
 }
 
 /* Echart */
