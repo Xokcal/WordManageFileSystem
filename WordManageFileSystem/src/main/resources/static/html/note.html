@@ -101,6 +101,7 @@
     </div>
 </aside>
 
+
 <!-- 主内容栏 -->
 <div class="checkMainBar">
     <div class="addNoteBookMainBar">
@@ -113,11 +114,14 @@
 
         <div class="addNoteBookMainBar_inputLine1">
             <div class="inputImgAbs"><img src="../home_Img/添加关注(话题) (2).png" alt=""></div>
-            <input type="text" placeholder="请输入新增笔记本的名称">
-            <button></button>
+            <input type="text" placeholder="请输入新增笔记本的名称" id="noteName">
+            <button id="add" onclick="addNoteBook()"></button>
 
             <div class="inputImgAbsDelete"><img src="../home_Img/搜索-copy.png" alt=""></div>
-            <input type="text" placeholder="搜索笔记本"> <span class="deleteButSpan"><button></button></span>
+            <input type="text" placeholder="搜索笔记本">
+            <span class="deleteButSpan">
+            <button id="get"></button>
+            </span>
 
             <span class="clearBut"><button></button></span>
         </div>

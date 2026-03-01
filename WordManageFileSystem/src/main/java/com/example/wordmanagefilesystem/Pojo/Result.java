@@ -1,6 +1,7 @@
 package com.example.wordmanagefilesystem.Pojo;
 
 import com.example.wordmanagefilesystem.Pojo.Msg.MsgBody;
+import com.example.wordmanagefilesystem.Pojo.Note.NoteBookBody;
 import com.example.wordmanagefilesystem.Pojo.Report.AccuracyGroupByBody;
 import com.example.wordmanagefilesystem.Pojo.Report.DataOverLook;
 import com.example.wordmanagefilesystem.Pojo.Report.OverLook;
@@ -189,6 +190,24 @@ public class Result<T> {
         result.setHasSearchTotal(null);
         result.setMsg("已查询或已成功！");
         result.setData(R);
+        return result;
+    }
+
+    public Result<T> noteSuccess(Integer R){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(null);
+        result.setMsg("已查添加成功！");
+        result.setData(R);
+        return result;
+    }
+
+    public Result<T> noteSuccess(List<NoteBookBody> noteBookBodies){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(null);
+        result.setMsg("已查添加成功！");
+        result.setData(noteBookBodies);
         return result;
     }
 

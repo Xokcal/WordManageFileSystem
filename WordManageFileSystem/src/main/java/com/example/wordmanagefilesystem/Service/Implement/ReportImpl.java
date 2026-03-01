@@ -126,8 +126,7 @@ public class ReportImpl implements ReportService {
                 , null , userTotal);
     }
 
-    /*
-    * 准确率EChart图表数据处理*/
+    /* 准确率EChart图表数据处理*/
     @Override
     public List<AccuracyGroupByBody> accuracyGroupByJson(Integer userId){
         List<Map<String, Object>> userAccuracyGroupByData = reportMapper.getUserAccuracyGroupByData(userId);
@@ -143,8 +142,8 @@ public class ReportImpl implements ReportService {
         return collect;
     }
 
-    /* 每日抽查单词可视化EChart数据*/
-    //获得可视化Json格式数据
+    /* 每日抽查单词可视化EChart数据
+    * 获得可视化Json格式数据*/
     @Override
     public List<CheckEchartJson> getCheckDataEchartJson(Integer userId){
         CheckReportBody checkReportBody = reportMapper.getCheckReportBody(userId);
