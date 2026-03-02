@@ -108,7 +108,7 @@
         <div class="addNoteBookMainBar_title">
             <img src="../home_Img/书本 (4).png" alt="">
             <h3>单词本·词集</h3>
-            <div class="showNoteCount"><img src="../home_Img/记录.png" alt=""><h5><span class="noteCountSpan">10</span>本笔记
+            <div class="showNoteCount"><img src="../home_Img/记录.png" alt=""><h5><span class="noteCountSpan" id="bookCount"></span>本笔记
             </h5></div>
         </div>
 
@@ -118,7 +118,7 @@
             <button id="add" onclick="addNoteBook()"></button>
 
             <div class="inputImgAbsDelete"><img src="../home_Img/搜索-copy.png" alt=""></div>
-            <input type="text" placeholder="搜索笔记本">
+            <input type="text" placeholder="搜索笔记本" id="searchBook">
             <span class="deleteButSpan">
             <button id="get"></button>
             </span>
@@ -130,66 +130,112 @@
     <!-- 添加item和echart -->
     <div class="itemMainAndEchartMainBar">
         <!-- item -->
-        <div class="itemMain">
-            <div class="itemMain_title"><img src="../home_Img/细目表.png" alt=""><h4>词本细目</h4></div>
-            <div class="itemMain_body">
-                <div class="item"><img src="../home_Img/动效.png" alt="">
-                    <h4>高中总结一级单词</h4>
-                    <h5>2025.2.24</h5>
-                    <h5 style="color: rgb(98, 50, 211);">1835个</h5>
-                    <div class="accuracy"><h5>98%</h5></div>
-                    <button></button>
-                </div>
-            </div>
+        <div class="itemMain" id="">
+            <div class="itemMain_title"> <img src="../home_Img/细目表.png" alt=""><h4>词本细目</h4></div>
 
-            <div class="itemMain_body">
-                <div class="item"><img src="../home_Img/动效.png" alt="">
-                    <h4>小卡的单词本2号</h4>
-                    <h5>2025.2.24</h5>
-                    <h5 style="color: rgb(98, 50, 211);">357个</h5>
-                    <div class="accuracy"><h5>98%</h5></div>
-                    <button></button>
-                </div>
-            </div>
+            <div class="itemBookMain" id="itemMain">
 
-            <div class="itemMain_body">
-                <div class="item"><img src="../home_Img/动效.png" alt="">
-                    <h4>随记本</h4>
-                    <h5>2025.2.24</h5>
-                    <h5 style="color: rgb(98, 50, 211);">173个</h5>
-                    <div class="accuracy"><h5>98%</h5></div>
-                    <button></button>
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>高中总结一级单词</h4>
+                        <h5>2025.2.24</h5>
+                        <h5 style="color: rgb(98, 50, 211);">1835个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="itemMain_body">
-                <div class="item"><img src="../home_Img/动效.png" alt="">
-                    <h4>总结易错单词本</h4>
-                    <h5>2026.1.14</h5>
-                    <h5 style="color: rgb(98, 50, 211);">1735个</h5>
-                    <div class="accuracy"><h5>98%</h5></div>
-                    <button></button>
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>小卡的单词本2号</h4>
+                        <h5>2025.2.24</h5>
+                        <h5 style="color: rgb(98, 50, 211);">357个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="itemMain_body">
-                <div class="item"><img src="../home_Img/动效.png" alt="">
-                    <h4>遗忘二级本</h4>
-                    <h5>2023.12.2</h5>
-                    <h5 style="color: rgb(98, 50, 211);">3420个</h5>
-                    <div class="accuracy"><h5>98%</h5></div>
-                    <button></button>
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>随记本</h4>
+                        <h5>2025.2.24</h5>
+                        <h5 style="color: rgb(98, 50, 211);">173个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="itemMain_body">
-                <div class="item"><img src="../home_Img/动效.png" alt="">
-                    <h4>高中四级差异词汇本</h4>
-                    <h5>2024.8.5</h5>
-                    <h5 style="color: rgb(98, 50, 211);">862个</h5>
-                    <div class="accuracy"><h5>98%</h5></div>
-                    <button></button>
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>总结易错单词本</h4>
+                        <h5>2026.1.14</h5>
+                        <h5 style="color: rgb(98, 50, 211);">1735个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
                 </div>
+
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>遗忘二级本</h4>
+                        <h5>2023.12.2</h5>
+                        <h5 style="color: rgb(98, 50, 211);">3420个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
+                </div>
+
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>高中四级差异词汇本</h4>
+                        <h5>2024.8.5</h5>
+                        <h5 style="color: rgb(98, 50, 211);">862个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
+                </div>
+
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>遗忘二级本</h4>
+                        <h5>2023.12.2</h5>
+                        <h5 style="color: rgb(98, 50, 211);">3420个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
+                </div>
+
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>高中四级差异词汇本</h4>
+                        <h5>2024.8.5</h5>
+                        <h5 style="color: rgb(98, 50, 211);">862个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
+                </div>
+
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>遗忘二级本</h4>
+                        <h5>2023.12.2</h5>
+                        <h5 style="color: rgb(98, 50, 211);">3420个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
+                </div>
+
+                <div class="itemMain_body">
+                    <div class="item"><img src="../home_Img/动效.png" alt="">
+                        <h4>高中四级差异词汇本</h4>
+                        <h5>2024.8.5</h5>
+                        <h5 style="color: rgb(98, 50, 211);">862个</h5>
+                        <div class="accuracy"><h5>98%</h5></div>
+                        <button></button>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 

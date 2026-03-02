@@ -953,8 +953,28 @@ body {
     border-radius: 4px;
     padding: 25px;
     transition: 0.2s;
-    animation: beginningAni 1.5s ease 0.15s forwards ;
+    animation: beginningAni 1.5s ease 0.15s forwards;
     visibility: visible;
+}
+
+.itemMain .itemBookMain{
+    position: relative;
+    width: 100%;
+    max-height: 310px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: white;
+    height: auto;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.itemBookMain::-webkit-scrollbar{
+    width: 2px;
 }
 
 .itemMain:hover{
@@ -971,7 +991,7 @@ body {
     display: flex;
     justify-content:flex-start;
     align-items: center;
-
+    margin-bottom: 10px;
 }
 
 .itemMain_title img{
@@ -988,9 +1008,9 @@ body {
 }
 
 /* 细目ul */
-.itemMain .itemMain_body{
+.itemBookMain .itemMain_body{
     position: relative;
-    width: 100%;
+    width: 97%;
     height: auto;
     display: flex;
     flex-direction: column;
