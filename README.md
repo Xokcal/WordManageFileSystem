@@ -1,5 +1,20 @@
 # 小卡单词管理系统 (WordManageFileSystem)
 
+### 首页
+![首页](./home_Img.png)
+
+### 单词管理
+![单词管理](./msg_Img.png)
+
+### 笔记功能
+![笔记功能](./note_Img.png)
+
+### 报表生成
+![报表生成](./report_Img.png)
+
+### 检查功能
+![检查功能](./check_Img.png)
+
 [![GitHub language count](https://img.shields.io/github/languages/count/Xokcal/WordManageFileSystem)](https://github.com/Xokcal/WordManageFileSystem)
 [![GitHub top language](https://img.shields.io/github/languages/top/Xokcal/WordManageFileSystem)](https://github.com/Xokcal/WordManageFileSystem)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Xokcal/WordManageFileSystem)](https://github.com/Xokcal/WordManageFileSystem/commits/main)
