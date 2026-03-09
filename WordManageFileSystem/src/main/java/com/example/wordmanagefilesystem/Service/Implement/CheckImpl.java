@@ -2,14 +2,17 @@ package com.example.wordmanagefilesystem.Service.Implement;
 
 import com.example.wordmanagefilesystem.Mapper.CheckMapper;
 import com.example.wordmanagefilesystem.Pojo.Word;
+import com.example.wordmanagefilesystem.Service.CheckService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
 @Service
-public class CheckImpl {
+public class CheckImpl implements CheckService{
 
     @Autowired
     private CheckMapper checkMapper;
@@ -21,8 +24,26 @@ public class CheckImpl {
         Integer page = getRandomFinallyPage(pageSize);
         Integer pageReal = (page - 1) * pageSize;
         List<Word> words = getRandomPageWord(pageReal, pageSize);
+        if (words.size() < pageSize){
+            List<Word> words1 = addIfNotEnough(words , pageSize);
+            return wordListToArr(words1);
+        }
         Word[] wordsArr = wordListToArr(words);
         return fisherYatesAlgorithm(wordsArr);
+    }
+
+    //最后一页，不满则补全其他随机页数的单词
+    private List<Word> addIfNotEnough(List<Word> words , Integer pageSize){
+        //...
+        Integer page = getRandomFinallyPage(pageSize);
+        Integer pageReal = (page - 1) * pageSize;
+        List<Word> ws = getRandomPageWord(pageReal, pageSize);
+        Iterator<Word> iterator = ws.iterator();
+        while (iterator.hasNext()){
+            if (words.size() == pageSize)return words;
+            words.add(iterator.next());
+        }
+        return words;
     }
 
     private Word[] fisherYatesAlgorithm(Word[] wordsArr){

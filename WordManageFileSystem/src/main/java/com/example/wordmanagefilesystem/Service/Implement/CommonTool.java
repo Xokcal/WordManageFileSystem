@@ -17,9 +17,7 @@ public class CommonTool {
 
     //Decimal更精准保留两位小数处理
     public BigDecimal doubleToBigDecimal(double accuracy){
-        if (CheckValidUtil.isNull(accuracy)){
-            return null;
-        }
+        if (CheckValidUtil.isNull(accuracy))return null;
         BigDecimal bigDecimal = BigDecimal.valueOf(accuracy);
         BigDecimal bigDecimalHalfUp = bigDecimal.setScale(2, RoundingMode.HALF_UP);
         return bigDecimalHalfUp;
@@ -27,9 +25,7 @@ public class CommonTool {
 
     //Decimal更精准保留两位小数处理，并且*100
     public BigDecimal bigdecimalAccuracy(double accuracy){
-        if (CheckValidUtil.isNull(accuracy)){
-            return null;
-        }
+        if (CheckValidUtil.isNull(accuracy))return null;
         BigDecimal bigDecimal = BigDecimal.valueOf((accuracy * 100));
         BigDecimal bigDecimalHalfUp = bigDecimal.setScale(0, RoundingMode.HALF_UP);
         return bigDecimalHalfUp;
@@ -37,9 +33,7 @@ public class CommonTool {
 
     //Decimal更精准保留两位小数处理
     public BigDecimal doubleToBigDecimalNoDecimal(double accuracy){
-        if (CheckValidUtil.isNull(accuracy)){
-            return null;
-        }
+        if (CheckValidUtil.isNull(accuracy))return null;
         BigDecimal bigDecimal = BigDecimal.valueOf(accuracy);
         BigDecimal bigDecimalHalfUp = bigDecimal.setScale(0, RoundingMode.HALF_UP);
         return bigDecimalHalfUp;

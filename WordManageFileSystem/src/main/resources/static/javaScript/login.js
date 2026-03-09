@@ -139,7 +139,7 @@ loginBtn.addEventListener('click', async function() {
 
     try {
         // 3. 发送登录请求（===== 替换为你的实际后端接口地址 =====）
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', // 与后端协商的提交格式

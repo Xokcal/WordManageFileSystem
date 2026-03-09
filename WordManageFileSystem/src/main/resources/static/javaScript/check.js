@@ -164,6 +164,7 @@ function shut(){
 //用户提交时处理
 async function submitAnswer() {
     if (index + 1 === parseInt(timeSelectDoc.value)) {
+        singleCheckResult(index + 1 , currRightCount);
         shut();
         return;
     }
@@ -205,6 +206,25 @@ async function submitAnswer() {
     //准确率
     const accuracy = (parseInt(currRightCount) / parseInt(index)) * 100;
     rateDoc.innerHTML = accuracy.toFixed(1);
+}
+
+async function singleCheckResult(total, right) {
+    singleCheckResultBody = {
+        "total": total,
+        "right": right,
+        "userId": null
+    };
+    const token = localStorage.getItem("token")
+    const r = await axios.post('/word/accuracyStatistic', singleCheckResultBody , {headers:{userToken : token}});
+    const result = r.data.data;
+    alert("accuracyStatistic");
+    if (result === 1){
+        showMiniToast("抽查数据录入成功！！");
+        return;
+    }else{
+        showMiniToast("抽查数据录入失败！！");
+        return;
+    }
 }
 
 //input输入框处理
