@@ -3,7 +3,7 @@
 ### 首页
 ![首页](./home_Img.png)
 
-### 单词管理
+### 个人信息
 ![单词管理](./msg_Img.png)
 
 ### 笔记功能
@@ -12,7 +12,7 @@
 ### 报表生成
 ![报表生成](./report_Img.png)
 
-### 检查功能
+### 抽查功能
 ![检查功能](./check_Img.png)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/Xokcal/WordManageFileSystem)](https://github.com/Xokcal/WordManageFileSystem)
