@@ -6,7 +6,7 @@
 var userDataEchart = echarts.init(document.getElementById('userData'));
 
 function loadUserDataEchart(){
-    axios.get('http://localhost:8080/report/dataOverLook')
+    axios.get('/report/dataOverLook')
         .then(response => {
             const result = response.data;
             const userDataEchartData = result.data;
@@ -58,7 +58,7 @@ const reedAvgDoc = document.getElementById('reedAvg');
 const userTotalDoc = document.getElementById('userTotal');
 
 function overLookText(){
-    axios.get('http://localhost:8080/report/overLookText')
+    axios.get('/report/overLookText')
         .then(response => {
             const result = response.data;
             const data = result.data;
@@ -89,31 +89,88 @@ function checkDailyDataEchart(){
     if (token === null){
         alert("token 为null")
     }
-    axios.get('http://localhost:8080/report/checkEchart' , {headers : {userToken : token}})
+    axios.get('/report/checkEchart' , {headers : {userToken : token}})
         .then(response => {
             const result = response.data;
             const dataEchart = result.data;
 
+            // checkDataEchartOption = {
+            //     title: {
+            //         text: '每日单词抽查'
+            //     },
+            //     tooltip: {
+            //         trigger: 'axis',
+            //         axisPointer: {
+            //             type: 'shadow'
+            //         }
+            //     },
+            //     legend: {},
+            //     xAxis: {
+            //         type: 'value',
+            //         boundaryGap: [0, 0.01]
+            //     },
+            //     yAxis: {
+            //         type: 'category',
+            //         data: ['准确数', '错误数', '总次数']
+            //     },
+            //     series: dataEchart
+            // };
             checkDataEchartOption = {
                 title: {
-                    text: '每日单词抽查'
+                    text: '每日单词抽查',
+                    textStyle: {
+                        color: '#333',
+                        fontSize: 16,
+                        fontWeight: 500
+                    }
                 },
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: {
-                        type: 'shadow'
-                    }
+                        type: 'shadow',
+                        shadowStyle: {
+                            color: 'rgba(123, 31, 162, 0.05)' // 紫色系轻微阴影，呼应主色调
+                        }
+                    },
+                    backgroundColor: '#fff',
+                    borderColor: '#eee',
+                    borderWidth: 1,
+                    textStyle: { color: '#333' }
                 },
                 legend: {},
                 xAxis: {
                     type: 'value',
-                    boundaryGap: [0, 0.01]
+                    boundaryGap: [0, 0.01],
+                    axisLine: { lineStyle: { color: '#eee' } },
+                    axisLabel: { color: '#666' },
+                    splitLine: { lineStyle: { color: '#f5f5f5' } }
                 },
                 yAxis: {
                     type: 'category',
-                    data: ['准确数', '错误数', '总次数']
+                    data: ['准确数', '错误数', '总次数'],
+                    axisLine: { lineStyle: { color: '#eee' } },
+                    axisLabel: { color: '#666' }
                 },
-                series: dataEchart
+                series: dataEchart.map((item, index) => {
+                    // 紫色系梯度配色（区分度高+视觉和谐）
+                    const colorList = ['#818ec2'];
+                    return {
+                        ...item,
+                        itemStyle: {
+                            // 轻渐变提升质感，想要纯纯色可删LinearGradient部分
+                            color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+                                { offset: 1, color: colorList[index] }
+                            ])
+                        },
+                        emphasis: {
+                            itemStyle: {
+                                color: colorList[index],
+                                shadowBlur: 5,
+                                shadowColor: colorList[index] + '50'
+                            }
+                        }
+                    };
+                })
             };
 
             checkDataEchart.setOption(checkDataEchartOption);
@@ -133,18 +190,50 @@ function loadAccuracyEChartData(){
     if (token === null){
         alert("token 为null")
     }
-    axios.get('http://localhost:8080/report/accuracyEchart' , {headers : {userToken : token}})
+    axios.get('/report/accuracyEchart' , {headers : {userToken : token}})
         .then(response => {
             const result = response.data;
             const accurcyDataEchartData = result.data;
 
+            // accurcyDataEchartOption = {
+            //     tooltip: {
+            //         trigger: 'item'
+            //     },
+            //     legend: {
+            //         top: '5%',
+            //         left: 'center'
+            //     },
+            //     series: [
+            //         {
+            //             name: 'Access From',
+            //             type: 'pie',
+            //             radius: ['40%', '70%'],
+            //             center: ['50%', '70%'],
+            //             // adjust the start and end angle
+            //             startAngle: 180,
+            //             endAngle: 360,
+            //             data: accurcyDataEchartData
+            //         }
+            //     ]
+            // };
             accurcyDataEchartOption = {
                 tooltip: {
-                    trigger: 'item'
+                    trigger: 'item',
+                    // 提示框优化：白底+柔和边框
+                    backgroundColor: '#fff',
+                    borderColor: '#eee',
+                    borderWidth: 1,
+                    padding: 8,
+                    textStyle: { color: '#333', fontSize: 12 }
                 },
                 legend: {
                     top: '5%',
-                    left: 'center'
+                    left: 'center',
+                    // 图例样式优化
+                    textStyle: { color: '#666', fontSize: 12 },
+                    icon: 'circle',
+                    itemWidth: 6,
+                    itemHeight: 6
                 },
                 series: [
                     {
@@ -152,10 +241,36 @@ function loadAccuracyEChartData(){
                         type: 'pie',
                         radius: ['40%', '70%'],
                         center: ['50%', '70%'],
-                        // adjust the start and end angle
                         startAngle: 180,
                         endAngle: 360,
-                        data: accurcyDataEchartData
+                        data: accurcyDataEchartData.map((item, index) => {
+                            // 定制配色：浅蓝+淡绿+豆沙粉（稍深）+浅紫（补充）
+                            const colorList = [
+                                '#54b5de', // 浅蓝（天蓝色）
+                                '#98d298', // 淡绿（薄荷绿）
+                                '#cc7a90', // 豆沙粉（稍深的粉，不艳）
+                                '#99a8c9', // 浅紫灰（补充色，可选）
+                                '#e8d2a8'  // 浅黄（额外补充，按需用）
+                            ];
+                            return {
+                                ...item,
+                                itemStyle: {
+                                    color: colorList[index % colorList.length], // 适配多数据循环配色
+                                    // 轻微阴影提升质感，不想要可删
+                                    shadowBlur: 3,
+                                    shadowColor: 'rgba(0,0,0,0.05)',
+                                    shadowOffsetY: 2
+                                },
+                                // 文字标签样式优化
+                                label: {
+                                    color: '#666',
+                                    fontSize: 11
+                                },
+                                labelLine: {
+                                    lineStyle: { color: '#ddd' }
+                                }
+                            };
+                        })
                     }
                 ]
             };

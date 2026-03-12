@@ -1,3 +1,38 @@
+//响应式
+//响应式
+//响应式
+//响应式
+// 单词本页面 - 移动端侧边栏控制
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建菜单按钮
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'mobile-menu-btn';
+    menuBtn.innerHTML = '<span></span>';
+    document.body.prepend(menuBtn);
+
+    // 创建遮罩层
+    const mask = document.createElement('div');
+    mask.className = 'sidebar-mask';
+    document.body.appendChild(mask);
+
+    // 侧边栏元素
+    const sidebar = document.querySelector('.sideMainBar');
+
+    // 按钮点击切换侧边栏
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        mask.classList.toggle('active');
+    });
+
+    // 遮罩层点击关闭侧边栏
+    mask.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        mask.classList.remove('active');
+    });
+});
+
+
+
 // ========== 核心弹窗：极简粉色款（showMiniToast） ==========
 function injectToastStyle() {
     if (document.getElementById('mini-toast-style')) return;
@@ -175,7 +210,7 @@ async function addNoteBook() {
         return;
     }
     const token = localStorage.getItem("token");
-    const res = await axios.post('http://localhost:8080/note', {},
+    const res = await axios.post('/note', {},
         {params: {bookName: noteNameDoc.value}, headers: {userToken: token}});
     const data = res.data.data;
     if (data <= 0) {
@@ -200,7 +235,7 @@ getDoc.addEventListener('click', async () => {
     if (searchBookDoc.value != "" || searchBookDoc.value != '' || searchBookDoc != null) {
         bookName = searchBookDoc.value; //非null就给他赋值
     }
-    const res = await axios.get('http://localhost:8080/note', {
+    const res = await axios.get('/note', {
         params: {bookName: bookName},
         headers: {userToken: token}
     })

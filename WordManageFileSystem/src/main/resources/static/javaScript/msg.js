@@ -1,3 +1,48 @@
+//响应式
+//响应式
+//响应式
+// 个人中心页面 - 移动端侧边栏控制
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建菜单按钮
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'mobile-menu-btn';
+    menuBtn.innerHTML = '<span></span>';
+    document.body.prepend(menuBtn);
+
+    // 创建遮罩层
+    const mask = document.createElement('div');
+    mask.className = 'sidebar-mask';
+    document.body.appendChild(mask);
+
+    // 侧边栏元素
+    const sidebar = document.querySelector('.sideMainBar');
+
+    // 按钮点击切换侧边栏
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        mask.classList.toggle('active');
+        // 防止侧边栏显示时页面滚动
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // 遮罩层点击关闭侧边栏
+    mask.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        mask.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // 窗口大小变化时重置状态，避免布局错乱
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767) {
+            sidebar.classList.remove('active');
+            mask.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
+
 // ========== 核心弹窗：极简粉色款（showMiniToast） ==========
 function injectToastStyle() {
     if (document.getElementById('mini-toast-style')) return;
@@ -162,7 +207,7 @@ async function postMagApi() {
 
         //再上传用户信息
         const token2 = localStorage.getItem("token"); //得到token
-        const response = await axios.put('http://localhost:8080/msg/msg' ,
+        const response = await axios.put('/msg/msg' ,
             msgPostJson ,
             {headers : {userToken : token2}});
 
@@ -179,7 +224,7 @@ async function postMagApi() {
 
         //插入axios
         const tokenImg = localStorage.getItem("token");
-        const responseImg = await axios.put('http://localhost:8080/msg/img' , formData ,
+        const responseImg = await axios.put('/msg/img' , formData ,
             {headers : {userToken : tokenImg}});
         const resultImg = responseImg.data;
         const storResult = resultImg.code;
@@ -198,7 +243,7 @@ async function postMagApi() {
 
         //插入axios
         const tokenImg = localStorage.getItem("token");
-        const responseImg = await axios.put('http://localhost:8080/msg/img' , formData ,
+        const responseImg = await axios.put('/msg/img' , formData ,
             {headers : {userToken : tokenImg}});
         const resultImg = responseImg.data;
         const storResult = resultImg.code;
@@ -211,7 +256,7 @@ async function postMagApi() {
 
         //再上传用户信息
         const token2 = localStorage.getItem("token"); //得到token
-        const response = await axios.put('http://localhost:8080/msg/msg' ,
+        const response = await axios.put('/msg/msg' ,
             msgPostJson ,
             {headers : {userToken : token2}});
 
@@ -261,7 +306,7 @@ cityDoc = document.getElem*/
 //将用户数据渲染到input里面
 async function getBaseMsgToInput() {
     const token = localStorage.getItem("token"); //得到token
-    const response = await axios.get('http://localhost:8080/msg',
+    const response = await axios.get('/msg',
         {headers: {userToken: token}});
     //获取用户基本数据
     const result = response.data;

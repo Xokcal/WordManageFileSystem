@@ -1,3 +1,36 @@
+
+//响应式
+//响应式
+//响应式
+
+// 移动端侧边栏控制逻辑
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建菜单按钮和遮罩层（动态生成，无需改HTML结构）
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'mobile-menu-btn';
+    menuBtn.innerHTML = '<span></span>';
+    document.body.prepend(menuBtn);
+
+    const mask = document.createElement('div');
+    mask.className = 'sidebar-mask';
+    document.body.appendChild(mask);
+
+    const sidebar = document.querySelector('.sideMainBar');
+
+    // 点击按钮切换侧边栏显示/隐藏
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        mask.classList.toggle('active');
+    });
+
+    // 点击遮罩关闭侧边栏
+    mask.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        mask.classList.remove('active');
+    });
+});
+
+
 // ========== 核心弹窗：极简粉色款（showMiniToast） ==========
 function injectToastStyle() {
     if (document.getElementById('mini-toast-style')) return;
@@ -127,14 +160,13 @@ async function startCheck() {
     submition_btn.disabled = false; //提交按钮
     submition_btn.style.backgroundColor = "#409eff";
     leftCountDoc.innerHTML =parseInt(timeSelectDoc.value) - (index + 1); //剩余次数
-    const res = await axios.get('http://localhost:8080/check',
+    const res = await axios.get('/check',
         {params: {pageSize: parseInt(timeSelectDoc.value)}})
     const result = res.data;
     wordArr = result.data; //
     console.log(wordArr);
     showMiniToast("开始抽查，本次抽查次数为：" + parseInt(timeSelectDoc.value) + "次");
     currentWordPrint();
-
 }
 
 //打印当前抽查到的单词
@@ -175,7 +207,7 @@ async function submitAnswer() {
     };
 
     const token = localStorage.getItem("token")
-    const res = await axios.put('http://localhost:8080/word/updateAccuracy',
+    const res = await axios.put('/word/updateAccuracy',
         submitionBody , {headers : {userToken : token}});
 
     const result = res.data;
@@ -217,7 +249,6 @@ async function singleCheckResult(total, right) {
     const token = localStorage.getItem("token")
     const r = await axios.post('/word/accuracyStatistic', singleCheckResultBody , {headers:{userToken : token}});
     const result = r.data.data;
-    alert("accuracyStatistic");
     if (result === 1){
         showMiniToast("抽查数据录入成功！！");
         return;

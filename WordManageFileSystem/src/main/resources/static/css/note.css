@@ -1150,3 +1150,173 @@ body {
     /* transform: translateY(-5px); */
     box-shadow: 0px 1px 9px rgba(194, 194, 194, 0.525);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== 单词本页面 - 响应式核心样式 ========== */
+/* ========== 单词本页面 - 响应式核心样式 ========== */
+/* ========== 单词本页面 - 响应式核心样式 ========== */
+/* ========== 单词本页面 - 响应式核心样式 ========== */
+/* 移动端菜单按钮（PC端隐藏） */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(144, 62, 231, 0.772);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: none;
+    cursor: pointer;
+}
+
+/* 菜单按钮三条杠样式 */
+.mobile-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    position: relative;
+}
+.mobile-menu-btn span::before,
+.mobile-menu-btn span::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: white;
+    left: 0;
+}
+.mobile-menu-btn span::before {
+    top: -6px;
+}
+.mobile-menu-btn span::after {
+    bottom: -6px;
+}
+
+/* 遮罩层 */
+.sidebar-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+/* 手机端适配（≤767px） */
+@media (max-width: 767px) {
+    /* 显示移动端菜单按钮 */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* 侧边栏改为抽屉式，默认隐藏 */
+    .sideMainBar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 10001;
+        height: 100vh;
+        margin-left: 0;
+    }
+    .sideMainBar.active {
+        transform: translateX(0);
+    }
+
+    /* 遮罩层激活显示 */
+    .sidebar-mask.active {
+        display: block;
+    }
+
+    /* 主内容区占满手机宽度 */
+    .checkMainBar {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    /* 顶部标题栏适配 */
+    .addNoteBookMainBar_title .showNoteCount {
+        margin-left: 10%;
+        margin-top: 10px;
+    }
+    .addNoteBookMainBar_title {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    /* 输入栏适配 */
+    .addNoteBookMainBar_inputLine1 {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    .addNoteBookMainBar_inputLine1 input {
+        margin-left: 0 !important;
+    }
+    .inputImgAbsDelete {
+        left: 23px !important;
+        top: 40px !important;
+    }
+    .clearBut {
+        margin-left: 0 !important;
+    }
+
+    /* 内容布局适配 */
+    .itemMainAndEchartMainBar {
+        flex-direction: column;
+        width: 100%;
+    }
+    .itemMain {
+        width: 100% !important;
+        margin-bottom: 20px;
+        padding: 15px !important;
+    }
+    .echartMainBar {
+        width: 100% !important;
+        margin-left: 0 !important;
+        min-height: 250px;
+    }
+
+    /* 单词本条目适配 */
+    .item button {
+        margin-left: 250px !important;
+    }
+}
+
+/* 平板端适配（768px-991px） */
+@media (min-width: 768px) and (max-width: 991px) {
+    .checkMainBar {
+        width: 70%;
+        margin-left: 30%;
+    }
+    .itemMainAndEchartMainBar {
+        flex-wrap: wrap;
+    }
+    .itemMain {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .echartMainBar {
+        width: 100%;
+        margin-left: 0;
+    }
+}

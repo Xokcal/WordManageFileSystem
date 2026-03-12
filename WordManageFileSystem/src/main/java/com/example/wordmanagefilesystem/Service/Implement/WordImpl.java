@@ -676,12 +676,6 @@ public class WordImpl implements WordService {
     public void initializationUserCheckDataEveryDay() {
         List<Integer> allUserId = wordMapper.getAllUserId();
         LocalDateTime now = LocalDateTime.now();
-        Runnable runnable = () -> {
-            do {
-                System.out.println(100);
-            } while (allUserId.size() > 0);
-        };
-        new Thread(runnable).start();
         if (CheckValidUtil.isValid(allUserId)) {
             log.error("每日更新用户CheckData 获取所有用户id失败");
             return;

@@ -7,6 +7,39 @@ let currentPage = 1;
 //当前按钮状态
 let currentChecked = 1;
 
+//响应式代码
+//响应式代码
+//响应式代码
+// 移动端侧边栏控制
+document.addEventListener('DOMContentLoaded', function() {
+    // 创建移动端菜单按钮
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'mobile-menu-btn';
+    menuBtn.innerHTML = '<span></span>';
+    document.body.prepend(menuBtn);
+
+    // 创建遮罩层
+    const mask = document.createElement('div');
+    mask.className = 'sidebar-mask';
+    document.body.appendChild(mask);
+
+    // 侧边栏元素
+    const sidebar = document.querySelector('.sideMainBar');
+
+    // 菜单按钮点击事件
+    menuBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        mask.classList.toggle('active');
+    });
+
+    // 遮罩层点击关闭侧边栏
+    mask.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        mask.classList.remove('active');
+    });
+});
+
+
 // ========== 核心弹窗：极简粉色款（showMiniToast） ==========
 function injectToastStyle() {
     if (document.getElementById('mini-toast-style')) return;
@@ -155,7 +188,7 @@ async function initSwitchStatus() {
         const token = localStorage.getItem("token");
 
         // 只请求一次后端获取初始状态
-        const response = await axios.get('http://localhost:8080/setting', {
+        const response = await axios.get('/setting', {
             headers: {userToken: token}
         });
         const result = response.data;
@@ -207,7 +240,7 @@ switchDom.addEventListener('change', async () => {
         };
 
         // 4. 发送更新请求（异步/await 更易读）
-        const response = await axios.put('http://localhost:8080/setting', settingBody, {
+        const response = await axios.put('/setting', settingBody, {
             headers: {userToken: token}
         });
         const result = response.data;
@@ -250,7 +283,7 @@ queryAllWordDoc.addEventListener('click', async () => {
     const token = localStorage.getItem('token')
 
     //查询
-    const response = await axios.get('http://localhost:8080/word/page', {
+    const response = await axios.get('/word/page', {
             headers: {userToken: token},
             params: {page: parseInt(pageDoc) || 1, pageSize: pageSizeDoc}
         }
@@ -297,7 +330,7 @@ queryAllWordDoc.addEventListener('click', async () => {
         };
 
         // 4. 发送更新请求（异步/await 更易读）
-        const response = await axios.put('http://localhost:8080/setting', settingBody, {
+        const response = await axios.put('/setting', settingBody, {
             headers: {userToken: token}
         });
         const result = response.data;
@@ -427,7 +460,7 @@ setTimeout(() => {
 function accuracyExhibit() {
     var getAccuracyDoc = document.getElementById('accuracy');
     const token = localStorage.getItem('token')
-    axios.get('http://localhost:8080/word/accuracy', {
+    axios.get('/word/accuracy', {
         headers: {
             userToken: token
         }
@@ -443,7 +476,7 @@ function accuracyExhibit() {
 function getNewWordTotal() {
     var getTotalDoc = document.getElementById('newWord');
     const token = localStorage.getItem('token')
-    axios.get('http://localhost:8080/word/newWord', {headers: {userToken: token}})
+    axios.get('/word/newWord', {headers: {userToken: token}})
         .then(response => {
             const newWord = response.data;
             getTotalDoc.innerHTML = newWord;
@@ -454,7 +487,7 @@ function getNewWordTotal() {
 // http://localhost:8080/word/newWord
 function getWordTotal() {
     var getTotalDoc = document.getElementById('total');
-    axios.get('http://localhost:8080/word/wordTotal')
+    axios.get('/word/wordTotal')
         .then(response => {
             const total = response.data;
             getTotalDoc.innerHTML = total;
@@ -466,7 +499,7 @@ function getWordTotal() {
 function getMistakeTotal() {
     var getmistakeDoc = document.getElementById('mistake');
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:8080/word/lessScore', {headers: {userToken: token}})
+    axios.get('/word/lessScore', {headers: {userToken: token}})
         .then(response => {
             const mistake = response.data;
             getmistakeDoc.innerHTML = mistake;
@@ -477,7 +510,7 @@ function getMistakeTotal() {
 
 function differentData() {
     const token = localStorage.getItem('token');
-    axios.get('http://localhost:8080/word/differentData', {headers: {userToken: token}})
+    axios.get('/word/differentData', {headers: {userToken: token}})
         .then(response => {
             const accuracyDifData = document.getElementById("accuracyDif");
             const newWordDifData = document.getElementById("newWordDif");
@@ -510,7 +543,7 @@ let wordId = 0;
 // 显示更新栏
 function openUpdateBar(id) {
     document.getElementById("update").style.display = "flex";
-    axios.get('http://localhost:8080/word/publicById', {params: {id: id}}).then(response => {
+    axios.get('/word/publicById', {params: {id: id}}).then(response => {
         const wordUpdateDoc = document.getElementById('wordUpdate');
         const meaningUpdateDoc = document.getElementById('meaningUpdate');
         const partOfSpeechUpdateDoc = document.getElementById('partOfSpeechUpdate');
@@ -551,7 +584,7 @@ async function updateHandle() {
         phrase: document.getElementById('phraseUpdate').value
     };
     const token = localStorage.getItem("token")
-    const response = await axios.post('http://localhost:8080/word/update', wordWithUserId, {headers: {userToken: token}});
+    const response = await axios.post('/word/update', wordWithUserId, {headers: {userToken: token}});
     const result = response.data;
     const data = result.data;
     if (result === 1) {
@@ -590,7 +623,7 @@ async function addHandle() {
         phrase: document.getElementById('phraseAdd').value
     };
     const token = localStorage.getItem("token");
-    const response = await axios.post('http://localhost:8080/word/publicAdd', addPublicBody, {headers: {userToken: token}})
+    const response = await axios.post('/word/publicAdd', addPublicBody, {headers: {userToken: token}})
     const result = response.data;
     if (result === 1) {
         showMiniToast("单词添加成功！！")
@@ -627,7 +660,7 @@ function cancelAdd() {
 async function deletePublicWord(id) {
     alert("当前要删除的单词是" + id);
     const token = localStorage.getItem("token")
-    const response = await axios.delete('http://localhost:8080/word/deletePublicWord',
+    const response = await axios.delete('/word/deletePublicWord',
         {params: {id: id}, headers: {userToken: token}})
     const result = response.data;
     const msg = result.data;
@@ -674,7 +707,7 @@ queryAttachConditionDoc.addEventListener('click', async () => {
     console.log("我真正发出去的参数：", queryBody);
 
     const token = localStorage.getItem("token");
-    const response = await axios.post('http://localhost:8080/word/queryWord',
+    const response = await axios.post('/word/queryWord',
         queryBody,
         {headers: {userToken: token}});
 
@@ -741,7 +774,7 @@ nextPagePageDoc.addEventListener('click', async () => {
 
         //http响应
         const token = localStorage.getItem('token') //得到token
-        const response = await axios.get('http://localhost:8080/word/page', {
+        const response = await axios.get('/word/page', {
             headers: {userToken: token},
             params: {page: pageEndValue, pageSize: pageSizeValue}
         })
@@ -779,7 +812,7 @@ nextPagePageDoc.addEventListener('click', async () => {
                 };
 
                 // 4. 发送更新请求（异步/await 更易读）
-                const response = await axios.put('http://localhost:8080/setting', settingBody, {
+                const response = await axios.put('/setting', settingBody, {
                     headers: {userToken: token}
                 });
                 const result = response.data;
@@ -807,7 +840,7 @@ nextPagePageDoc.addEventListener('click', async () => {
             }
 
             // 2. 发送请求（参数传数字）
-            response = await axios.get('http://localhost:8080/word/nextPage', {
+            response = await axios.get('/word/nextPage', {
                 headers: {userToken: token},
                 params: {
                     page: pageEndValue, // 数字
@@ -855,7 +888,7 @@ nextPagePageDoc.addEventListener('click', async () => {
                         savePage: savePageResult
                     };
 
-                    await axios.put('http://localhost:8080/setting', settingBody, {
+                    await axios.put('/setting', settingBody, {
                         headers: {userToken: token}
                     });
                     switchDom.checked = currentChecked;
@@ -887,7 +920,7 @@ previousPageDoc.addEventListener('click', async () => {
         const pageSizeValue = pageSize.value || 10; // 每页数量兜底
         if (token) { // 有token才请求，避免报错
             // 发送请求获取第一页数据（和其他页码的请求逻辑一致）
-            axios.get('http://localhost:8080/word/page', {
+            axios.get('/word/page', {
                 headers: {userToken: token},
                 params: {page: 1, pageSize: pageSizeValue}
             }).then(response => {
@@ -913,7 +946,7 @@ previousPageDoc.addEventListener('click', async () => {
                             isSavePage: Number(switchDom.checked),
                             savePage: 1
                         };
-                        axios.put('http://localhost:8080/setting', settingBody, {
+                        axios.put('/setting', settingBody, {
                             headers: {userToken: token}
                         });
                     } catch (error) {
@@ -933,7 +966,7 @@ previousPageDoc.addEventListener('click', async () => {
 
     //http响应
     const token = localStorage.getItem('token') //得到token
-    const response = await axios.get('http://localhost:8080/word/onPage', {
+    const response = await axios.get('/word/onPage', {
         headers: {userToken: token},
         params: {page: pageEndValue, pageSize: pageSizeValue}
     });
@@ -976,7 +1009,7 @@ previousPageDoc.addEventListener('click', async () => {
             };
 
             // 4. 发送更新请求（异步/await 更易读）
-            const response = await axios.put('http://localhost:8080/setting', settingBody, {
+            const response = await axios.put('/setting', settingBody, {
                 headers: {userToken: token}
             });
             const result = response.data;

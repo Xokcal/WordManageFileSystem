@@ -1379,7 +1379,10 @@ input:checked + .slider:before {
 
 
 
-
+/*表格样式*/
+/*表格样式*/
+/*表格样式*/
+/*表格样式*/
 .largelyDelete label{
     display: flex;
     justify-content: center;
@@ -1667,116 +1670,369 @@ tableMainBar .passPercent_null h4{
 /* 手机端响应式 *//* 手机端响应式 */
 
 /* 响应式适配 - 平板设备 (768px ~ 1199px) */
-@media (min-width: 768px) and (max-width: 1590px) {
-    /* 侧边栏调整 */
-    .sideMainBar {
-        width: 240px;
-        height: 100vh;
-        margin-left: 0;
-    }
+/*@media (min-width: 768px) and (max-width: 1590px) {*/
+/*    !* 侧边栏调整 *!*/
+/*    .sideMainBar {*/
+/*        width: 240px;*/
+/*        height: 100vh;*/
+/*        margin-left: 0;*/
+/*    }*/
 
-    /* 内容主栏调整 */
-    .contentMainBar {
-        width: calc(100% - 240px);
-        margin-left: 240px;
-    }
+/*    !* 内容主栏调整 *!*/
+/*    .contentMainBar {*/
+/*        width: calc(100% - 240px);*/
+/*        margin-left: 240px;*/
+/*    }*/
 
-    .contentMainBar nav {
-        width: calc(100% - 240px);
-    }
+/*    .contentMainBar nav {*/
+/*        width: calc(100% - 240px);*/
+/*    }*/
 
-    /* 数据卡片调整 */
-    .dataShowMainBar {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
+/*    !* 数据卡片调整 *!*/
+/*    .dataShowMainBar {*/
+/*        flex-wrap: wrap;*/
+/*        gap: 15px;*/
+/*    }*/
 
-    .dataBox {
-        width: calc(50% - 10px) !important;
-        height: 110px;
-    }
+/*    .dataBox {*/
+/*        width: calc(50% - 10px) !important;*/
+/*        height: 110px;*/
+/*    }*/
 
-    /* 查询栏调整 */
-    .contentMainBar_queryMainBar {
-        flex-wrap: wrap;
-        padding: 15px;
-    }
+/*    !* 查询栏调整 *!*/
+/*    .contentMainBar_queryMainBar {*/
+/*        flex-wrap: wrap;*/
+/*        padding: 15px;*/
+/*    }*/
 
-    .contentMainBar_queryMainBar_InputSearch {
-        width: calc(33.333% - 15px) !important;
-        margin-bottom: 15px;
-    }
+/*    .contentMainBar_queryMainBar_InputSearch {*/
+/*        width: calc(33.333% - 15px) !important;*/
+/*        margin-bottom: 15px;*/
+/*    }*/
 
-    .contentMainBar_queryMainBar_searchMainBar {
-        width: 100%;
-        margin-left: 0;
-        justify-content: center;
-        margin-top: 10px;
-    }
+/*    .contentMainBar_queryMainBar_searchMainBar {*/
+/*        width: 100%;*/
+/*        margin-left: 0;*/
+/*        justify-content: center;*/
+/*        margin-top: 10px;*/
+/*    }*/
 
-    /* 表格区域调整 */
-    .tablePageChooseMainBar {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
+/*    !* 表格区域调整 *!*/
+/*    .tablePageChooseMainBar {*/
+/*        flex-wrap: wrap;*/
+/*        gap: 10px;*/
+/*    }*/
 
-    .largelyDelete {
-        margin-left: auto !important;
-        margin-top: 10px;
-    }
+/*    .largelyDelete {*/
+/*        margin-left: auto !important;*/
+/*        margin-top: 10px;*/
+/*    }*/
 
-    .pageChooseMainBar {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
+/*    .pageChooseMainBar {*/
+/*        flex-wrap: wrap;*/
+/*        gap: 15px;*/
+/*    }*/
 
-    .pageClickMainBar {
-        margin-left: auto !important;
-        margin-top: 10px;
-    }
+/*    .pageClickMainBar {*/
+/*        margin-left: auto !important;*/
+/*        margin-top: 10px;*/
+/*    }*/
 
-    /* 表格内容适配 */
-    table {
-        font-size: 11px;
-    }
+/*    !* 表格内容适配 *!*/
+/*    table {*/
+/*        font-size: 11px;*/
+/*    }*/
 
-    .delete_span button, .revise_span button {
-        width: 35px;
-        height: 22px;
-        font-size: 11px;
-    }
-}
+/*    .delete_span button, .revise_span button {*/
+/*        width: 35px;*/
+/*        height: 22px;*/
+/*        font-size: 11px;*/
+/*    }*/
+/*}*/
 
-/* 响应式适配 - 手机设备 (<= 767px) */
+/*!* 响应式适配 - 手机设备 (<= 767px) *!*/
+/*@media (max-width: 767px) {*/
+/*    !* 侧边栏隐藏，通过菜单按钮控制显示 *!*/
+/*    .sideMainBar {*/
+/*        position: fixed;*/
+/*        left: -280px;*/
+/*        z-index: 999;*/
+/*        transition: left 0.3s ease;*/
+/*        height: 100vh;*/
+/*        margin-left: 0;*/
+/*    }*/
+
+/*    .sideMainBar.active {*/
+/*        left: 0;*/
+/*    }*/
+
+/*    !* 内容主栏占满屏幕 *!*/
+/*    .contentMainBar {*/
+/*        width: 100%;*/
+/*        margin-left: 0;*/
+/*        padding-bottom: 80px;*/
+/*    }*/
+
+/*    .contentMainBar nav {*/
+/*        width: 100%;*/
+/*        padding: 0 15px;*/
+/*        justify-content: space-between;*/
+/*    }*/
+
+/*    !* 移动端菜单按钮 *!*/
+/*    .mobile-menu-btn {*/
+/*        position: fixed;*/
+/*        top: 15px;*/
+/*        left: 15px;*/
+/*        width: 40px;*/
+/*        height: 40px;*/
+/*        background-color: rgba(144, 62, 231, 0.772);*/
+/*        border-radius: 8px;*/
+/*        display: flex;*/
+/*        justify-content: center;*/
+/*        align-items: center;*/
+/*        z-index: 1000;*/
+/*        box-shadow: 0 2px 8px rgba(0,0,0,0.2);*/
+/*    }*/
+
+/*    .mobile-menu-btn span {*/
+/*        display: block;*/
+/*        width: 24px;*/
+/*        height: 2px;*/
+/*        background-color: white;*/
+/*        position: relative;*/
+/*    }*/
+
+/*    .mobile-menu-btn span::before,*/
+/*    .mobile-menu-btn span::after {*/
+/*        content: '';*/
+/*        position: absolute;*/
+/*        width: 24px;*/
+/*        height: 2px;*/
+/*        background-color: white;*/
+/*        left: 0;*/
+/*    }*/
+
+/*    .mobile-menu-btn span::before {*/
+/*        top: -8px;*/
+/*    }*/
+
+/*    .mobile-menu-btn span::after {*/
+/*        bottom: -8px;*/
+/*    }*/
+
+/*    !* 导航栏调整 *!*/
+/*    .contentMainBar nav ul {*/
+/*        margin-left: 0;*/
+/*        gap: 15px;*/
+/*    }*/
+
+/*    .timeMianBar {*/
+/*        display: none;*/
+/*    }*/
+
+/*    !* 主内容区域调整 *!*/
+/*    .contentMainBar_BodyMainBar {*/
+/*        width: 100%;*/
+/*        padding: 15px;*/
+/*        margin-top: 80px;*/
+/*    }*/
+
+/*    .contentMainBar_BodyMainBar_TextMainBar {*/
+/*        line-height: normal;*/
+/*        margin-bottom: 20px;*/
+/*    }*/
+
+/*    .contentMainBar_BodyMainBar_TextMainBar h3 {*/
+/*        font-size: 18px;*/
+/*        margin-bottom: 5px;*/
+/*    }*/
+
+/*    .contentMainBar_BodyMainBar_TextMainBar h5 {*/
+/*        font-size: 13px;*/
+/*    }*/
+
+/*    !* 数据卡片调整 - 单列显示 *!*/
+/*    .dataShowMainBar {*/
+/*        flex-direction: column;*/
+/*        gap: 12px;*/
+/*        margin-top: 20px;*/
+/*    }*/
+
+/*    .dataBox {*/
+/*        width: 100% !important;*/
+/*        height: 100px;*/
+/*    }*/
+
+/*    .dataText h3 {*/
+/*        font-size: 18px;*/
+/*    }*/
+
+/*    .dataText h5 {*/
+/*        font-size: 12px;*/
+/*    }*/
+
+/*    !* 查询栏调整 - 单列显示 *!*/
+/*    .contentMainBar_queryMainBar {*/
+/*        flex-direction: column;*/
+/*        padding: 15px;*/
+/*        margin-left: 0;*/
+/*    }*/
+
+/*    .contentMainBar_queryMainBar_InputSearch {*/
+/*        width: 100% !important;*/
+/*        margin-left: 0;*/
+/*        margin-bottom: 15px;*/
+/*    }*/
+
+/*    .InputSearch_bottom input,*/
+/*    .InputSearch_bottom select {*/
+/*        width: 100% !important;*/
+/*        font-size: 13px;*/
+/*        height: 40px;*/
+/*    }*/
+
+/*    !* 搜索按钮区域 *!*/
+/*    .contentMainBar_queryMainBar_searchMainBar {*/
+/*        width: 100%;*/
+/*        margin-left: 0;*/
+/*        flex-direction: row;*/
+/*        gap: 15px;*/
+/*        margin-top: 10px;*/
+/*    }*/
+
+/*    .contentMainBar_queryMainBar_searchMainBar button {*/
+/*        width: calc(50% - 7.5px);*/
+/*        margin-left: 0;*/
+/*        height: 40px;*/
+/*        font-size: 14px;*/
+/*    }*/
+
+/*    !* 表格区域调整 *!*/
+/*    .tableMainBar {*/
+/*        width: 100%;*/
+/*        margin-left: 0;*/
+/*        overflow-x: auto;*/
+/*        border-radius: 7px;*/
+/*    }*/
+
+/*    .tablePageChooseMainBar {*/
+/*        flex-direction: column;*/
+/*        align-items: flex-start;*/
+/*        gap: 10px;*/
+/*        padding: 10px;*/
+/*    }*/
+
+/*    .tablePageChooseMainBar h5 {*/
+/*        font-size: 12px;*/
+/*        margin-left: 0;*/
+/*    }*/
+
+/*    .tablePageChooseMainBar select {*/
+/*        width: 100px;*/
+/*        height: 35px;*/
+/*    }*/
+
+/*    .largelyDelete {*/
+/*        margin-left: 0 !important;*/
+/*        width: 100%;*/
+/*        justify-content: flex-start;*/
+/*        margin-top: 5px;*/
+/*    }*/
+
+/*    !* 表格滚动适配 *!*/
+/*    table {*/
+/*        min-width: 640px;*/
+/*        font-size: 11px;*/
+/*    }*/
+
+/*    th, td {*/
+/*        padding: 8px 5px;*/
+/*    }*/
+
+/*    .passPercent_hight,*/
+/*    .passPercent_middle,*/
+/*    .passPercent_Best,*/
+/*    .passPercent_less {*/
+/*        width: 40px;*/
+/*        height: 20px;*/
+/*    }*/
+
+/*    !* 分页区域调整 *!*/
+/*    .pageChooseMainBar {*/
+/*        flex-direction: column;*/
+/*        align-items: flex-start;*/
+/*        gap: 10px;*/
+/*        padding: 10px;*/
+/*    }*/
+
+/*    .pageChooseMainBar h5 {*/
+/*        margin-left: 0;*/
+/*        font-size: 12px;*/
+/*    }*/
+
+/*    .pageClickMainBar {*/
+/*        margin-left: 0 !important;*/
+/*        width: 100%;*/
+/*        justify-content: flex-start;*/
+/*        gap: 8px;*/
+/*    }*/
+
+/*    .pageClickMainBar button {*/
+/*        width: 32px;*/
+/*        height: 32px;*/
+/*        font-size: 12px;*/
+/*    }*/
+
+/*    !* 底部广告栏调整 *!*/
+/*    .botton_Adv_MainBar {*/
+/*        margin-top: 50px;*/
+/*        height: auto;*/
+/*        padding: 15px;*/
+/*    }*/
+
+/*    .botton_Adv_MainBar_TextMainBar h4 {*/
+/*        font-size: 15px;*/
+/*    }*/
+
+/*    .botton_Adv_MainBar_TextMainBar h5 {*/
+/*        font-size: 12px;*/
+/*        line-height: 1.4;*/
+/*    }*/
+/*}*/
+
+/* 手机端响应式 */
+/* 手机端响应式 */
+/* 手机端响应式 *//* 手机端响应式 */
+/* 手机端响应式 */
+/* 手机端响应式 */
+/* 手机端响应式 */
+
+/* 手机端响应式适配 (≤ 767px) */
 @media (max-width: 767px) {
-    /* 侧边栏隐藏，通过菜单按钮控制显示 */
+    /* 1. 基础布局重置 */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* 2. 侧边栏改为抽屉式（默认隐藏，点击菜单按钮显示） */
     .sideMainBar {
         position: fixed;
         left: -280px;
-        z-index: 999;
-        transition: left 0.3s ease;
+        top: 0;
+        z-index: 9999;
+        width: 280px;
         height: 100vh;
         margin-left: 0;
+        transition: left 0.3s ease;
+        overflow-y: auto;
     }
 
     .sideMainBar.active {
         left: 0;
     }
 
-    /* 内容主栏占满屏幕 */
-    .contentMainBar {
-        width: 100%;
-        margin-left: 0;
-        padding-bottom: 80px;
-    }
-
-    .contentMainBar nav {
-        width: 100%;
-        padding: 0 15px;
-        justify-content: space-between;
-    }
-
-    /* 移动端菜单按钮 */
+    /* 移动端菜单按钮（显示在页面左上角） */
     .mobile-menu-btn {
         position: fixed;
         top: 15px;
@@ -1788,8 +2044,10 @@ tableMainBar .passPercent_null h4{
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 1000;
+        z-index: 10000;
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        border: none;
+        cursor: pointer;
     }
 
     .mobile-menu-btn span {
@@ -1818,21 +2076,35 @@ tableMainBar .passPercent_null h4{
         bottom: -8px;
     }
 
-    /* 导航栏调整 */
+    /* 3. 内容主栏适配 */
+    .contentMainBar {
+        width: 100%;
+        margin-left: 0;
+        padding-bottom: 80px;
+    }
+
+    /* 4. 导航栏适配 */
+    .contentMainBar nav {
+        width: 100%;
+        padding: 0 15px;
+        justify-content: space-between;
+        height: 60px;
+    }
+
     .contentMainBar nav ul {
         margin-left: 0;
         gap: 15px;
     }
 
-    .timeMianBar {
-        display: none;
+    .contentMainBar nav .timeMianBar {
+        display: none; /* 移动端隐藏时间显示 */
     }
 
-    /* 主内容区域调整 */
+    /* 5. 主内容区域适配 */
     .contentMainBar_BodyMainBar {
         width: 100%;
         padding: 15px;
-        margin-top: 80px;
+        margin-top: 80px; /* 给菜单按钮和导航栏留空间 */
     }
 
     .contentMainBar_BodyMainBar_TextMainBar {
@@ -1849,7 +2121,7 @@ tableMainBar .passPercent_null h4{
         font-size: 13px;
     }
 
-    /* 数据卡片调整 - 单列显示 */
+    /* 6. 数据卡片适配（单列显示） */
     .dataShowMainBar {
         flex-direction: column;
         gap: 12px;
@@ -1861,6 +2133,15 @@ tableMainBar .passPercent_null h4{
         height: 100px;
     }
 
+    .dataBox .dataText {
+        width: 70%;
+        margin-left: 15px;
+    }
+
+    .dataBox .dataImg {
+        margin-left: 5%;
+    }
+
     .dataText h3 {
         font-size: 18px;
     }
@@ -1869,17 +2150,19 @@ tableMainBar .passPercent_null h4{
         font-size: 12px;
     }
 
-    /* 查询栏调整 - 单列显示 */
+    /* 7. 查询栏适配（单列堆叠） */
     .contentMainBar_queryMainBar {
         flex-direction: column;
         padding: 15px;
         margin-left: 0;
+        width: 100%;
     }
 
     .contentMainBar_queryMainBar_InputSearch {
         width: 100% !important;
         margin-left: 0;
         margin-bottom: 15px;
+        height: auto;
     }
 
     .InputSearch_bottom input,
@@ -1889,7 +2172,7 @@ tableMainBar .passPercent_null h4{
         height: 40px;
     }
 
-    /* 搜索按钮区域 */
+    /* 搜索按钮区域适配 */
     .contentMainBar_queryMainBar_searchMainBar {
         width: 100%;
         margin-left: 0;
@@ -1905,7 +2188,7 @@ tableMainBar .passPercent_null h4{
         font-size: 14px;
     }
 
-    /* 表格区域调整 */
+    /* 8. 表格区域适配（横向滚动） */
     .tableMainBar {
         width: 100%;
         margin-left: 0;
@@ -1918,6 +2201,7 @@ tableMainBar .passPercent_null h4{
         align-items: flex-start;
         gap: 10px;
         padding: 10px;
+        height: auto;
     }
 
     .tablePageChooseMainBar h5 {
@@ -1925,7 +2209,8 @@ tableMainBar .passPercent_null h4{
         margin-left: 0;
     }
 
-    .tablePageChooseMainBar select {
+    .tablePageChooseMainBar select,
+    .tablePageChooseMainBar input {
         width: 100px;
         height: 35px;
     }
@@ -1937,9 +2222,9 @@ tableMainBar .passPercent_null h4{
         margin-top: 5px;
     }
 
-    /* 表格滚动适配 */
+    /* 表格内容适配 */
     table {
-        min-width: 640px;
+        min-width: 640px; /* 保证表格内容不挤压 */
         font-size: 11px;
     }
 
@@ -1955,12 +2240,20 @@ tableMainBar .passPercent_null h4{
         height: 20px;
     }
 
-    /* 分页区域调整 */
+    /* 删除/修改按钮适配 */
+    .delete_span button, .revise_span button {
+        width: 35px;
+        height: 22px;
+        font-size: 11px;
+    }
+
+    /* 9. 分页区域适配 */
     .pageChooseMainBar {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
         padding: 10px;
+        height: auto;
     }
 
     .pageChooseMainBar h5 {
@@ -1981,7 +2274,40 @@ tableMainBar .passPercent_null h4{
         font-size: 12px;
     }
 
-    /* 底部广告栏调整 */
+    /* 10. 弹窗适配（修改/新增） */
+    .updateHandleBar, .addHandleBar {
+        width: 90% !important;
+        margin-top: 100px;
+    }
+
+    .updateMainBar, .addMainBar {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    .updateMainBar_hang, .addMainBar_hang {
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .updateMainBar_hang label, .addMainBar_hang label {
+        width: 100%;
+    }
+
+    .updateButtopnMainBar, .addButtopnMainBar {
+        height: auto;
+        padding: 15px 0;
+        justify-content: flex-end;
+    }
+
+    .cancel_span button, .cancel_spanAdd button {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+    /* 11. 底部广告栏适配 */
     .botton_Adv_MainBar {
         margin-top: 50px;
         height: auto;
@@ -1998,15 +2324,57 @@ tableMainBar .passPercent_null h4{
     }
 }
 
+/* 可选：添加遮罩层（侧边栏展开时） */
+.sidebar-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9998;
+    display: none;
+}
+
+.sidebar-mask.active {
+    display: block;
+}
+
+
+/* 移动端菜单按钮（默认隐藏，仅手机端显示） */
+.mobile-menu-btn {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(144, 62, 231, 0.772);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: none;
+    cursor: pointer;
+}
+
+/* 仅在手机端（≤767px）显示菜单按钮 */
+@media (max-width: 767px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
+
+
+
 /* 手机端响应式 */
 /* 手机端响应式 */
 /* 手机端响应式 *//* 手机端响应式 */
 /* 手机端响应式 */
 /* 手机端响应式 */
 /* 手机端响应式 */
-
-
-
 
 
 

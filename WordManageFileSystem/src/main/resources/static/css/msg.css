@@ -1139,3 +1139,266 @@ body {
 
 
 
+
+
+
+
+
+/* ========== 个人中心 - 响应式核心样式 ========== */
+/* ========== 个人中心 - 响应式核心样式 ========== */
+/* ========== 个人中心 - 响应式核心样式 ========== */
+/* ========== 个人中心 - 响应式核心样式 ========== */
+/* ========== 个人中心 - 响应式核心样式 ========== */
+/* 移动端菜单按钮（PC端隐藏） */
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(144, 62, 231, 0.772);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: none;
+    cursor: pointer;
+}
+
+/* 菜单按钮三条杠样式 */
+.mobile-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    position: relative;
+}
+.mobile-menu-btn span::before,
+.mobile-menu-btn span::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: white;
+    left: 0;
+}
+.mobile-menu-btn span::before {
+    top: -6px;
+}
+.mobile-menu-btn span::after {
+    bottom: -6px;
+}
+
+/* 遮罩层 */
+.sidebar-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+/* 基础适配：防止全局溢出 */
+html, body {
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* 手机端适配（≤767px）- 核心优化 */
+@media (max-width: 767px) {
+    /* 显示移动端菜单按钮 */
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    /* 侧边栏改为抽屉式，默认隐藏 */
+    .sideMainBar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 10001;
+        height: 100vh;
+        margin-left: 0;
+        width: 85%; /* 适配手机宽度，避免太宽 */
+    }
+    .sideMainBar.active {
+        transform: translateX(0);
+    }
+
+    /* 遮罩层激活显示 */
+    .sidebar-mask.active {
+        display: block;
+    }
+
+    /* 主内容区占满手机宽度，取消左侧边距 */
+    .userMsgMainBar {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 10px;
+    }
+
+    /* 填写信息主栏：改为纵向布局，取消固定高度 */
+    .postMsgMainBar {
+        flex-direction: column;
+        height: auto !important;
+        margin-top: 10px;
+    }
+
+    /* 左侧头像栏：占满宽度，调整高度 */
+    .postMsgMainBar_leftMainBar {
+        width: 100% !important;
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+    .postMsgMainBar_leftMainBar_upMainBar {
+        height: auto !important;
+        padding: 20px 0;
+    }
+    .imgMainBar {
+        width: 40% !important;
+        height: 120px !important;
+    }
+    .IntroductionTextMainBar_textBar h5 {
+        white-space: normal !important; /* 取消强制不换行，避免省略号 */
+        text-align: center;
+        font-size: 13px;
+    }
+
+    /* 右侧信息填写栏：占满宽度，取消左侧边距 */
+    .postMsgMainBar_rightMainBar {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 10px;
+        height: auto !important;
+    }
+
+    /* 基础信息栏：调整位置，取消左侧大边距 */
+    .postMsgMainBar_rightMainBar_baseMsgMainBar {
+        margin-left: 10px !important;
+        width: 100% !important;
+    }
+    .postMsgMainBar_rightMainBar_baseMsgMainBar .line {
+        width: 85% !important;
+    }
+
+    /* 保存按钮栏：调整位置 */
+    .postMsgMainBar_rightMainBar_saveMainBar {
+        margin-left: 10px !important;
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    /* 填写信息主栏：改为纵向布局，取消固定高度 */
+    .postMsgMainBar_rightMainBar_postMainBar {
+        flex-direction: column;
+        width: 100% !important;
+        height: auto !important;
+        margin-left: 0 !important;
+        margin-top: 10px;
+    }
+
+    /* 输入项容器：占满宽度，取消间距 */
+    .postMsgMainBar_rightMainBar_postMainBar_rightMainBar {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-bottom: 15px;
+        gap: 15px !important;
+    }
+
+    /* 通用输入项：调整高度，优化排版 */
+    .inputCommon {
+        height: auto !important;
+        min-height: 50px;
+        padding: 5px 0;
+    }
+    .leftTextBar {
+        width: 20% !important;
+        font-size: 14px !important;
+    }
+    .texInput {
+        width: 78% !important;
+    }
+
+    /* 头像上传项：优化大小 */
+    .imgInput {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    /* 顶部装饰栏：适配手机 */
+    .upDecorationBar {
+        height: 40px !important;
+    }
+
+    /* 个人资料标题栏：调整位置 */
+    .titleShooseBar {
+        margin-left: 20px !important;
+    }
+
+    /* 退出登录按钮：优化宽度 */
+    .postMsgMainBar_leftMainBar_Button button {
+        width: 90% !important;
+        margin: 0 auto;
+    }
+}
+
+/* 平板端适配（768px-991px）- 过渡优化 */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* 主内容区调整宽度 */
+    .userMsgMainBar {
+        width: 70%;
+        margin-left: 30%;
+    }
+
+    /* 填写信息栏：优化布局，避免溢出 */
+    .postMsgMainBar {
+        height: auto !important;
+    }
+    .postMsgMainBar_leftMainBar {
+        width: 30% !important;
+    }
+    .postMsgMainBar_rightMainBar {
+        width: 65% !important;
+    }
+    .postMsgMainBar_rightMainBar_postMainBar_rightMainBar {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+    .postMsgMainBar_rightMainBar_postMainBar {
+        flex-direction: column;
+        height: auto !important;
+    }
+}
+
+/* 小屏手机适配（≤480px）- 极致优化 */
+@media (max-width: 480px) {
+    .sideMainBar {
+        width: 90%;
+    }
+    .imgMainBar {
+        width: 50% !important;
+        height: 100px !important;
+    }
+    .postMsgMainBar_rightMainBar_saveMainBar button {
+        width: 120px !important;
+        height: 35px !important;
+        font-size: 13px !important;
+    }
+    .inputCommon {
+        flex-wrap: wrap;
+    }
+    .leftTextBar {
+        width: 100% !important;
+        margin-bottom: 5px;
+    }
+    .texInput {
+        width: 100% !important;
+    }
+}

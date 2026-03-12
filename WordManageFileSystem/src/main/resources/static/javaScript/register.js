@@ -14,7 +14,7 @@ function registerHander(){
         username : usernameDoc.value,
         password : passwordDoc.value
     }
-    axios.post('http://localhost:8080/register/insert' , registerBody)
+    axios.post('/register/insert' , registerBody)
         .then(response => {
             const result = response.data;
             //获得注册状态
