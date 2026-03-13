@@ -1,0 +1,1156 @@
+
+body{
+    margin: 0px;
+    background-color:rgba(243, 243, 243, 0.881);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes beginningAni {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* rgba(139, 151, 228, 0.779) */
+.topMainBar{
+    position: relative;
+    width: 100%;
+    height: 55px;
+    background-color: rgba(139, 151, 228, 0.779);
+    display: flex;
+    box-shadow: 0px 0px 10px rgba(193, 193, 193, 0.751);
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.topMainBar .logAndName{
+    width: 200px;
+    height: 100%;
+    /* background-color: rgba(81, 181, 181, 0.582); */
+    display: flex;
+    justify-content:flex-start;
+    align-items:center;
+    margin-left: 100px;
+}
+
+.logAndName .logo{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.logAndName h4{
+    margin-left: 10px;
+    color: rgb(48, 48, 48);
+}
+
+/* 返回<a> */
+.returnMain{
+    position: relative;
+    width: 70%;
+    height: 55px;
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.returnMain img{
+    position: relative;
+    width: 19px;
+    height: 19px;
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 7px;
+}
+
+.returnMain a{
+    color: rgb(104, 104, 104);
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.15s;
+}
+
+.returnMain a:hover{
+    color: rgb(126, 40, 201);
+    transform: scale(1.03);
+}
+
+/* 增删改查栏 */
+.CRUDMain{
+    position: relative;
+    width: 70%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 14px;
+    margin-bottom: 23px;
+    border-radius: 4px;
+    animation: beginningAni 1s ease 0s forwards;
+    visibility: visible;
+}
+
+.CRUDMain .CRUDMain_title{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    /* background-color: rgb(193, 163, 124); */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+
+}
+
+.CRUDMain_title h3{
+    color: rgb(61, 61, 61);
+    font-size: 16px;
+    margin: 0px;
+}
+
+.CRUDMain .oneLineMain{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+/* input单元 */
+.oneLineMain .inputUnit{
+    position: relative;
+    width: 370px;
+    height: 100%;
+    /* background-color: rgb(168, 110, 110); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.inputUnit h5{
+    color: rgb(77, 77, 77);
+}
+
+.oneLineMain input{
+    width: 200px; /* 查询框宽度，新增表单可设100% */
+    height: 26px;
+    padding: 0 12px;
+    background-color: #eef5fd65;
+    border: 1px solid #c5d6ea;
+    border-radius: 4px; /* 小圆角更轻巧 */
+    font-size: 14px;
+    color: #334155;
+    outline: none;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+    transition: 0.2s;
+
+    /* input字体光标设置 */
+    caret-color: #b95c98;
+    color: #3a6879;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.oneLineMain input:focus{
+    border: 1px solid #1f2794;
+}
+
+.oneLineMain input::placeholder{
+    color: #7b7a7a;
+    font-size: 13px;
+}
+
+.inputUnit button{
+    position: relative;
+    width: 40px;
+    height: 26px;
+    background-color: rgba(150, 177, 201, 0.178);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0.5px solid rgb(150, 177, 201);
+    border-radius: 4px;
+    margin-left: 15px;
+    transition: 0.2s;
+}
+
+.inputUnit button:hover{
+    background-color: rgb(150, 177, 201);
+    border: 0.5px solid rgb(150, 177, 201);
+    transform: translateY(-1px);
+
+}
+
+.inputUnit button::before {
+    content: '';
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("../home_Img/搜索 (1).png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.inputUnit button:hover::before{
+    background-image: url("../home_Img/搜索 (3).png");
+}
+
+.inputUnit_input_span button{
+    background-color: #999dda3e;
+    border: 0.5px solid #999ddaf4;
+}
+
+
+.inputUnit_input_span button:hover{
+    background-color: #999dda;
+    border: 0.5px solid #999ddaf4;
+}
+
+.inputUnit_input_span button::before{
+    content: '';
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("../home_Img/搜索 (2).png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.inputUnit_input_span button:hover::before{
+    background-image: url("../home_Img/搜索 (3).png");
+}
+
+/* 清空按钮 */
+.clearButSpan button{
+    position: relative;
+    width: 46px;
+    height: 26px;
+    background-color: rgba(146, 94, 172, 0.226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0.5px solid hsl(280, 32%, 52%);
+    border-radius: 4px;
+    margin-left: 5px;
+    transition: 0.2s;
+    margin-left: 50px;
+}
+
+.clearButSpan button:hover{
+    background-color: rgb(164, 116, 190);
+    border: 0.5px solid hsl(280, 32%, 52%);
+    transform: translateY(-1px);
+}
+
+.oneLineMain h5{
+    color: #3d3d3d;
+    font-size: 13px;
+    font-weight: 520;
+}
+
+.clearButSpan button::before{
+    content: '';
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("../home_Img/清空 (2).png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.clearButSpan button:hover::before{
+    background-image: url("../home_Img/清空 (3).png");
+}
+
+
+/* 查询全部按钮 */
+.researchButSpan button{
+    position: relative;
+    width: 46px;
+    height: 26px;
+    background-color: rgba(107, 141, 165, 0.105);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0.5px solid rgb(107, 141, 165);
+    border-radius: 4px;
+    margin-left: 5px;
+    transition: 0.2s;
+    margin-left: 30px;
+}
+
+.researchButSpan button:hover{
+    background-color: rgb(107, 141, 165);
+    border: 0.5px solid rgb(107, 141, 165);
+    transform: translateY(-1px);
+}
+
+.oneLineMain h5{
+    color: #3d3d3d;
+    font-size: 13px;
+    font-weight: 520;
+}
+
+.researchButSpan button::before{
+    content: '';
+    width: 23px;
+    height: 20px;
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("../home_Img/查询统计.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.researchButSpan button:hover::before{
+    background-image: url("../home_Img/查询统计 (1).png");
+}
+
+/* 新增按钮 */
+.addButSpan button{
+    position: relative;
+    width: 46px;
+    height: 26px;
+    background-color: rgba(125, 172, 105, 0.105);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: 0.5px solid rgb(125, 172, 105);
+    color: rgb(125, 172, 105);
+    font-size: 13px;
+    border-radius: 4px;
+    margin-left: 5px;
+    transition: 0.2s;
+    margin-left: 30px;
+}
+
+.addButSpan button:hover{
+    background-color: rgb(125, 172, 105);
+    border: 0.5px solid rgb(125, 172, 105);
+    color: white;
+}
+
+/* 表格主栏 */
+/* 表格主栏 */
+/* 表格主栏 */
+/* 表格主栏 */
+/* 表格主栏 */
+.wordTableMian{
+    position: relative;
+    width: 70%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 14px;
+    border-radius: 4px;
+    animation: beginningAni 1s ease 0.2s forwards;
+    visibility: visible;
+}
+
+
+
+/*表格样式*/
+/*表格样式*/
+/*表格样式*/
+/*表格样式*/
+.largelyDelete label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.largelyDelete label img{
+    width: 15px;
+    height: auto;
+    object-fit: cover;
+
+}
+
+.largelyDelete a{
+    text-decoration: none;
+
+}
+
+.largelyDelete button{
+    background: none;
+    border: none;
+    outline: none;
+    color: rgb(91, 91, 91);
+    font-weight: 560;
+    transition: 0.2s;
+}
+
+.wordTableMian table{
+    width: 98%;
+    height: auto;
+    border-collapse: collapse;
+    /* background-color: aqua; */
+    transition: 0.2s;
+}
+
+.wordTableMian table tr:hover{
+    background-color: rgba(255, 236, 247, 0.377);
+}
+
+.wordTableMian table thead{
+    height: 45px;
+    /* background-color: rgba(226, 217, 227, 0.705); */
+    background-color: #4b7e9122;
+    font-size: 14px;
+    color: rgb(72, 72, 72);
+    font-weight: 1000;
+}
+
+.wordTableMian table thead tr{
+    margin: 1000px;
+}
+
+.wordTableMian table tbody tr{
+    height: 50px;
+    background-color:white;
+    border-bottom: 0.5px solid rgba(211, 210, 210, 0.598);
+    font-size: 12px;
+    color: rgb(92, 92, 92);
+    font-weight: 100;
+}
+
+.wordTableMian table tbody tr h4{
+    font-weight: 380;
+}
+
+
+/* 通过率 */
+/* 通过率 */
+/* 通过率 */
+
+.wordTableMian .passPercent_hight{
+    width: 45px;
+    height: 22px;
+    background-color:rgba(222, 247, 254, 0.564);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wordTableMian .passPercent_hight h4{
+    color: rgb(0, 148, 193);
+}
+
+.wordTableMian .passPercent_middle{
+    width: 45px;
+    height: 22px;
+    background-color:rgba(246, 241, 193, 0.454);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wordTableMian .passPercent_middle h4{
+    color: rgb(204, 191, 5);
+}
+
+.wordTableMian .passPercent_Best{
+    width: 45px;
+    height: 22px;
+    background-color:rgba(243, 216, 255, 0.507);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wordTableMian .passPercent_Best h4{
+    color: rgb(178, 113, 228);
+}
+
+.wordTableMian .passPercent_less{
+    width: 45px;
+    height: 22px;
+    background-color:rgba(255, 216, 229, 0.507);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wordTableMian .passPercent_less h4{
+    color: rgb(198, 64, 95);
+}
+
+.wordTableMian .passPercent_null{
+    width: 45px;
+    height: 22px;
+    background-color:rgba(227, 227, 227, 0.614);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+tableMainBar .passPercent_null h4{
+    color: rgb(179, 179, 179);
+}
+
+/* 通过率 */
+/* 通过率 */
+/* 通过率 */
+
+
+/* 删除和修改按钮 */
+/* 删除和修改按钮 */
+/* 删除和修改按钮 */
+.delete_span button{
+    width: 40px;
+    height: 25px;
+    background-color: rgba(253, 225, 220, 0.68);
+    outline: none;
+    border: 0.4px solid rgb(255, 170, 152);
+    color: rgb(243, 82, 46);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+/* passPercent_Best */
+.delete_span button:hover{
+    background-color: rgb(243, 87, 53);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0px 1px 7px rgba(98, 98, 98, 0.642);
+}
+
+.delete_span button:active{
+    transform: scale(0.8);
+}
+
+.revise_span button{
+    width: 40px;
+    height: 25px;
+    background-color: rgba(221, 241, 254, 0.68);
+    outline: none;
+    border: 0.4px solid rgb(127, 190, 249);
+    color: rgb(47, 111, 241);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.revise_span button:hover{
+    background-color: rgb(58, 119, 225);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0px 1px 7px rgba(98, 98, 98, 0.642);
+}
+
+.revise_span button:active{
+    transform: scale(0.8);
+}
+
+/* 底部栏 */
+/* 底部栏 */
+/* 底部栏 */
+.wordTableMian .bottonMain{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background-color: #4b7e9122; */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-top: 14px;
+}
+
+.bottonMain h5{
+    color: rgb(105, 105, 105);
+    font-size: 12px;
+    margin-left: 20px;
+    letter-spacing: 1px;
+}
+
+/* 总页数 */
+.totalPage{
+    color: #228fba;
+}
+
+/* 当前页数span */
+.currPage {
+    color: #d37f72;
+}
+
+/* 页数选择 */
+.pageSelectSpan input{
+    position: relative;
+    width: 33px;
+    height: 22px;
+    background-color: white;
+    border: 0.5px solid rgb(62, 110, 215);
+    border-radius: 3px;
+    outline: none;
+    margin-left: 20px;
+
+    caret-color: #228fba;
+    color: #228fba;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+
+.pageSelectSpan input:focus{
+    box-shadow: 0px 0px 8px rgba(231, 85, 143, 0.662);
+}
+
+
+/* 上一页和下一页按钮设置 */
+/* 上一页和下一页按钮设置 */
+/* 上一页和下一页按钮设置 */
+.previousPageButton{
+    width: 35px;
+    height: 33px;
+    background-color: rgba(253, 248, 253, 0.614);
+    border: 0.25px solid rgb(198, 180, 209);
+    border-radius: 5px;
+    margin-left: 10px;
+    color: rgb(180, 100, 230);
+    transition: 0.15s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+}
+
+.previousPageButton:hover{
+    background-color: rgba(158, 116, 208, 0.815);
+    border: none;
+    color: white;
+    box-shadow: 0px 1px 10px rgba(157, 157, 157, 0.708);
+    transform: translateY(-1.5px);
+}
+
+.previousPageButton:active{
+    transform: scale(0.95);
+}
+
+/* 下一页 */
+.nestPageButton{
+    width: 35px;
+    height: 33px;
+    background-color: rgba(253, 248, 253, 0.614);
+    border: 0.25px solid rgb(198, 180, 209);
+    border-radius: 5px;
+    margin-left: 7px;
+    color: rgb(180, 100, 230);
+    transition: 0.15s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6px;
+}
+
+.nestPageButton:hover{
+    background-color: rgba(158, 116, 208, 0.815);
+    border: none;
+    color: white;
+    box-shadow: 0px 1px 10px rgba(157, 157, 157, 0.708);
+    transform: translateY(-1.5px);
+}
+
+.nestPageButton:active{
+    transform: scale(0.95);
+}
+
+/* 保存当前界面 */
+
+/* 滑块 */
+/* 滑块 */
+/* 滑块 */
+/* 滑块 */
+/* 仅保留核心样式，去掉冗余美化 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;  /* 滑块宽度（缩小一点更简洁） */
+    height: 26px; /* 滑块高度 */
+    margin-left: 20px;
+}
+/* 隐藏原生复选框 */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+/* 滑块背景 + 小圆点 */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    border-radius: 26px; /* 和高度一致，保证椭圆 */
+    transition: .2s; /* 快速动画，更简洁 */
+}
+/* 小圆点 */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* 圆点高度 */
+    width: 18px;  /* 圆点宽度 */
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .2s;
+}
+/* 勾选后样式 */
+input:checked + .slider {
+    background-color: #db7d98cd; /* 仅保留核心颜色 */
+}
+input:checked + .slider:before {
+    transform: translateX(24px); /* 50-18-4-4=24，刚好滑到右边 */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* 新增公共单词 */
+/* 新增公共单词 */
+/* 新增公共单词 */
+/* 新增公共单词 */
+.addBackgroudMainBox{
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.addBackgroudMainBox .addHandleBar{
+    position: relative;
+    width: 750px;
+    height: auto;
+    border-radius: 9px;
+    background-color: white;
+    box-shadow: 0px 2px 8px rgba(79, 79, 79, 0.71);
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+    animation: beginningAni 0.8s ease 0s forwards;
+    visibility: visible;
+}
+
+/* 标题栏 */
+.addHandleBar .titleMainBar{
+    position: relative;
+    width: 90%;
+    height: 40px;
+    /* background-color: rgb(219, 253, 241); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* update主栏 */
+.addHandleBar .addMainBar{
+    position: relative;
+    width: 90%;
+    height: 300px;
+    /* background-color: rgba(239, 239, 239, 0.619); */
+    /* background-color: rgba(197, 216, 230, 0.247); */
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 35px;
+}
+
+/* updateHnag容器 */
+.addMainBar .addMainBar_hang{
+    position: relative;
+    width: 100%;
+    height: 26%;
+    /* background-color: rgb(226, 208, 243); */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+
+}
+
+/* 每个单独的input框 */
+.addMainBar_hang label{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* input上面注释文字设置 */
+.addMainBar_hang label h4{
+    font-size: 14px;
+    font-weight: 450;
+    margin: 0px;
+    color: rgb(108, 108, 108);
+}
+
+/* input设置 */
+.addMainBar_hang label input{
+    width: 90%;
+    height: 42%;
+    border-radius: 4px;
+    background-color: white;
+    outline: none;
+    border: 0.3px solid rgba(123, 123, 123, 0.71);
+    transition: 0.2s;
+    padding-left: 14px;
+}
+
+/* 动态交互 */
+.addMainBar_hang label input:focus{
+    animation: updateMainBar_hang_dynamicAdd 0.9s ease 0s forwards;
+    visibility: visible;
+}
+
+@keyframes updateMainBar_hang_dynamicAdd{
+    0%{
+        outline: 0px solid rgba(232, 24, 152, 0.507);
+    }
+    33%{
+        outline: 2.2px solid rgba(232, 24, 166, 0.507);
+    }
+    66%{
+        outline: 0.4px solid rgba(232, 24, 208, 0.507);
+    }
+    100%{
+        outline: 1px solid rgba(227, 48, 179, 0.45);
+    }
+}
+
+
+/* 按纽栏 */
+.addHandleBar .addButtopnMainBar{
+    position: relative;
+    width: 90%;
+    height: 14%;
+    background-color: rgba(204, 197, 230, 0.247);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    margin-top: -20px;
+}
+
+/* 取消按钮 */
+.cancel_spanAdd button{
+    width: 60px;
+    height: 37px;
+    background-color: rgb(111, 68, 171);
+    border: none;
+    color: black;
+    border-radius: 4px;
+    color: white;
+    margin-left: 500px;
+    transition: 0.2s;
+}
+
+.cancel_spanAdd button:hover{
+    background-color: rgb(90, 64, 126);
+    box-shadow: 0px 2px 12px rgba(176, 176, 176, 0.619);
+}
+
+.cancel_spanAdd button:active{
+    transform: scale(0.90);
+}
+
+/* 确认按钮 */
+.confirm_spanAdd button{
+    width: 79px;
+    height: 41px;
+    background-color: rgb(211, 116, 175);
+    border: none;
+    color: black;
+    border-radius: 6px;
+    color: white;
+    margin-left: 25px;
+    transition: 0.2s;
+}
+
+.confirm_spanAdd button:hover{
+    background-color: rgb(63, 175, 175);
+    background-color: rgb(186, 98, 127);
+}
+
+.confirm_spanAdd button:active{
+    transform: scale(0.90);
+}
+
+
+
+
+
+
+/* 修改主栏 */
+/* 修改主栏 */
+/* 修改主栏 */
+.updateBackgroudMainBox{
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background:rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.updateBackgroudMainBox .updateHandleBar{
+    position: relative;
+    width: 750px;
+    height: auto;
+    border-radius: 9px;
+    background-color: white;
+    box-shadow: 0px 2px 8px rgba(79, 79, 79, 0.71);
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+    animation: beginningAni 0.8s ease 0s forwards;
+    visibility: visible;
+}
+
+/* 标题栏 */
+.updateHandleBar .titleMainBar{
+    position: relative;
+    width: 90%;
+    height: 40px;
+    /* background-color: rgb(219, 253, 241); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* update主栏 */
+.updateHandleBar .updateMainBar{
+    position: relative;
+    width: 90%;
+    height: 300px;
+    /* background-color: rgba(239, 239, 239, 0.619); */
+    /* background-color: rgba(197, 216, 230, 0.247); */
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 35px;
+}
+
+/* updateHnag容器 */
+.updateMainBar .updateMainBar_hang{
+    position: relative;
+    width: 100%;
+    height: 26%;
+    /* background-color: rgb(226, 208, 243); */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+
+}
+
+/* 每个单独的input框 */
+.updateMainBar_hang label{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* input上面注释文字设置 */
+.updateMainBar_hang label h4{
+    font-size: 14px;
+    font-weight: 450;
+    margin: 0px;
+    color: rgb(108, 108, 108);
+}
+
+/* input设置 */
+.updateMainBar_hang label input{
+    width: 90%;
+    height: 42%;
+    border-radius: 4px;
+    background-color: white;
+    outline: none;
+    border: 0.3px solid rgba(123, 123, 123, 0.71);
+    transition: 0.2s;
+    padding-left: 14px;
+}
+
+/* 动态交互 */
+.updateMainBar_hang label input:focus{
+    animation: updateMainBar_hang_dynamic 0.9s ease 0s forwards;
+    visibility: visible;
+}
+
+@keyframes updateMainBar_hang_dynamic{
+    0%{
+        outline: 0px solid rgba(132, 24, 232, 0.728);
+    }
+    33%{
+        outline: 2.2px solid rgba(132, 24, 232, 0.728);
+    }
+    66%{
+        outline: 0.4px solid rgba(132, 24, 232, 0.728);
+    }
+    100%{
+        outline: 1.2px solid rgba(132, 24, 232, 0.728);
+    }
+}
+
+
+/* 按纽栏 */
+/* 按纽栏 */
+/* 按纽栏 */
+/* 按纽栏 */
+.updateHandleBar .updateButtopnMainBar{
+    position: relative;
+    width: 90%;
+    height: 14%;
+    background-color: rgba(197, 216, 230, 0.247);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    margin-top: -20px;
+}
+
+/* 取消按钮 */
+.cancel_span button{
+    width: 60px;
+    height: 37px;
+    background-color: rgb(68, 171, 171);
+    border: none;
+    color: black;
+    border-radius: 4px;
+    color: white;
+    margin-left: 500px;
+    transition: 0.2s;
+}
+
+.cancel_span button:hover{
+    background-color: rgb(70, 155, 155);
+    box-shadow: 0px 2px 12px rgba(176, 176, 176, 0.619);
+}
+
+.cancel_span button:active{
+    transform: scale(0.90);
+}
+
+/* 确认按钮 */
+.confirm_span button{
+    width: 79px;
+    height: 41px;
+    background-color: rgb(157, 116, 211);
+    border: none;
+    color: black;
+    border-radius: 6px;
+    color: white;
+    margin-left: 25px;
+    transition: 0.2s;
+}
+
+.confirm_span button:hover{
+    background-color: rgb(63, 175, 175);
+    background-color: rgb(136, 98, 186);
+}
+
+.confirm_span button:active{
+    transform: scale(0.90);
+}
+
+
+
+
+

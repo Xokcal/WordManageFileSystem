@@ -671,24 +671,31 @@ public class WordImpl implements WordService {
         return result;
     }
 
-    //每日更新用户CheckData
-    @Scheduled(cron = "0 0 0 * * ?")
-    public void initializationUserCheckDataEveryDay() {
-        List<Integer> allUserId = wordMapper.getAllUserId();
-        LocalDateTime now = LocalDateTime.now();
-        if (CheckValidUtil.isValid(allUserId)) {
-            log.error("每日更新用户CheckData 获取所有用户id失败");
-            return;
-        }
-        for (Integer userId : allUserId) {
-            Integer result = wordMapper.updateCheckData(0, 0, 0, now, userId);
-            if (result > 0) {
-                log.info("每日更新用户CheckData,用户{}每日更新成功", userId);
-            } else {
-                log.warn("每日更新用户CheckData,用户{}每日更新出现问题", userId);
+    private void clearCheckDataEveryDay(){
+        Runnable ref = ()->{
+            List<Integer> allUserId = wordMapper.getAllUserId();
+            LocalDateTime now = LocalDateTime.now();
+            if (CheckValidUtil.isValid(allUserId)) {
+                log.error("每日更新用户CheckData 获取所有用户id失败");
+                return;
             }
-        }
-        log.info("每日更新用户CheckData更新完毕！！！");
+            for (Integer userId : allUserId) {
+                Integer result = wordMapper.updateCheckData(0, 0, 0, now, userId);
+                if (result > 0) {
+                    log.info("每日更新用户CheckData,用户{}每日更新成功", userId);
+                } else {
+                    log.warn("每日更新用户CheckData,用户{}每日更新出现问题", userId);
+                }
+            }
+            log.info("每日更新用户CheckData更新完毕！！！");
+        };
+        executorService.execute(ref);
+    }
+
+    //每日更新用户CheckData
+    @Scheduled(cron = "0 * * * * ?")
+    public void initializationUserCheckDataEveryDay() {
+        clearCheckDataEveryDay();
     }
 
     //获得CheckData原来的用户数据
