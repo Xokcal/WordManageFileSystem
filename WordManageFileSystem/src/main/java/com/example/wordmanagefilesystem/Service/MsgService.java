@@ -1,5 +1,8 @@
 package com.example.wordmanagefilesystem.Service;
 
-public interface MsgService {
+import com.example.wordmanagefilesystem.Pojo.Note.NoteWordBody;
 
+import java.util.List;
+
+public interface MsgService {
 }

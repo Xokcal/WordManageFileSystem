@@ -244,19 +244,26 @@ getDoc.addEventListener('click', async () => {
 
     for (var i = 0; i < list.length; i++) {
         console.log(list[i].bookName);
+        var getId = parseInt(list[i].id);
         var row = `<div class="itemMain_body">
                 <div class="item"><img src="../home_Img/动效.png" alt="">
                     <h4>${list[i].bookName}</h4>
                     <h5>${list[i].createTime}</h5>
                     <h5 style="color: rgb(98, 50, 211);">${list[i].wordCount}</h5>
                     <div class="accuracy"><h5>${list[i].accurcayAvg}</h5></div>
-                    <button></button>
+                    <button onclick="entreNote(${getId})"></button>
                 </div>
             </div>`;
         itemMainDoc.innerHTML += row;
     }
     bookCountDoc.innerHTML = list.length;
 });
+
+//进入此单词本
+function entreNote(id){
+    localStorage.setItem('noteId' , id);
+    window.location.href = `noteEntre.html`;
+}
 
 getDoc.click();
 

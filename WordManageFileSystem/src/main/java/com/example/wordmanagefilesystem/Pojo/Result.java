@@ -164,6 +164,28 @@ public class Result<T> {
         return result;
     }
 
+    public Result<T> successNote(List<Word> data){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(null);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(data);
+        return result;
+    }
+
+    public Result<T> successNote(String r){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(null);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(r);
+        return result;
+    }
+
 
     public Result<T> success(Word[] words){
         Result result = new Result();
