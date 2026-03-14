@@ -40,7 +40,7 @@ public class NoteEntreController {
         return new Result().successNote(s);
     }
 
-    //添加单词
+    //删除单词
     @DeleteMapping("/delete")
     Result deleteNoteWord(@RequestHeader("userToken") String token
             , @RequestParam("noteId") Integer noteId , @RequestParam("wordId") Integer wordId){
@@ -49,7 +49,7 @@ public class NoteEntreController {
         return new Result().successNote(s);
     }
 
-    //添加单词
+    //更新单词
     @PutMapping("/update")
     Result updateNoteWord(@RequestHeader("userToken") String token
             , @RequestParam("noteId") Integer noteId , @RequestBody NoteWordBody w
@@ -61,7 +61,7 @@ public class NoteEntreController {
 
     //模糊查询：根据单词
     @GetMapping("/query-by-word")
-    Result likeQueryByWord(@RequestHeader("userToken") String token , @RequestParam("noteId") Integer noteId
+    Result likeQueryByWord(@RequestHeader("userToken") String token , @RequestParam(value = "noteId") Integer noteId
             ,@RequestParam("word") String word , @RequestParam("page") Integer page){
         Claims claims = jwtTool.parseToken(token);
         List<NoteWordBody> words = noteEntreImpl.likeQueryByWord((Integer) claims.get("id"), noteId, word, page);

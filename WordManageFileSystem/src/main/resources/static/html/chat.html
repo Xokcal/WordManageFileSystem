@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="icon" href="../home_Img/聊天 (2).png">
+    <title>XChat</title>
+</head>
+<body>
+<div class="main">
+
+    <aside>
+        <div class="title">
+            <div class="logo">
+                <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073357717.png" alt="">
+            </div>
+            <h4>小卡XChat</h4>
+        </div>
+
+        <div class="item">
+            <div class="itemImg">
+                <img src="../home_Img/聊天.png" alt="">
+            </div>
+            <button>对话篇</button>
+        </div>
+
+        <div class="itemZ">
+            <div class="itemImg">
+                <img src="../home_Img/link (1).png" alt="">
+            </div>
+            <button>小卡链接</button>
+        </div>
+
+        <div class="itemZ">
+            <div class="itemImg">
+                <img src="../home_Img/dc-icon-人工智能.png" alt="">
+            </div>
+            <button>豆包</button>
+        </div>
+
+    </aside>
+
+    <div class="content">
+
+        <nav>
+            <div class="returnImg">
+                <img src="../home_Img/返回.png" alt="">
+            </div>
+
+            <div class="returnImg">
+                <img src="../home_Img/添加好友.png" alt="" style="width: 60%; height: 60%;">
+            </div>
+
+            <div class="chatName">
+                <h4>宝宝</h4>
+            </div>
+        </nav>
+
+        <!-- 聊天信息细目 -->
+        <div class="chatMain">
+            <div class="chat" id="chat">
+
+                <!-- 对方时间戳 -->
+<!--                <div class="time_line">-->
+<!--                    <div class="time">-->
+<!--                        <h5>2026/3/10:19:14</h5>-->
+<!--                    </div>-->
+<!--                    <div class="chat_time_msg">-->
+<!--                        <div class="headImg">-->
+<!--                            <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="chat_msg">宝宝，今天一起去看电影吗~</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">看完电影我们就去吃海地牢</div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">还定了酒店哦~</div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">😛好啊~好啊~</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">宝宝真好!</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">好的,那等下收拾一下,准备出发了</div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">我去南门口小街等你</div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; 对方聊天 &ndash;&gt;-->
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">你可要及时到哦~</div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">包的包的</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">宝宝等我</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">我马上就来!</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; 自己时间戳 &ndash;&gt;-->
+<!--                <div class="time_line_self">-->
+<!--                    <div class="time">-->
+<!--                        <h5>2026/3/14:15:39</h5>-->
+<!--                    </div>-->
+<!--                    <div class="chat_time_msg">-->
+<!--                        <div class="chat_msg">宝宝,我到了!我到了!</div>-->
+<!--                        <div class="headImg">-->
+<!--                            <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">你在哪儿呢</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">你看看你后面呢!</div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">我去！宝宝今天打扮的这么好看！</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; 对方时间戳 &ndash;&gt;-->
+<!--                <div class="time_line">-->
+<!--                    <div class="time">-->
+<!--                        <h5>2026/3/12:19:14</h5>-->
+<!--                    </div>-->
+<!--                    <div class="chat_time_msg">-->
+<!--                        <div class="headImg">-->
+<!--                            <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="chat_msg">你在哪呢，宝宝~ 我好害怕宝宝，您不能快点回来呀~呜呜呜</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item">-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771073247185.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="chat_msg">其实我喜欢你很久了，不是一时兴起，是慢慢靠近、慢慢心动，最后认真确定的心意。和你相处的每一刻都很舒服，开心时想分享，难过时想依靠，就连普通的日常，因为有你也变得格外温柔。我不敢说自己有多完美，但我愿意把最真诚、最耐心、最安稳的一面都给你。我想牵着你的手，一起走过细碎的日常，一起面对未来的每一天，不慌不忙，长久陪伴。如果你愿意，就让我从今天开始，好好喜欢你、好好守护你，做你最可靠、最安心的那个人。</div>-->
+<!--                </div>-->
+
+<!--                <div class="chat_item_self">-->
+<!--                    <div class="chat_msg">啊！这！</div>-->
+<!--                    <div class="headImg">-->
+<!--                        <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="time_line_self">-->
+<!--                    <div class="time">-->
+<!--                        <h5>2026/3/14:20:19</h5>-->
+<!--                    </div>-->
+<!--                    <div class="chat_time_msg">-->
+<!--                        <div class="chat_msg">我..我也很喜欢你呀，宝宝，怎么突然这么说呢，你可是我最喜欢的宝宝啊，以后不许你这么问了哟~问就是一直喜欢你</div>-->
+<!--                        <div class="headImg">-->
+<!--                            <img src="https://java-web-xiaoka.oss-cn-beijing.aliyuncs.com/uploads/1771147566254.png" alt="">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+            </div>
+        </div>
+
+        <div class="inputMain">
+            <div class="inputPlace" id="inputPlace">
+                <div class="inputRealMain">
+                    <!-- <input type="text" name="" id="inputContent" placeholder="可输入内容/信息等..."> -->
+                    <textarea name="" placeholder="可输入内容/信息等..." id="inputContent"></textarea>
+                </div>
+
+                <div class="funcMain">
+
+                    <div class="funcButMain"></div>
+
+                    <div class="submition" onclick="submition()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../javaScript/chat.js"></script>
+</html>

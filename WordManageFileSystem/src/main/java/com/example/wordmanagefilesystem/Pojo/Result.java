@@ -1,5 +1,6 @@
 package com.example.wordmanagefilesystem.Pojo;
 
+import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
 import com.example.wordmanagefilesystem.Pojo.Msg.MsgBody;
 import com.example.wordmanagefilesystem.Pojo.Note.NoteBookBody;
 import com.example.wordmanagefilesystem.Pojo.Report.AccuracyGroupByBody;
@@ -161,6 +162,28 @@ public class Result<T> {
         result.setTotalPage(totalPage);
         result.setCurrentPage(currentPage);
         result.setData(data);
+        return result;
+    }
+
+    public Result<T> successChat(List<ChatBody> data ){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(hasSearchTotal);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(data);
+        return result;
+    }
+
+    public Result<T> successChat(String r){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(hasSearchTotal);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(r);
         return result;
     }
 

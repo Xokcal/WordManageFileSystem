@@ -158,7 +158,7 @@ loginBtn.addEventListener('click', async function() {
 
             // 1. 确认取到了
             const userId = result.data.id;
-            console.log("取到的userId:", userId); // 应该是 1
+            localStorage.setItem("userId" , userId);
 
             // 2. 存储token
             const token = result.data.token;
