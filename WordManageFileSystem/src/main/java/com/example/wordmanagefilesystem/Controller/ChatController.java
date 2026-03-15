@@ -4,6 +4,7 @@ import com.example.wordmanagefilesystem.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
 import com.example.wordmanagefilesystem.Pojo.Result;
 import com.example.wordmanagefilesystem.Service.ChatService;
+import com.example.wordmanagefilesystem.Service.Implement.ChatImpl;
 import com.example.wordmanagefilesystem.Service.Implement.CheckValidUtil;
 import com.example.wordmanagefilesystem.Tool.JWTTool;
 import io.jsonwebtoken.Claims;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ChatController {
 
     @Autowired
-    private ChatService chatService;
+    private ChatImpl chatImpl;
 
     @Autowired
     private JWTTool jwtTool;
@@ -27,7 +28,7 @@ public class ChatController {
     @GetMapping("/select")
     Result getChatMsg(@RequestHeader("userToken") String token , @RequestParam("idB") Integer idB){
         Claims claims = jwtTool.parseToken(token);
-        List<ChatBody> chatMsg = chatService.getChatMsg((Integer) claims.get("id"), idB);
+        List<ChatBody> chatMsg = chatImpl.getChatMsg((Integer) claims.get("id"), idB);
         return new Result().successChat(chatMsg);
     }
 
@@ -36,7 +37,7 @@ public class ChatController {
     Result sendChatMsg(@RequestBody ChatBody chatBody
             , @RequestHeader("userToken") String token , @RequestParam("idB") Integer idB){
         Claims claims = jwtTool.parseToken(token);
-        String s = chatService.sendChatMsg(chatBody, (Integer) claims.get("id"), idB);
+        String s = chatImpl.sendChatMsg(chatBody, (Integer) claims.get("id"), idB);
         return new Result().successChat(s);
     }
 
