@@ -1,5 +1,6 @@
 package com.example.wordmanagefilesystem.GlobalExceptionHander;
 
+import com.example.wordmanagefilesystem.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,6 +19,13 @@ public class GlobalExceptionHander {
     //全局异常处理器（Exception）
     @ExceptionHandler(Exception.class)
     public Result GlobalExceptionHanderException(Exception e){
+        log.error("全局异常处理器（Exception），报出异常{}", e.getMessage());
+        return Result.exception("系统出现异常："+e.getMessage());
+    }
+
+    //全局异常处理器（BusinessExcept）
+    @ExceptionHandler(BusinessExcept.class)
+    public Result GlobalExceptionHanderException(BusinessExcept e){
         log.error("全局异常处理器（Exception），报出异常{}", e.getMessage());
         return Result.exception("系统出现异常："+e.getMessage());
     }

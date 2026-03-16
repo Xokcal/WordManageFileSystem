@@ -1,6 +1,7 @@
 package com.example.wordmanagefilesystem.Mapper;
 
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
+import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -27,4 +28,18 @@ public interface ChatMapper {
     @Select("select img from user_msg where user_id = #{userId}")
     String getSenderImg(@Param("userId") Integer userId);
 
+    //搜索好友
+    @Select("select u.id , um.name , um.img ,um.gender from user u left join " +
+            "user_msg um on u.id = um.user_id where um.name like concat('%',#{name},'%')")
+    List<SearchFriendBody> searchFriend(@Param("name") String name);
+
+    //将搜索到的好友添加到好友栏(添加好友)
+    @Insert("insert into add_friend(user_id, add_id, msg_name, msg_img) " +
+            "values (#{userId}, #{addId}, #{msgName}, #{msgImg})")
+    Integer addFriend(@Param("userId") Integer userId, @Param("addId") Integer addId
+            ,@Param("msgName") String msgName, @Param("msgImg") String msgImg);
+
+    //判断是否重复加同一个用户
+    @Select("select count(*) from add_friend where user_id = #{userId} and add_id = #{addId}")
+    Integer isRepeationAddFriend(@Param("userId") Integer userId , @Param("addId") Integer addId);
 }

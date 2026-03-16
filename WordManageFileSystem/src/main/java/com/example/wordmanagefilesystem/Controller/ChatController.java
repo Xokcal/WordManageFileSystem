@@ -2,12 +2,15 @@ package com.example.wordmanagefilesystem.Controller;
 
 import com.example.wordmanagefilesystem.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
+import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Result;
 import com.example.wordmanagefilesystem.Service.ChatService;
+import com.example.wordmanagefilesystem.Service.Constant.ChatConstant;
 import com.example.wordmanagefilesystem.Service.Implement.ChatImpl;
 import com.example.wordmanagefilesystem.Service.Implement.CheckValidUtil;
 import com.example.wordmanagefilesystem.Tool.JWTTool;
 import io.jsonwebtoken.Claims;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +43,22 @@ public class ChatController {
         String s = chatImpl.sendChatMsg(chatBody, (Integer) claims.get("id"), idB);
         return new Result().successChat(s);
     }
+
+    //搜索好友
+    @PostMapping("/search-friend")
+    Result searchFriend(@Param("name") String name){
+        List<SearchFriendBody> searchFriendBodies = chatImpl.searchFriendMatchName(name);
+        return new Result().successChat(searchFriendBodies);
+    }
+
+    //添加好友
+    @PostMapping("/add-friend")
+    Result addFriend(@RequestHeader("userToken") String token , @RequestBody SearchFriendBody searchFriendBody){
+        Claims claims = jwtTool.parseToken(token);
+        String s = chatImpl.addFriendToBar((Integer) claims.get("id"), searchFriendBody);
+        return new Result().successChat(s);
+    }
+
 
 }
 

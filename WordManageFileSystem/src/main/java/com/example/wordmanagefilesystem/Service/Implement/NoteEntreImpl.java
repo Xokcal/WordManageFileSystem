@@ -29,7 +29,7 @@ public class NoteEntreImpl implements NoteEntreService {
         Integer start = (page - 1) * NoteEntreConstant.FIXED_PAGE_SIZE;
         List<NoteWordBody> words = noteEntreMapper.getNoteWordLimit(userId, noteId, start);
         if (CheckValidUtil.isValid(words))
-            throw new BusinessExcept(NoteEntreConstant.GET_RETURN_RESULT_ERROR, 400);
+            throw new BusinessExcept(NoteEntreConstant.GET_RETURN_RESULT_ERROR, 500);
         return words;
     }
 
@@ -86,7 +86,7 @@ public class NoteEntreImpl implements NoteEntreService {
         if (CheckValidUtil.isValid(words)) {
             log.warn(NoteEntreConstant.LIKE_QUERY_RESULT_ERROR);
             throw new BusinessExcept(NoteEntreConstant.
-                    LIKE_QUERY_RESULT_ERROR, 400);
+                    LIKE_QUERY_RESULT_ERROR, 500);
         }
         return words;
     }
@@ -104,7 +104,7 @@ public class NoteEntreImpl implements NoteEntreService {
         if (CheckValidUtil.isValid(words)) {
             log.warn(NoteEntreConstant.LIKE_QUERY_RESULT_ERROR);
             throw new BusinessExcept(NoteEntreConstant.
-                    LIKE_QUERY_RESULT_ERROR, 400);
+                    LIKE_QUERY_RESULT_ERROR, 500);
         }
         return words;
     }

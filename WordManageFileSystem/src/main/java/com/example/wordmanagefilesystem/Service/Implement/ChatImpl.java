@@ -3,11 +3,13 @@ package com.example.wordmanagefilesystem.Service.Implement;
 import com.example.wordmanagefilesystem.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Mapper.ChatMapper;
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
+import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
 import com.example.wordmanagefilesystem.Service.ChatService;
 import com.example.wordmanagefilesystem.Service.Constant.ChatConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,7 +33,7 @@ public class ChatImpl implements ChatService {
         List<ChatBody> chatMsg = chatMapper.getChatMsg(getMatchId(idA, idB));
         if (CheckValidUtil.isValid(chatMsg)){
             log.warn(ChatConstant.GET_CHAT_RESULT_ERROR);
-            throw new BusinessExcept(ChatConstant.GET_CHAT_RESULT_ERROR , 400);
+            throw new BusinessExcept(ChatConstant.GET_CHAT_RESULT_ERROR , 500);
         }
         return chatMsg;
     }
@@ -64,6 +66,50 @@ public class ChatImpl implements ChatService {
         }
         return senderImg;
     }
+
+    //搜索好友
+    @Override
+    public List<SearchFriendBody> searchFriendMatchName(String name){
+        if (CheckValidUtil.isValid(name)){
+            log.warn(ChatConstant.SEARCH_PARAM_ERROR);
+            throw new BusinessExcept(ChatConstant.SEARCH_PARAM_ERROR ,400);
+        }
+        List<SearchFriendBody> searchFriendBodies = chatMapper.searchFriend(name);
+        if (CheckValidUtil.isValid(searchFriendBodies)){
+            log.warn(ChatConstant.SEARCH_RESULT_ERROR);
+            throw new BusinessExcept(ChatConstant.SEARCH_RESULT_ERROR ,500);
+        }
+        return searchFriendBodies;
+    }
+
+    //添加好友
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public String addFriendToBar(Integer userId , SearchFriendBody searchFriendBody){
+        if (CheckValidUtil.isNull(searchFriendBody)){
+            log.warn(ChatConstant.ADD_FRIEND_PARAM_ERROR);
+            throw new BusinessExcept(ChatConstant.ADD_FRIEND_PARAM_ERROR ,400);
+        }
+        if (isRepeationAddFriend(userId , searchFriendBody.getId())){
+            log.warn(ChatConstant.ADD_FRIEND_REPEATION);
+            throw new BusinessExcept(ChatConstant.ADD_FRIEND_REPEATION ,400);
+        }
+        Integer row = chatMapper.addFriend(userId , searchFriendBody.getId()
+                , searchFriendBody.getName() , searchFriendBody.getImg());
+        return row > 0 ? ChatConstant.ADD_FRIEND_RESULT_RIGHT :
+                ChatConstant.ADD_FRIEND_RESULT_ERROR;
+    }
+
+    //有没有重复加好友
+    private boolean isRepeationAddFriend(Integer userId , Integer addId){
+        if (CheckValidUtil.isNull(userId) || CheckValidUtil.isNull(addId)){
+            log.warn(ChatConstant.IS_REPEATION_PARAM_ERROR);
+            throw new BusinessExcept(ChatConstant.IS_REPEATION_PARAM_ERROR ,400);
+        }
+        Integer isRepeation = chatMapper.isRepeationAddFriend(userId, addId);
+        return isRepeation > 0 ? true : false;
+    }
+
 
 }
 

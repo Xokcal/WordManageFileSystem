@@ -30,7 +30,7 @@ public class NoteImpl implements NoteService {
                 , LocalDate.now(), NoteConstant.ADD_NOTEBOOK_DEFAULT_WORD_COUNT
                 , NoteConstant.ADD_NOTEBOOK_DEFAULT_ACCURACY_AVG);
         if (integer <= 0){
-            throw new BusinessExcept(NoteConstant.ADD_NOTEBOOK_SQL_ERROR + userId , 400);
+            throw new BusinessExcept(NoteConstant.ADD_NOTEBOOK_SQL_ERROR + userId , 500);
         }
         return integer;
     }
@@ -43,7 +43,7 @@ public class NoteImpl implements NoteService {
         }
         List<NoteBookBody> allNoteBookByUserId = noteMapper.getAllNoteBookByUserId(userId);
         if (CheckValidUtil.isValid(allNoteBookByUserId)){
-            throw new BusinessExcept(NoteConstant.QUERY_NOTEBOOK_SQL_ERROR + userId , 400);
+            throw new BusinessExcept(NoteConstant.QUERY_NOTEBOOK_SQL_ERROR + userId , 500);
         }
         return allNoteBookByUserId;
     }
@@ -59,7 +59,7 @@ public class NoteImpl implements NoteService {
         }
         List<NoteBookBody> noteBookBodies = noteMapper.searchNoteBook(bookName, userId);
         if (CheckValidUtil.isValid(noteBookBodies)){
-            throw new BusinessExcept(NoteConstant.QUERY_NOTEBOOK_SQL_ERROR + userId , 400);
+            throw new BusinessExcept(NoteConstant.QUERY_NOTEBOOK_SQL_ERROR + userId , 500);
         }
         return noteBookBodies;
     }
