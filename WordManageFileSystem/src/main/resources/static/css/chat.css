@@ -3,6 +3,9 @@ body{
     padding: 0px;
     background: white;
 }
+html{
+    overflow-x: hidden;
+}
 
 .main{
     position: absolute;
@@ -15,7 +18,7 @@ body{
 
 }
 
-/*  */
+/* 侧边栏 */
 .main aside {
     position: relative;
     width: 16.5%;
@@ -162,6 +165,120 @@ body{
 
 .main aside .itemZ button:hover{
     background-color: rgba(227, 226, 227, 0.68);
+}
+
+/* 好友位 */
+.main aside .friendText{
+    position: relative;
+    width: 100%;
+    height: 22px;
+    /* background-color: rgb(238, 204, 160); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.friendText h5{
+    color: rgb(69, 69, 69);
+    font-size: 12px;
+    font-weight: 420;
+    margin: 0px;
+    margin-left: 30px;
+}
+
+/* 好友选择栏 */
+.main aside .friendChooseMainBar{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* background-color: antiquewhite; */
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    margin-top: 10px;
+    gap: 2px;
+    overflow-y: scroll;
+    scrollbar-width: 1px;
+    scrollbar-width: none;
+}
+
+.friendChooseMainBar .friendItem{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    /* background-color: white; */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius: 11px;
+    /* box-shadow: 0px 0px 5px rgba(186, 186, 186, 0.637); */
+    transition: 0.1s;
+    margin-bottom: 2px;
+}
+
+.friendItem:hover{
+    background-color: rgba(235, 235, 235, 0.815);
+    transform: translateY();
+}
+
+/* 呗选中item */
+.choosed_item{
+    position: relative;
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius: 11px;
+    box-shadow: 0px 0px 5px rgba(186, 186, 186, 0.637);
+    background-color: white;
+}
+
+.choosed_item:hover{
+    box-shadow: none;
+    border: none;
+    background-color: white;
+}
+
+.friendItem .friendItem_img{
+    position: relative;
+    width: 23px;
+    height: 23px;
+    /* background-color:beige; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    margin-left: 27px;
+}
+
+.friendItem_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* 昵称 */
+.friendItem .friendItem_text{
+    position: relative;
+    width: 160px;
+    height: 80%;
+    /* background-color: rgb(183, 0, 255); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.friendItem_text h4{
+    color: rgb(93, 93, 93);
+    font-size: 13px;
+    letter-spacing: 2px;
+
 }
 
 
@@ -679,4 +796,295 @@ body{
 
 .inputPlace .submition:hover::before{
     background-image: url("../home_Img/发送 (2).png");
+}
+
+
+
+
+
+
+
+
+
+
+/* 添加好友栏 */
+/* 添加好友栏 */
+/* 添加好友栏 */
+/* 添加好友栏 */
+.addFriendBar{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(24, 24, 24, 0.42);
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+/* 添加好友主栏 */
+.addFriendBar .addMainBar{
+    position: relative;
+    width: 340px;
+    height: 100%;
+    /* background-color: rgb(243, 238, 253); */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 7px 7px 7px 7px ;
+    animation: addMainBarAnim 0.5s ease 0s forwards;
+    visibility:visible;
+
+}
+
+@keyframes addMainBarAnim{
+    0%{
+        width: 0px;
+    }
+    100%{
+        width: 340px;
+    }
+
+}
+
+.addMainBar .addMainBar_add_text{
+    position: relative;
+    width: 100%;
+    height: 30px;
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.addMainBar_add_text h4{
+    color: rgb(53, 53, 53);
+    font-size: 13px;
+    font-weight: 550;
+    margin-left: 22px;
+}
+
+.addMainBar .searchMain{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* background-color: rgb(189, 207, 223); */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* 搜索主栏 */
+.searchMain input{
+    position: relative;
+    width: 230px;
+    height: 27px;
+    background-color: rgba(237, 246, 254, 0.763);
+    border: 0.7px solid rgba(118, 68, 165, 0.336);
+    border-radius: 4px;
+    margin-left: 20px;
+    padding-left: 10px;
+    outline: none;
+
+    caret-color: rgba(177, 67, 93, 0.911);
+    color:  rgba(53, 53, 53, 0.95);
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: 0.1s;
+}
+
+.searchMain input:focus{
+    box-shadow: 0px 0px 5px rgba(199, 171, 224, 0.699);
+}
+
+.searchMain input::placeholder{
+    color: rgba(114, 114, 114, 0.877);
+    font-size: 12px;
+}
+
+.searchMain button{
+    width: 50px;
+    height: 27px;
+    background-color: rgb(237, 254, 249);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.7px solid rgba(68, 136, 170, 0.553);
+    outline: none;
+    margin-left: 10px;
+    border-radius: 5px;
+
+    color: rgb(108, 152, 139);
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.searchMain button:hover{
+    box-shadow: 0px 0px 5px rgba(108, 152, 139, 0.532);
+    background: linear-gradient(to right ,rgb(245, 222, 231) , rgb(213, 230, 243));
+}
+
+
+/* 显示搜索到的好友栏 */
+/* 显示搜索到的好友栏 */
+/* 显示搜索到的好友栏 */
+/* 显示搜索到的好友栏 */
+
+.addFriendBar .showFriend{
+    position: relative;
+    width: 90%;
+    height: auto;
+    max-height: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 4px;
+}
+
+/* 细目 */
+/* 细目 */
+/* 细目 */
+.showFriend .showFriend_item{
+    position: relative;
+    width: 100%;
+    height: 44px;
+    /* background-color: rgb(253, 242, 242); */
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+
+}
+
+/* 头像 */
+.showFriend_item .showFriend_item_Img{
+    position: relative;
+    width: 33px;
+    height: 33px;
+    /* background-color: aquamarine; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.showFriend_item_Img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+
+}
+
+/* 信息栏 */
+.showFriend_item .msgBar{
+    position: relative;
+    width: 160px;
+    height: 100%;
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.msgBar .upName{
+    position: relative;
+    width: 100%;
+    height: 60%;
+    /* background-color: rgb(242, 242, 255); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 13px;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0px;
+}
+
+.msgBar .downGender{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    /* background-color: rgb(221, 221, 251); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 11px;
+    color: rgb(97, 97, 97);
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 0px;
+}
+
+.showFriend_item .addBut{
+    position: relative;
+    width: 100px;
+    height: 100%;
+    /* background-color: azure; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.addBut button{
+    width: 50px;
+    height: 30px;
+    background-color: rgb(255, 237, 248);
+    border: 0.6px solid rgba(239, 98, 164, 0.596);
+    outline: none;
+    border-radius: 4px;
+    margin-left: 45px;
+    color: rgb(193, 63, 126);
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.addBut button:hover{
+    background-color: rgb(201, 33, 106);
+    color: white;
+    border: none;
+    box-shadow: 0px 0px 3px rgb(154, 154, 154);
+}
+
+.addBut button:active{
+    transform: scale(0.98);
+}
+
+/* 退出按钮 */
+.addFriendBar .escapeButMain{
+    position: relative;
+    width: 100%;
+    height: 34px;
+    /* background-color: rgb(227, 250, 243); */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.escapeButMain button{
+    width: 50px;
+    height: 32px;
+    border: 0.6px solid rgb(108, 152, 139);
+    background-color: rgb(37, 134, 214);
+    color: white;
+    font-size: 12px;
+    border-radius: 5px;
+    margin-left: 80.5%;
+    transition: 0.1s;
+}
+
+.escapeButMain button:hover{
+    background-color: rgb(54, 117, 169);
+    box-shadow: 0px 0px 10px rgba(211, 211, 211, 0.817);
 }

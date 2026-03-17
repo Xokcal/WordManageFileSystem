@@ -1,5 +1,6 @@
 package com.example.wordmanagefilesystem.Service.Implement;
 
+import com.example.wordmanagefilesystem.Mapper.MsgMapper;
 import com.example.wordmanagefilesystem.Mapper.RegisterMapper;
 import com.example.wordmanagefilesystem.Mapper.SettingMapper;
 import com.example.wordmanagefilesystem.Pojo.Register;
@@ -26,6 +27,9 @@ public class RegisterImpl implements RegisterService {
 
     @Autowired
     private SettingMapper settingMapper;
+
+    @Autowired
+    private MsgMapper msgMapper;
 
     //User缓存信息
     private static Map<Integer, User> userMessageCache = new ConcurrentHashMap<>();

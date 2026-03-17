@@ -12,6 +12,11 @@ public class ChatConstant {
     public static final String ADD_FRIEND_PARAM_ERROR = "添加好友，参数错误！！";
     public static final String ADD_FRIEND_RESULT_RIGHT = "好友添加成功！！";
     public static final String ADD_FRIEND_RESULT_ERROR = "好友添加失败！！";
-    public static final String ADD_FRIEND_REPEATION = "好友添加重复！！";
+    public static final String ADD_FRIEND_REPEATION = "好友添加重复/对方未完成初始化信息！！";
     public static final String IS_REPEATION_PARAM_ERROR = "重复加好友，参数错误！！";
+    public static final String SELECT_ALL_FRIEND_PARAM_ERROR = "查询用户添加的所有人信息，参数错误";
+    public static final String SELECT_ALL_FRIEND_RESULT_ERROR = "查询用户添加的所有人信息，结果错误";
+    public static final String MIRROR_STORE_PARAM_ERROR = "聊天镜像储存好友，参数错误！！";
+    public static final String ADD_FRIEND_MIRROR_STORE_DEFEAT = "添加好友，镜像储存失败！！";
+    public static final String MIRROR_SELECT_USER_MSG_RESULT_ERROR = "聊天镜像储存,获取用户信息错误";
 }

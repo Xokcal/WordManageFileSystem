@@ -1,7 +1,9 @@
 package com.example.wordmanagefilesystem.Mapper;
 
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
+import com.example.wordmanagefilesystem.Pojo.Chat.AddFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
+import com.example.wordmanagefilesystem.Pojo.Msg.MsgBody;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -42,4 +44,12 @@ public interface ChatMapper {
     //判断是否重复加同一个用户
     @Select("select count(*) from add_friend where user_id = #{userId} and add_id = #{addId}")
     Integer isRepeationAddFriend(@Param("userId") Integer userId , @Param("addId") Integer addId);
+
+    //查询用户添加的所有人信息
+    @Select("select * from add_friend where user_id = #{userId}")
+    List<AddFriendBody> selectUserAllFriend(@Param("userId") Integer userId);
+
+    //获得用户的user_msg信息
+    @Select("select * from user_msg where user_id = #{userId}")
+    MsgBody getUserMsg(@Param("userId") Integer userId);
 }

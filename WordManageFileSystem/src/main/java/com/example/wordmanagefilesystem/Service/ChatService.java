@@ -1,5 +1,6 @@
 package com.example.wordmanagefilesystem.Service;
 
+import com.example.wordmanagefilesystem.Pojo.Chat.AddFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
 
@@ -10,4 +11,5 @@ public interface ChatService {
     public String sendChatMsg(ChatBody chatBody , Integer senderId , Integer idB);
     public List<SearchFriendBody> searchFriendMatchName(String name);
     public String addFriendToBar(Integer userId , SearchFriendBody searchFriendBody);
+    public List<AddFriendBody> selectUserAllFriend(Integer userId);
 }

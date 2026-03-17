@@ -1,6 +1,7 @@
 package com.example.wordmanagefilesystem.Controller;
 
 import com.example.wordmanagefilesystem.Except.BusinessExcept;
+import com.example.wordmanagefilesystem.Pojo.Chat.AddFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Result;
@@ -59,6 +60,13 @@ public class ChatController {
         return new Result().successChat(s);
     }
 
+    //查询用户添加的所有人信息
+    @GetMapping("/select-all")
+    Result selectUserAllFriend(@RequestHeader("userToken") String token){
+        Claims claims = jwtTool.parseToken(token);
+        List<AddFriendBody> allFriends = chatImpl.selectUserAllFriend((Integer) claims.get("id"));
+        return new Result().successChat(allFriends);
+    }
 
 }
 
