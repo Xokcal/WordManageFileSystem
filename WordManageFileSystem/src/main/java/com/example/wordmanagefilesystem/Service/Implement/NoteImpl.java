@@ -1,6 +1,6 @@
 package com.example.wordmanagefilesystem.Service.Implement;
 
-import com.example.wordmanagefilesystem.Except.BusinessExcept;
+import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Mapper.NoteMapper;
 import com.example.wordmanagefilesystem.Pojo.Note.NoteBookBody;
 import com.example.wordmanagefilesystem.Service.Constant.NoteConstant;

@@ -68,6 +68,7 @@ public class NoteEntreController {
         return new Result().successNote(words);
     }
 
+    //模糊查询：根据释义
     @GetMapping("/query-by-meaning")
     Result likeQueryByMeaning(@RequestHeader("userToken") String token , @RequestParam("noteId") Integer noteId
             ,@RequestParam("meaning") String meaning , @RequestParam("page") Integer page){

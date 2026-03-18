@@ -1,4 +1,4 @@
-package com.example.wordmanagefilesystem.Except;
+package com.example.wordmanagefilesystem.Common.Except;
 
 public class BusinessExcept extends RuntimeException{
     private Integer code;

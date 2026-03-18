@@ -1,6 +1,6 @@
 package com.example.wordmanagefilesystem.Service.Implement;
 
-import com.example.wordmanagefilesystem.Except.BusinessExcept;
+import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Mapper.ChatMapper;
 import com.example.wordmanagefilesystem.Pojo.Chat.AddFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
@@ -132,8 +132,6 @@ public class ChatImpl implements ChatService {
         return allFriends;
     }
 
-
-
     //镜像储存add_friend，将添加和被添加的id互换，确保双方都有对方好友
     private boolean mirrorStoreAddFriend(Integer userId , Integer addId){
         if (CheckValidUtil.isNull(userId) || CheckValidUtil.isNull(addId)){
@@ -143,12 +141,11 @@ public class ChatImpl implements ChatService {
         MsgBody msg = chatMapper.getUserMsg(userId);
         if(CheckValidUtil.isNull(msg)){
             log.warn(ChatConstant.MIRROR_SELECT_USER_MSG_RESULT_ERROR);
-            throw new BusinessExcept(ChatConstant.MIRROR_SELECT_USER_MSG_RESULT_ERROR ,400);
+            throw new BusinessExcept(ChatConstant.MIRROR_SELECT_USER_MSG_RESULT_ERROR ,500);
         }
         Integer r = chatMapper.addFriend(addId, userId, msg.getName(), msg.getImg());
         return r > 0;
     }
-
 
 
 }

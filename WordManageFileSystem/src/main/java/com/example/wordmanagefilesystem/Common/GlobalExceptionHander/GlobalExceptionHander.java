@@ -1,6 +1,6 @@
-package com.example.wordmanagefilesystem.GlobalExceptionHander;
+package com.example.wordmanagefilesystem.Common.GlobalExceptionHander;
 
-import com.example.wordmanagefilesystem.Except.BusinessExcept;
+import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;

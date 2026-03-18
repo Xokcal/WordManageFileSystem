@@ -1,4 +1,4 @@
-package com.example.wordmanagefilesystem.Filter;
+package com.example.wordmanagefilesystem.Common.Filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;

@@ -4,10 +4,7 @@ import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.AddFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Chat.SearchFriendBody;
 import com.example.wordmanagefilesystem.Pojo.Msg.MsgBody;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -52,4 +49,17 @@ public interface ChatMapper {
     //获得用户的user_msg信息
     @Select("select * from user_msg where user_id = #{userId}")
     MsgBody getUserMsg(@Param("userId") Integer userId);
+
+    //获取所有聊天信息
+    @Select("select * from chat_msg")
+    List<ChatBody> selectAllChatMsg();
+
+    //更新被添加的用户信息
+    @Update("update add_friend set msg_name = #{msgName} where add_id = #{addId} ")
+    Integer updateBeAddFriendMsg(@Param("msgName") String msgName, @Param("addId") Integer addId);
+
+    //单独更新头像
+    @Update("update add_friend set msg_img = #{msgImg} where add_id = #{addId}")
+    Integer updateBeAddFriendImg(@Param("msgImg") String msgImg, @Param("addId") Integer addId);
+
 }

@@ -75,6 +75,13 @@ function showMiniToast(content, duration = 3000) {
 }
 
 
+let lastMessageLength = 0;
+
+// 好友列表专用：记录上一次的好友数据（用于对比是否变化）
+let oldFriendList = [];
+// 聊天消息相关（保留之前的）
+let lastMessageLength2 = 0;
+
 // ========== 基础DOM和事件 ==========
 // 提前获取DOM，避免重复查询
 const input = document.getElementById('inputContent');
@@ -102,6 +109,13 @@ input?.addEventListener('blur', () => {
 //         scrollContainer.scrollTop = scrollContainer.scrollHeight;
 //     }
 // }
+
+// ========== 修复：滚动到最底部（通用、稳定版） ==========
+function scrollToBottom() {
+    const chatWrap = document.querySelector('.chat');
+    if (!chatWrap) return;
+    chatWrap.scrollTop = chatWrap.scrollHeight;
+}
 
 // 1. 刷新列表前，先记录滚动位置
 // function refreshFriendList() {
@@ -163,25 +177,16 @@ async function submition() {
     }
 }
 
-setInterval(getChatMsg, 400);
-
-
+setInterval(getChatMsg, 1400);
 
 // ========== 业务逻辑：获取并渲染消息 ==========
 async function getChatMsg() {
-
-    // 校验DOM和Token
-    if (!chatDoc) {
-        showMiniToast('聊天容器未找到！');
-        return;
-    }
     const token = localStorage.getItem("token"); //2
     if (!token) {
         showMiniToast('请先登录！');
         return;
     }
 
-    try {
         // 发送GET请求（修正axios格式）
         const chatFriendId = localStorage.getItem("chatFriendId"); //1
         const res = await axios.get('/chat/select', {
@@ -199,11 +204,16 @@ async function getChatMsg() {
 
         // 渲染消息列表
         printListMsg(list);
-        scrollToBottom(); // 滚到底部
-    } catch (error) {
-        console.error('获取聊天记录失败：', error);
-        showMiniToast('获取聊天记录失败！');
-    }
+
+    // 只有消息变多（新消息来了），才滚到底部
+        if (list.length > lastMessageLength) {
+            setTimeout(() => {
+                scrollToBottom();
+            }, 50);
+        }
+
+    // 更新记录
+    lastMessageLength = list.length;
 }
 
 // ========== 渲染消息列表 ==========
@@ -225,7 +235,7 @@ function printListMsg(list) {
         let row = '';
         // 兜底空值，避免undefined显示
         const msgText = e.text || '';
-        const imgSrc = e.senderImg || '/default-avatar.png';
+        const imgSrc = e.senderImg || null;
 
         // 区分自己/对方的消息
         if (e.sendUserId === currentUserId) {
@@ -234,7 +244,7 @@ function printListMsg(list) {
                 <div class="chat_item_self">
                     <div class="chat_msg">${msgText}</div>
                     <div class="headImg">
-                        <img src="${imgSrc}" alt="头像" onerror="this.src='/default-avatar.png'">
+                        <img src="${imgSrc}" alt="头像" >
                     </div>
                 </div>
             `;
@@ -243,7 +253,7 @@ function printListMsg(list) {
             row = `
                 <div class="chat_item">
                     <div class="headImg">
-                        <img src="${imgSrc}" alt="头像" onerror="this.src='/default-avatar.png'">
+                        <img src="${imgSrc}" alt="头像">
                     </div>
                     <div class="chat_msg">${msgText}</div>
                 </div>
@@ -324,21 +334,78 @@ async function addFriend(id , name , img , gender) {
  }*/
 
 // ========== 查询所有好友 ==========
+// ========== 查询所有好友（仅变化时刷新版） ==========
 async function selectAllFriend() {
     const token = localStorage.getItem("token");
-    const res = await axios.get('/chat/select-all',{headers : {userToken : token}})
-    const list = res.data.data;
-    allFriend.innerHTML = '';
-    selectAllFriend_foreach(list);
+    if (!token) return;
+
+    try {
+        const res = await axios.get('/chat/select-all', {headers: {userToken: token}});
+        const newFriendList = res.data.data || [];
+
+        // ========== 关键：对比新旧列表是否真的变化 ==========
+        // 1. 先判断长度是否一致，长度不一样直接算变化
+        if (newFriendList.length !== oldFriendList.length) {
+            updateFriendList(newFriendList);
+            oldFriendList = JSON.parse(JSON.stringify(newFriendList)); // 深拷贝保存新列表
+            return;
+        }
+
+        // 2. 长度一致时，对比每个好友的核心字段（id/name/img）是否变化
+        let isChanged = false;
+        for (let i = 0; i < newFriendList.length; i++) {
+            const newItem = newFriendList[i];
+            const oldItem = oldFriendList[i];
+            // 只要有一个字段不一样，就判定为变化
+            if (
+                newItem.addId !== oldItem.addId ||
+                newItem.msgName !== oldItem.msgName ||
+                newItem.msgImg !== oldItem.msgImg
+            ) {
+                isChanged = true;
+                break;
+            }
+        }
+
+        // 3. 只有真的变化了，才更新DOM
+        if (isChanged) {
+            updateFriendList(newFriendList);
+            oldFriendList = JSON.parse(JSON.stringify(newFriendList)); // 保存新列表
+        }
+
+    } catch (err) {
+        console.error('获取好友列表失败：', err);
+    }
 }
 
-function selectAllFriend_foreach(list){
-    list.forEach(e => {
-        let row = '';
+// 单独的更新DOM函数（抽离出来，只在变化时执行）
+function updateFriendList(list) {
+    const friendContainer = document.getElementById('allFriend');
+    if (!friendContainer) return;
 
-        // 自己的消息（右侧）
-        row = `
-                <div class="friendItem" onclick="addLocalFriendId(${e.addId} , '${e.msgName}')">
+    // 1. 记录刷新前的滚动位置
+    const scrollTop = friendContainer.scrollTop;
+
+    // 2. 清空并渲染新列表
+    friendContainer.innerHTML = '';
+    if (!Array.isArray(list) || list.length === 0) {
+        friendContainer.innerHTML = '<div style="text-align:center; color:#999; padding:10px;">暂无好友～</div>';
+        return;
+    }
+
+    selectAllFriend_foreach(list);
+
+    // 3. 恢复滚动位置（无新好友时）
+    setTimeout(() => {
+        friendContainer.scrollTop = scrollTop;
+    }, 50);
+}
+
+// 渲染好友列表（原代码不变）
+function selectAllFriend_foreach(list) {
+    list.forEach(e => {
+        let row = `
+            <div class="friendItem" onclick="addLocalFriendId(${e.addId} , '${e.msgName}')">
                 <div class="friendItem_img">
                     <img src="${e.msgImg}" alt="">
                 </div>
@@ -346,13 +413,20 @@ function selectAllFriend_foreach(list){
                     <h4>${e.msgName}</h4>
                 </div>
             </div>
-            `;
-        // 追加到聊天容器
+        `;
         allFriend.innerHTML += row;
     });
 }
 
-setInterval(selectAllFriend, 300);
+// 2秒查一次，但只有内容变了才渲染DOM（无变化时啥也不做）
+setInterval(selectAllFriend, 2000);
+
+// 页面加载时初始化一次
+window.onload = async function () {
+    await selectAllFriend(); // 初始化好友列表
+    oldFriendList = JSON.parse(JSON.stringify(allFriend.innerHTML)); // 初始化旧列表
+    // 其他初始化逻辑...
+};
 
 var friendNameDoc = document.getElementById('friendName');
 
