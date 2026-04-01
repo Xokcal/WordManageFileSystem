@@ -2,7 +2,10 @@ package com.example.wordmanagefilesystem.Pojo;
 
 import com.example.wordmanagefilesystem.Pojo.Chat.ChatBody;
 import com.example.wordmanagefilesystem.Pojo.Msg.MsgBody;
+import com.example.wordmanagefilesystem.Pojo.Note.NoteAndNoteWordCountVO;
 import com.example.wordmanagefilesystem.Pojo.Note.NoteBookBody;
+import com.example.wordmanagefilesystem.Pojo.Note.NoteWordBody;
+import com.example.wordmanagefilesystem.Pojo.Note.NoteWordResponseBody;
 import com.example.wordmanagefilesystem.Pojo.Report.AccuracyGroupByBody;
 import com.example.wordmanagefilesystem.Pojo.Report.DataOverLook;
 import com.example.wordmanagefilesystem.Pojo.Report.OverLook;
@@ -165,6 +168,28 @@ public class Result<T> {
         return result;
     }
 
+    public Result<T> success(NoteAndNoteWordCountVO data){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(hasSearchTotal);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(data);
+        return result;
+    }
+
+    public Result<T> success(NoteWordBody data){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(hasSearchTotal);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(data);
+        return result;
+    }
+
     public Result<T> successChat(List<ChatBody> data ){
         Result result = new Result();
         result.setCode(200);
@@ -188,6 +213,17 @@ public class Result<T> {
     }
 
     public Result<T> successNote(List<Word> data){
+        Result result = new Result();
+        result.setCode(200);
+        result.setHasSearchTotal(null);
+        result.setMsg("已查询或已成功！");
+        result.setTotalPage(totalPage);
+        result.setCurrentPage(currentPage);
+        result.setData(data);
+        return result;
+    }
+
+    public Result<T> successNote(NoteWordResponseBody data){
         Result result = new Result();
         result.setCode(200);
         result.setHasSearchTotal(null);

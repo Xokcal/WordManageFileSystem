@@ -1,5 +1,6 @@
 package com.example.wordmanagefilesystem.Service.Implement;
 
+import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Mapper.MsgMapper;
 import com.example.wordmanagefilesystem.Mapper.RegisterMapper;
 import com.example.wordmanagefilesystem.Mapper.SettingMapper;
@@ -17,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
 
 @Slf4j
 @Service
@@ -94,6 +96,21 @@ public class RegisterImpl implements RegisterService {
             return;
         }
         registerMapper.insertUserYesterdayData(userId , LocalDateTime.now());
+    }
+
+    //验证用户名是否正确
+    private boolean verifyUsername(String username){
+        if (CheckValidUtil.isNull(username)){
+            log.warn("用户名不能为空！");
+            throw new BusinessExcept("用户名不能为空！" ,400);
+        }
+        return (username.length() < 8);
+    }
+
+    //验证密码是否合格
+    private boolean verifyPassword(String password){
+        String rule = "^[A-Za-z](?=.*\\d).{7,}$";
+        return Pattern.matches(rule, password);
     }
 
     //判断用户名字是否重复

@@ -116,22 +116,8 @@ public class WordController {
     @PostMapping("/queryWord")
     public Result queryWordByCondition(@RequestHeader("userToken") String token
             ,@RequestBody QueryWordBody queryWordBody){
-        if (CheckValidUtil.isValid(token)){
-            throw new RuntimeException("根据单词，释义，阶段，词性，分别查询单词 token为:null！！");
-        }
-        Claims claims = jwtTool.parseToken(token);
-        if (CheckValidUtil.isNull(queryWordBody) || CheckValidUtil.isNull(claims)){
-            throw new RuntimeException("根据单词，释义，阶段，词性，分别查询单词 ，Json或token为null！！");
-        }
-        Result result = new Result();
-        Integer hasSearchTotal = queryWordBody.getPage() * queryWordBody.getSize();
-        if (queryWordBody.getMeaning() != null){
-            List<Word> words = wordImpl.queryWordByCache(queryWordBody.getMeaning());
-            return result.success(words, hasSearchTotal , 1 , 1);
-        }else {
-            List<Word> words = wordImpl.queryWordByCondition(queryWordBody , (Integer) claims.get("id"));
-            return result.success(words, hasSearchTotal , 1 , 1);
-        }
+        List<Word> r = wordImpl.selectWordByCondition(queryWordBody);
+        return new Result().success(r);
     }
 
     /*

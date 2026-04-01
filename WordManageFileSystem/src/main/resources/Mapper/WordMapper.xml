@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wordmanagefilesystem.Mapper.WordMapper">
+    <select id="selectWordByCondition" resultType="com.example.wordmanagefilesystem.Pojo.Word">
+        select * from public_vocabulary
+            <where>
+                <if test="p.word != null and p.word != '' ">
+                    word like concat('%',#{p.word},'%')
+                </if>
+                <if test="p.meaning != null and p.meaning != '' ">
+                    and meaning like concat('%',#{p.meaning},'%')
+                </if>
+                <if test="p.wordClass != null and p.wordClass != '' ">
+                    and part_of_speech like concat('%',#{p.wordClass},'%')
+                </if>
+                <if test="p.selectDegrad != null and p.selectDegrad != '' ">
+                    and belong_grade like concat('%',#{p.selectDegrad},'%')
+                </if>
+            </where>
+    </select>
+</mapper>

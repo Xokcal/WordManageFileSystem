@@ -629,7 +629,7 @@ tableMainBar .passPercent_null h4{
 
 /* 当前页数span */
 .currPage {
-    color: #d37f72;
+    color: #d55b48;
 }
 
 /* 页数选择 */
@@ -1152,5 +1152,115 @@ input:checked + .slider:before {
 
 
 
+/* 删除确认界面 */
+/* 删除确认界面 */
+/* 删除确认界面 */
+/* 删除确认界面 */
+.deleteConfrimMainBar{
+    position: fixed; /* 这里改成 fixed，比 absolute 好 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 视口高度，全屏 */
+    background-color: #2d2d2d3c;
+    display: none;
+    flex-direction: column;
+    justify-content: center; /* 让弹窗垂直居中 */
+    align-items: center;
+    z-index: 9999; /* 关键：层级拉满，不会被挡住 */
+}
+
+.deleteConfrimMainBar .confrimMainBar{
+    position: relative;
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    gap: 70px;
+}
+
+.spanClass_carcel button{
+    height: 35px;
+    width: 55px;
+    border-radius: 4px;
+    background-color: #5058cc;
+    border: 0.7px solid rgb(104, 104, 104);
+    color: white;
+    cursor: pointer;
+}
+
+.spanClass_confirm button{
+    height: 35px;
+    width: 70px;
+    border-radius: 4px;
+    background-color: #c5476b;
+    border: 0.7px solid rgb(239, 111, 111);
+    color: white;
+    cursor: pointer;
+}
+
+/*删除单词本确认界面*/
+/*删除单词本确认界面*/
+/*删除单词本确认界面*/
+/*删除单词本确认界面*/
+
+
+.deleteNoteConfrimMainBar{
+    position: fixed; /* 这里改成 fixed，比 absolute 好 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 视口高度，全屏 */
+    background-color: rgba(35, 35, 35, 0.24);
+    display: none;
+    flex-direction: column;
+    justify-content: center; /* 让弹窗垂直居中 */
+    align-items: center;
+    z-index: 9999; /* 关键：层级拉满，不会被挡住 */
+}
+
+.deleteNoteConfrimMainBar .confrimMainBar{
+    position: relative;
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.confrimMainBar input{
+    position: relative;
+    width: 200px;
+    height: 25px;
+    border-radius: 4px;
+    border: 0.7px solid rgb(88, 181, 209);
+    outline: none;
+    padding-left: 20px;
+    color: #274e8c;
+    transition: 0.3s;
+    margin-top: 35px;
+}
+
+.confrimMainBar input::placeholder{
+    color: #858585;
+}
+
+.confrimMainBar .confirmAndCancelButMainBar{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* background-color: #228fba; */
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 60px;
+}
 
 

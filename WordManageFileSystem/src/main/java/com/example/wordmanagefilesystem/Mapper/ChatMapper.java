@@ -62,4 +62,8 @@ public interface ChatMapper {
     @Update("update add_friend set msg_img = #{msgImg} where add_id = #{addId}")
     Integer updateBeAddFriendImg(@Param("msgImg") String msgImg, @Param("addId") Integer addId);
 
+    //更新头像时，聊天表数据中所有此id的头像都要换
+    @Update("update chat_msg set sender_img = #{img} where send_user_id = #{id}")
+    Integer updateChatMsgImgById(@Param("img") String img, @Param("id") Integer id);
+
 }

@@ -50,4 +50,25 @@ public interface NoteEntreMapper {
     List<NoteWordBody> likeQueryByMeaning(@Param("userId") Integer userId, @Param("noteId") Integer noteId
             , @Param("meaning") String meaning , @Param("start") Integer start);
 
+    //查询一个单词本单词总数
+    @Select("select count(*) from note_word where note_id = #{noteId} and user_id = #{userId}")
+    Integer getNoteWordCount(@Param("noteId") Integer noteId , @Param("userId") Integer userId);
+
+    //根据id查询
+    @Select("select * from note_word where user_id = #{userId} and note_id = #{noteId} and id = #{wordId}")
+    NoteWordBody getNoteWordById(@Param("userId") Integer userId, @Param("noteId") Integer noteId
+            , @Param("wordId") Integer wordId );
+
+    //删除笔记本
+    @Delete("delete from note_book where id = #{noteId}")
+    Integer deleteNoteBook(@Param("noteId") Integer noteId);
+
+    //获得用户密码
+    @Select("select password from user where id = #{userId}")
+    String getPassword(@Param("userId") Integer userId);
+
+    //获得单词本某单词总数
+    @Update("update note_book set word_count = #{count} where id = #{noteId}")
+    Integer updateNoteBookCount(@Param("count") Integer count , @Param("noteId") Integer noteId);
+
 }

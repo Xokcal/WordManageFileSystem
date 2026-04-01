@@ -7,4 +7,6 @@ public class NoteConstant {
     public static final String QUERY_NOTEBOOK_SQL_ERROR = "查询所有笔记本，查询sql数据失败！用户";
     public static final long ADD_NOTEBOOK_DEFAULT_WORD_COUNT = 0 ;
     public static final Integer ADD_NOTEBOOK_DEFAULT_ACCURACY_AVG = 0 ;
+    public static final String NOTE_AND_NOTE_WORD_REPORT_PARAM_ERROR = "笔记本词汇与数量统计报表，参数错误！！";
+    public static final String NOTE_AND_NOTE_WORD_REPORT_RESULT_ERROR = "笔记本词汇与数量统计报表，结果错误！！";
 }

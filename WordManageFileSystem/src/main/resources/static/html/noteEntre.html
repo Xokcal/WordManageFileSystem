@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="..\css\noteEntre.css">
+    <link rel="stylesheet" href="../css/noteEntre.css">
     <link rel="icon" href="本子和笔.png" type="image/x-icon">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title id="title">单词本界面</title>
 </head>
 <body>
@@ -19,7 +20,8 @@
 
 <div class="returnMain">
     <img src="..\home_Img\主页 (1).png" alt="">
-    <a href="">返回菜单</a>/ <a href="">删除词本</a>
+    <a href="javascript:void(0)" onclick="returnNoteIndex()">返回菜单</a>/
+    <a href="javascript:void(0)" onclick="openNoteDel()">删除词本</a>
 </div>
 
 <div class="CRUDMain">
@@ -28,21 +30,21 @@
     <div class="oneLineMain">
         <div class="inputUnit">
             <h5>查询单词</h5>
-            <input type="text" placeholder="输入要查询的单词">
-            <button></button>
+            <input type="text" placeholder="输入要查询的单词" id="searchWordInput">
+            <button style="cursor: pointer;" onclick="searchWord()"></button>
         </div>
 
         <div class="inputUnit" style="margin-left: 30px;">
             <h5>查询释义</h5>
-            <input type="text" placeholder="输入要查询的释义">
+            <input type="text" placeholder="输入要查询的释义" id="searchMeaningInput">
             <span class="inputUnit_input_span">
-                    <button></button>
+                    <button style="cursor: pointer;" onclick="searchMeaning()"></button>
                 </span>
         </div>
 
-        <span class="clearButSpan"><button></button></span>
-        <span class="researchButSpan"><button></button></span>
-        <span class="addButSpan"><button>添加</button></span>
+        <span class="clearButSpan"><button style="cursor: pointer;" onclick="clearBut()"></button></span>
+        <span class="researchButSpan"><button style="cursor: pointer;" onclick="wordPage()"></button></span>
+        <span class="addButSpan"><button style="cursor: pointer;" onclick="openAddBar()">添加</button></span>
     </div>
 
 
@@ -54,7 +56,7 @@
         <thead>
         <tr>
             <th><input type="checkbox"></th>
-            <th>id</th>
+<!--            <th>id</th>-->
             <th>单词</th>
             <th>释义</th>
             <th>词性</th>
@@ -65,7 +67,7 @@
             <th>设置</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="wordTbody">
         <!--  通过js自动渲染  -->
         <tr>
             <th><input type="checkbox"></th>
@@ -76,135 +78,7 @@
             <th><h4>四级</h4></th>
             <th><h4>null</h4></th>
             <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
-            <th>
-                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
-            </th>
-        </tr>
-
-        <tr>
-            <th><input type="checkbox"></th>
-            <th><h4>1</h4></th>
-            <th><h4 style="color: rgb(96, 39, 129);font-size: 12.5px"><i>attribute</i></h4></th>
-            <th><h4 style="color: rgb(59, 59, 59);">属性；性质</h4></th>
-            <th><h4>n/adj</h4></th>
-            <th><h4>四级</h4></th>
-            <th><h4>null</h4></th>
-            <th><h4>${element.phrase}</h4></th>
-            <th><div class="passPercent_Best"><h4>98</h4></div></th>
+            <th><div class="passPercent_Best"><h4></h4></div></th>
             <th>
                 <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
                 <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
@@ -215,19 +89,17 @@
     </table>
 
     <div class="bottonMain">
-        <h5>一共
-            <span class="totalPage">12</span>
-            页数据 , 当前为第
-            <span class="currPage">5</span>
+        <h5>当前为第
+            <span class="currPage" id="currPageSpan"></span>
             页
         </h5>
 
-        <span class="pageSelectSpan"><input type="text" name="" id="" value="1"></span>
+        <span class="pageSelectSpan"><input type="text" name="" id="page" value="1"></span>
         <h5 style="margin-left: 5px;">页</h5>
-
-        <button class="previousPageButton" id="previousPage"><h3 style="font-weight: 500"><</h3></button>
+        <!-- 上一页 -->
+        <button style="cursor: pointer;" class="previousPageButton" id="previousPage" onclick="previousPage()"><h3 style="font-weight: 500"><</h3></button>
         <!-- 下一页 -->
-        <button class="nestPageButton" id="nextPage"><h3 style="font-weight: 500">></h3></button>
+        <button style="cursor: pointer;" class="nestPageButton" id="nextPage" onclick="nextPage()"><h3 style="font-weight: 500">></h3></button>
 
         <!-- 保留页码 -->
         <label class="switch">
@@ -241,7 +113,7 @@
 </div>
 
 <!-- 新增单词界面 -->
-<div class="addBackgroudMainBox" id="add">
+<div class="addBackgroudMainBox" id="addBar">
     <div class="addHandleBar">
         <div class="titleMainBar"><h3>单词新增</h3></div>
         <!-- add 主栏 -->
@@ -284,8 +156,8 @@
         </div>
         <!-- 按钮栏 -->
         <div class="addButtopnMainBar">
-            <span class="cancel_spanAdd"><button id="addCancel" onclick="cancelAdd()">取消</button></span>
-            <span class="confirm_spanAdd"><button id="addConfirm" onclick="addHandle()">确定新增</button></span>
+            <span class="cancel_spanAdd"><button style="cursor: pointer;" id="addCancel" onclick="closeAddBar()">取消</button></span>
+            <span class="confirm_spanAdd"><button style="cursor: pointer;" id="addConfirm" onclick="confirmAddWord()">确定新增</button></span>
         </div>
     </div>
 </div>
@@ -293,7 +165,7 @@
 
 
 <!-- 修改栏 -->
-<div class="updateBackgroudMainBox" id="update">
+<div class="updateBackgroudMainBox" id="updateBar">
     <div class="updateHandleBar">
         <div class="titleMainBar"><h3>单词修改与更新</h3></div>
         <!-- update主栏 -->
@@ -302,45 +174,69 @@
                 <!-- 每个单独的input框 -->
                 <label for="wordUpdate">
                     <h4>单词</h4>
-                    <input type="text" id="wordUpdate" name="wordUpdate">
+                    <input type="text" id="wordUpdateI" name="wordUpdate">
                 </label>
 
                 <!-- 每个单独的input框 -->
                 <label for="meaningUpdate">
                     <h4>释义（用“;/；”分割）</h4>
-                    <input type="text" id="meaningUpdate" name="meaningUpdate">
+                    <input type="text" id="meaningUpdateI" name="meaningUpdate">
                 </label>
             </div>
             <div class="updateMainBar_hang">
                 <label for="partOfSpeechUpdate">
                     <h4>词性（v/adj/v/...）</h4>
-                    <input type="text" id="partOfSpeechUpdate" name="partOfSpeechUpdate">
+                    <input type="text" id="partOfSpeechUpdateI" name="partOfSpeechUpdate">
                 </label>
 
                 <label for="belongGradeUpdate">
                     <h4>所属阶段（高中/四级/六级/...）</h4>
-                    <input type="text" id="belongGradeUpdate" name="belongGradeUpdate">
+                    <input type="text" id="belongGradeUpdateI" name="belongGradeUpdate">
                 </label>
             </div>
             <div class="updateMainBar_hang">
                 <label for="similarWordUpdate">
                     <h4>相似词汇（形近/意近/...）</h4>
-                    <input type="text" id="similarWordUpdate" name="similarWordUpdate">
+                    <input type="text" id="similarWordUpdateI" name="similarWordUpdate">
                 </label>
 
                 <label for="phraseUpdate">
                     <h4>短语</h4>
-                    <input type="text" id="phraseUpdate" name="phraseUpdate">
+                    <input type="text" id="phraseUpdateI" name="phraseUpdate">
                 </label>
             </div>
         </div>
         <!-- 按钮栏 -->
         <div class="updateButtopnMainBar">
-            <span class="cancel_span"><button id="updateCancel" onclick="cancelUpdate()" >取消</button></span>
-            <span class="confirm_span"><button id="updateConfirm" onclick="updateHandle()">确定修改</button></span>
+            <span class="cancel_span"><button style="cursor: pointer;" id="updateCancel" onclick="cancelUpdate()" >取消</button></span>
+            <span class="confirm_span"><button style="cursor: pointer;" id="updateConfirm" onclick="confirmUpdate()">确定修改</button></span>
         </div>
     </div>
 </div>
 
+<!--删除确认界面-->
+<div class="deleteConfrimMainBar" id="delBar">
+    <div class="confrimMainBar">
+        <span class="spanClass_carcel"><button onclick="closeDel()">取消</button></span>
+        <span class="spanClass_confirm"><button onclick="deleteWord()">确认删除</button></span>
+    </div>
+</div>
+
+<!--删除单词本确认界面-->
+<div class="deleteNoteConfrimMainBar" id="delNoteBar">
+    <div class="confrimMainBar">
+        <input type="password" name="" id="passwordVerifyInput" placeholder="请输入密码确认删除">
+
+        <div class="confirmAndCancelButMainBar">
+            <span class="spanClass_carcel"><button onclick="cancelNoteDel()">取消</button></span>
+            <span class="spanClass_confirm"><button onclick="confrimNoteDel()">确认删除</button></span>
+
+        </div>
+    </div>
+</div>
+
+
+
 </body>
+<script src="../javaScript/noteEntre.js"></script>
 </html>

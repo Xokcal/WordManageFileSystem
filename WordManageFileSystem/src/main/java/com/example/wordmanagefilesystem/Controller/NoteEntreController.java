@@ -1,6 +1,7 @@
 package com.example.wordmanagefilesystem.Controller;
 
 import com.example.wordmanagefilesystem.Pojo.Note.NoteWordBody;
+import com.example.wordmanagefilesystem.Pojo.Note.NoteWordResponseBody;
 import com.example.wordmanagefilesystem.Pojo.Result;
 import com.example.wordmanagefilesystem.Service.Implement.NoteEntreImpl;
 import com.example.wordmanagefilesystem.Tool.JWTTool;
@@ -27,7 +28,7 @@ public class NoteEntreController {
     Result getNoteWord(@RequestHeader("userToken") String token
             , @RequestParam("noteId") Integer noteId , @RequestParam("page") Integer page){
         Claims claims = jwtTool.parseToken(token);
-        List<NoteWordBody> words = noteEntreImpl.getNoteWordLimit((Integer) claims.get("id"), noteId, page);
+        NoteWordResponseBody words = noteEntreImpl.getNoteWordLimit((Integer) claims.get("id"), noteId, page);
         return new Result().successNote(words);
     }
 
@@ -77,5 +78,22 @@ public class NoteEntreController {
         return new Result().successNote(words);
     }
 
+    //根据id查询
+    @GetMapping("/query-by-id")
+    Result queryNoteWordById(@RequestHeader("userToken") String token , @RequestParam("noteId") Integer noteId
+            ,@RequestParam("wordId") Integer wordId){
+        Claims claims = jwtTool.parseToken(token);
+        NoteWordBody word = noteEntreImpl.getNoteWordById((Integer) claims.get("id"), noteId, wordId);
+        return new Result().success(word);
+    }
+
+    //删除笔记本
+    @DeleteMapping("/delete-note")
+    Result deleteNote(@RequestHeader("userToken") String token , @RequestParam("noteId") Integer noteId
+            , @RequestParam("password") String password){
+        Claims claims = jwtTool.parseToken(token);
+        Integer r = noteEntreImpl.deleteNoteBook((Integer) claims.get("id"), noteId, password);
+        return new Result().success(r);
+    }
 
 }

@@ -177,7 +177,9 @@ async function submition() {
     }
 }
 
-setInterval(getChatMsg, 1400);
+setInterval(getChatMsg, 4000);
+
+// 比如关闭聊天页/退出页面时
 
 // ========== 业务逻辑：获取并渲染消息 ==========
 async function getChatMsg() {
@@ -209,7 +211,7 @@ async function getChatMsg() {
         if (list.length > lastMessageLength) {
             setTimeout(() => {
                 scrollToBottom();
-            }, 50);
+            }, 5);
         }
 
     // 更新记录
@@ -398,14 +400,14 @@ function updateFriendList(list) {
     // 3. 恢复滚动位置（无新好友时）
     setTimeout(() => {
         friendContainer.scrollTop = scrollTop;
-    }, 50);
+    }, 2);
 }
 
 // 渲染好友列表（原代码不变）
 function selectAllFriend_foreach(list) {
     list.forEach(e => {
         let row = `
-            <div class="friendItem" onclick="addLocalFriendId(${e.addId} , '${e.msgName}')">
+            <div style="cursor: pointer;" class="friendItem" onclick="addLocalFriendId(${e.addId} , '${e.msgName}')">
                 <div class="friendItem_img">
                     <img src="${e.msgImg}" alt="">
                 </div>
@@ -419,7 +421,7 @@ function selectAllFriend_foreach(list) {
 }
 
 // 2秒查一次，但只有内容变了才渲染DOM（无变化时啥也不做）
-setInterval(selectAllFriend, 2000);
+setInterval(selectAllFriend, 2);
 
 // 页面加载时初始化一次
 window.onload = async function () {
@@ -434,6 +436,7 @@ var friendNameDoc = document.getElementById('friendName');
 function addLocalFriendId(addId , msgName){
     friendNameDoc.innerHTML = msgName;
     localStorage.setItem("chatFriendId" , addId);
+    getChatMsg();
 }
 
 

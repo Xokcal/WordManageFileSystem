@@ -1,6 +1,8 @@
 package com.example.wordmanagefilesystem.Controller;
 
+import com.example.wordmanagefilesystem.Pojo.Note.NoteAndNoteWordCountVO;
 import com.example.wordmanagefilesystem.Pojo.Note.NoteBookBody;
+import com.example.wordmanagefilesystem.Pojo.R;
 import com.example.wordmanagefilesystem.Pojo.Result;
 import com.example.wordmanagefilesystem.Service.Implement.NoteImpl;
 import com.example.wordmanagefilesystem.Service.NoteService;
@@ -37,6 +39,14 @@ public class NoteController {
         Claims claims = jwtTool.parseToken(token);
         List<NoteBookBody> r = noteImpl.searchNoteBookOrAll(bookName, (Integer) claims.get("id"));
         return new Result().noteSuccess(r);
+    }
+
+    //笔记本与词汇总数报表
+    @GetMapping("/note-word-report")
+    public Result noteAndNoteWordReport(@RequestHeader("userToken") String token){
+        Claims claims = jwtTool.parseToken(token);
+        NoteAndNoteWordCountVO r = noteImpl.noteAndNoteWordCountView((Integer) claims.get("id"));
+        return new Result().success(r);
     }
 
 

@@ -102,7 +102,8 @@ public class MsgImpl {
             Integer integer = msgMapper.imgAloneUpdate(imgURL, userId);
             //更新头像
             Integer r = chatMapper.updateBeAddFriendImg(imgURL, userId);
-            if (integer > 0 && r > 0) {
+            Integer row2 = chatMapper.updateChatMsgImgById(imgURL, userId);
+            if (integer > 0) {
                 log.info("头像上传，数据库上传成功！！");
                 return 1;
             }

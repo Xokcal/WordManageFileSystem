@@ -2,6 +2,7 @@ package com.example.wordmanagefilesystem.Service.Implement;
 
 import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Mapper.NoteMapper;
+import com.example.wordmanagefilesystem.Pojo.Note.NoteAndNoteWordCountVO;
 import com.example.wordmanagefilesystem.Pojo.Note.NoteBookBody;
 import com.example.wordmanagefilesystem.Service.Constant.NoteConstant;
 import com.example.wordmanagefilesystem.Service.NoteService;
@@ -62,6 +63,24 @@ public class NoteImpl implements NoteService {
             throw new BusinessExcept(NoteConstant.QUERY_NOTEBOOK_SQL_ERROR + userId , 500);
         }
         return noteBookBodies;
+    }
+
+    //笔记本词汇与数量统计报表
+    @Override
+    public NoteAndNoteWordCountVO noteAndNoteWordCountView(Integer userId){
+        if (CheckValidUtil.isNull(userId)){
+            log.warn(NoteConstant.NOTE_AND_NOTE_WORD_REPORT_PARAM_ERROR);
+            throw new BusinessExcept(NoteConstant
+                    .NOTE_AND_NOTE_WORD_REPORT_PARAM_ERROR ,400);
+        }
+        List<String> noteBookNameList = noteMapper.reportBookName(userId);
+        List<Integer> noteWordCountList = noteMapper.reportNoteWordCount(userId);
+        if (CheckValidUtil.isValid(noteBookNameList) || CheckValidUtil.isValid(noteWordCountList)){
+            log.warn(NoteConstant.NOTE_AND_NOTE_WORD_REPORT_PARAM_ERROR);
+            throw new BusinessExcept(NoteConstant
+                    .NOTE_AND_NOTE_WORD_REPORT_RESULT_ERROR ,400);
+        }
+        return new NoteAndNoteWordCountVO(noteBookNameList, noteWordCountList);
     }
 
 }

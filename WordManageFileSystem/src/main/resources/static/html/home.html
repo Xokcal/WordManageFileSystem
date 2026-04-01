@@ -26,7 +26,7 @@
             <div class="inputMainBar">
                 <input type="text" placeholder="词海查询..." id="search">
                 <img src="../home_Img/搜索.png" alt="">
-                <button class="inputMainBar_button" id="sideButton">搜索</button>
+                <button style="cursor: pointer;" class="inputMainBar_button" id="sideButton">搜索</button>
             </div>
         </div>
         <div class="line"></div>
@@ -46,28 +46,30 @@
         <div class="chooseMainBar">
             <h4>常规</h4>
             <ul>
-                <li><a href="home.html">
-                    <button style="background-color: white;box-shadow: 0px 2px 9px rgba(151, 151, 151, 0.393);">
-                        <img src="../home_Img/房子.png" alt=""><h4 style="color: rgba(77, 14, 148, 0.737);">华词表</h4></button>
-                </a></li>
+                <li><a href="home.html"><button style="cursor: pointer;"
+                        style="background-color: white;box-shadow: 0px 2px 9px rgba(151, 151, 151, 0.393);">
+                    <img src="../home_Img/主页.png" alt="">
+                    <p style="color: rgba(77, 14, 148, 0.737);">华词表</p>
+                    </h4>
+                </button></a></li>
                 <li><a href="check.html">
-                    <button><img src="../home_Img/对话框.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/对话框.png" alt="">
                         <p>词亦抽</p></h4></button>
                 </a></li>
                 <li><a href="note.html">
-                    <button><img src="../home_Img/抽查检查.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/抽查检查.png" alt="">
                         <p>孤词薄</p></button>
                 </a></li>
                 <li><a href="reed.html">
-                    <button><img src="../home_Img/阅读.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/阅读.png" alt="">
                         <p>阅速摘</p></button>
                 </a></li>
                 <li><a href="data.html">
-                    <button><img src="../home_Img/数据.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/数据.png" alt="">
                         <p>数穆钧</p></button>
                 </a></li>
                 <li><a href="msg.html">
-                    <button><img src="../home_Img/设置.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/设置.png" alt="">
                         <p>个人中心</p></button>
                 </a></li>
             </ul>
@@ -173,8 +175,8 @@
 
             <!-- 搜索栏 -->
             <div class="contentMainBar_queryMainBar_searchMainBar">
-                <button id="queryAttachCondition">查询</button>
-                <span class="extend_button"><button id="clear" onclick="emptyInput()">清空</button></span>
+                <button style="cursor: pointer;" id="queryAttachCondition">查询</button>
+                <span class="extend_button"><button style="cursor: pointer;" id="clear" onclick="emptyInput()">清空</button></span>
             </div>
         </div>
         <!-- 表格栏 -->
@@ -198,9 +200,9 @@
                 <!-- 上一页 -->
                 <input type="text" name="" id="page" >
                 <h5 style="margin-left: 5px;">页</h5>
-                <button class="previousPageButton" id="previousPage"><h3 style="font-weight: 500"><</h3></button>
+                <button style="cursor: pointer;" class="previousPageButton" id="previousPage"><h3 style="font-weight: 500"><</h3></button>
                 <!-- 下一页 -->
-                <button class="nestPageButton" id="nextPage"><h3 style="font-weight: 500">></h3></button>
+                <button style="cursor: pointer;" class="nestPageButton" id="nextPage"><h3 style="font-weight: 500">></h3></button>
 
                 <!-- 保留页码 -->
                 <label class="switch">
@@ -212,7 +214,7 @@
 
                 <div class="queryAllWord">
                     <label for="queryAllWord">
-                        <button id="queryAllWord" class="queryAllButton">
+                        <button style="cursor: pointer;" id="queryAllWord" class="queryAllButton">
                             <h4 style="font-weight: 300;">查询全部</h4>
                         </button>
                     </label>
@@ -220,7 +222,7 @@
 
                 <div class="AdditionWord">
                     <label for="AdditionWord">
-                        <button id="AdditionWord" class="addButton" onclick="openAddBar()">
+                        <button style="cursor: pointer;" id="AdditionWord" class="addButton" onclick="openAddBar()">
                             <h4 style="font-weight: 300;">新增</h4>
                         </button>
                     </label>
@@ -228,7 +230,7 @@
 
                 <div class="largelyDelete">
                     <label for="largelyDelete">
-                        <button id="largelyDelete" class="largelyDeleteButton">
+                        <button style="cursor: pointer;" id="largelyDelete" class="largelyDeleteButton">
                             <h4 style="font-weight: 300;">批量删除</h4>
                         </button>
                     </label>
@@ -272,6 +274,8 @@
             <li><a href="login.html">登录</a></li>
             /
             <li><a href="register.html">注册</a></li>
+            /
+            <li><a href="chat.html" target="_blank">XChat</a></li>
         </ul>
         <div class="timeMianBar"><h3 id="time">...</h3></div>
     </nav>
@@ -322,8 +326,8 @@
         </div>
         <!-- 按钮栏 -->
         <div class="updateButtopnMainBar">
-            <span class="cancel_span"><button id="updateCancel" onclick="cancelUpdate()" >取消</button></span>
-            <span class="confirm_span"><button id="updateConfirm" onclick="updateHandle()">确定修改</button></span>
+            <span class="cancel_span"><button style="cursor: pointer;" id="updateCancel" onclick="cancelUpdate()" >取消</button></span>
+            <span class="confirm_span"><button style="cursor: pointer;" id="updateConfirm" onclick="updateHandle()">确定修改</button></span>
         </div>
     </div>
 </div>
@@ -373,8 +377,8 @@
         </div>
         <!-- 按钮栏 -->
         <div class="addButtopnMainBar">
-            <span class="cancel_spanAdd"><button id="addCancel" onclick="cancelAdd()">取消</button></span>
-            <span class="confirm_spanAdd"><button id="addConfirm" onclick="addHandle()">确定新增</button></span>
+            <span class="cancel_spanAdd"><button style="cursor: pointer;" id="addCancel" onclick="cancelAdd()">取消</button></span>
+            <span class="confirm_spanAdd"><button style="cursor: pointer;" id="addConfirm" onclick="addHandle()">确定新增</button></span>
         </div>
     </div>
 </div>

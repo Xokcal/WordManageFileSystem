@@ -28,7 +28,7 @@
             <div class="inputMainBar">
                 <input type="text" placeholder="词海查询..." id="search">
                 <img src="../home_Img/搜索.png" alt="">
-                <button class="inputMainBar_button" id="sideButton">搜索</button>
+                <button style="cursor: pointer;" class="inputMainBar_button" id="sideButton">搜索</button>
             </div>
         </div>
         <div class="line"></div>
@@ -49,18 +49,18 @@
             <h4>常规</h4>
             <ul>
                 <li><a href="home.html">
-                    <button><img src="../home_Img/房子.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/房子.png" alt="">
                         <p>华词表</p>
                     </button>
                 </a></li>
                 <li><a href="check.html">
-                    <button><img src="../home_Img/对话框.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/对话框.png" alt="">
                         <p>词亦抽</p>
                     </button>
                 </a></li>
 
                 <li><a href="note.html">
-                    <button
+                    <button style="cursor: pointer;"
                             style="background-color: white;box-shadow: 0px 2px 9px rgba(151, 151, 151, 0.393);">
                         <img src="../home_Img/抽查检查.png" alt="">
                         <p style="color: rgba(77, 14, 148, 0.737);">孤词薄</p>
@@ -68,17 +68,17 @@
                     </button>
                 </a></li>
                 <li><a href="reed.html">
-                    <button><img src="../home_Img/阅读.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/阅读.png" alt="">
                         <p>阅速摘</p>
                     </button>
                 </a></li>
                 <li><a href="data.html">
-                    <button><img src="../home_Img/数据.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/数据.png" alt="">
                         <p>数穆钧</p>
                     </button>
                 </a></li>
                 <li><a href="msg.html">
-                    <button><img src="../home_Img/设置.png" alt="">
+                    <button style="cursor: pointer;"><img src="../home_Img/设置.png" alt="">
                         <p>个人中心</p>
                     </button>
                 </a></li>
@@ -116,15 +116,15 @@
         <div class="addNoteBookMainBar_inputLine1">
             <div class="inputImgAbs"><img src="../home_Img/添加关注(话题) (2).png" alt=""></div>
             <input type="text" placeholder="请输入新增笔记本的名称" id="noteName">
-            <button id="add" onclick="addNoteBook()"></button>
+            <button style="cursor: pointer;" id="add" onclick="addNoteBook()"></button>
 
             <div class="inputImgAbsDelete"><img src="../home_Img/搜索-copy.png" alt=""></div>
             <input type="text" placeholder="搜索笔记本" id="searchBook">
             <span class="deleteButSpan">
-            <button id="get"></button>
+            <button style="cursor: pointer;" id="get" onclick="selectAllNote()"></button>
             </span>
 
-            <span class="clearBut"><button></button></span>
+            <span class="clearBut"><button style="cursor: pointer;" onclick="clearInput()"></button></span>
         </div>
     </div>
 
@@ -142,7 +142,7 @@
                         <h5>2025.2.24</h5>
                         <h5 style="color: rgb(98, 50, 211);">1835个</h5>
                         <div class="accuracy"><h5>98%</h5></div>
-                        <button></button>
+                        <button style="cursor: pointer;"></button>
                     </div>
                 </div>
 

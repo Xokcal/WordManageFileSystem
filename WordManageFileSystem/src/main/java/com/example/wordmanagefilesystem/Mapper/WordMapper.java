@@ -1,6 +1,7 @@
 package com.example.wordmanagefilesystem.Mapper;
 
 import com.example.wordmanagefilesystem.Pojo.Check.CheckDataOriginal;
+import com.example.wordmanagefilesystem.Pojo.QueryWordBody;
 import com.example.wordmanagefilesystem.Pojo.Word;
 import com.example.wordmanagefilesystem.Pojo.WordAccuracyCombineVocabulary;
 import com.example.wordmanagefilesystem.Pojo.YesterdayData;
@@ -177,5 +178,9 @@ public interface WordMapper {
     @Select("select u.id , c.total , c.right_num , c.mistake_num , c.update_time from user_check_data c\n" +
             "left join user u on c.user_id = u.id where u.id = #{userId}")
     CheckDataOriginal getCheckDataOriginal(@Param("userId") Integer userId);
+
+    //根据条件查询参数
+    List<Word> selectWordByCondition(@Param("start") Integer start
+            ,@Param("p") QueryWordBody queryWordBody);
 
 }

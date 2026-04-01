@@ -123,82 +123,86 @@ function showMiniToast(content, duration = 3000) {
     }, duration);
 }
 
-
 var noteDataEchart = echarts.init(document.getElementById('noteData'));
 
-const noteDataOption = {
-    // 标题：定制文字、颜色、位置
-    title: {
-        text: '近7天单词背诵量',
-        left: 'center',
-        textStyle: {
-            color: '#2c3e50', // 和你界面文字颜色一致
-            fontSize: 16,
-            fontWeight: 'normal' // 取消粗体，更简约
-        }
-    },
-    // 提示框：定制悬浮提示的样式
-    tooltip: {
-        trigger: 'axis',
-        backgroundColor: 'rgba(255,255,255,0.9)', // 半透明白底
-        borderColor: '#ddd',
-        borderWidth: 1,
-        textStyle: {color: '#333'}
-    },
-    // 图例：定制位置和样式
-    legend: {
-        data: ['已背单词', '新增单词'],
-        top: '40px',
-        textStyle: {color: '#666'}
-    },
-    // 网格：定制图表内边距，避免内容贴边
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    // x轴：定制样式
-    xAxis: {
-        type: 'category',
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        axisLine: {lineStyle: {color: '#eee'}}, // 轴线浅灰色
-        axisLabel: {color: '#666'} // 文字颜色
-    },
-    // y轴：定制样式
-    yAxis: {
-        type: 'value',
-        axisLine: {show: false}, // 隐藏y轴线
-        splitLine: {lineStyle: {color: '#eee'}}, // 网格线浅灰色
-        axisLabel: {color: '#666'}
-    },
-    // 系列数据：替换成你的真实数据，定制颜色
-    series: [
-        {
-            name: '已背单词',
-            type: 'line', // 折线图
-            data: [120, 200, 150, 80, 70, 110, 130], // 替换成你的数据
-            smooth: true, // 折线平滑
-            itemStyle: {color: '#409EFF'}, // 线条颜色（和你按钮的蓝色一致）
-            areaStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    {offset: 0, color: 'rgba(64, 158, 255, 0.3)'},
-                    {offset: 1, color: 'rgba(64, 158, 255, 0.05)'}
-                ])
-            }, // 渐变填充
-            lineStyle: {width: 2} // 线条粗细
-        },
-        {
-            name: '新增单词',
-            type: 'bar', // 柱状图
-            data: [30, 50, 40, 20, 15, 35, 45], // 替换成你的数据
-            itemStyle: {color: '#997af0'}, // 紫色（和你界面的浅紫匹配）
-            barWidth: '60%' // 柱子宽度
-        }
-    ]
-};
+//得到报表数据
+async function noteAndNoteWordCountReport() {
+    var token = localStorage.getItem("token");
+    const r = await axios.get('/note/note-word-report' ,{
+        headers:{userToken : token}
+    });
+    const data = r.data;
+    const actualData = data.data;
+    const noteList = actualData.noteList;
+    const noteWordCountList = actualData.noteWordCountList;
 
-noteDataEchart.setOption(noteDataOption);
+    const noteDataOption = {
+        title: {
+            text: '近7天单词背诵量',
+            left: 'center',
+            textStyle: {
+                color: '#2c3e50',
+                fontSize: 16,
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            backgroundColor: 'rgba(255,255,255,0.9)',
+            borderColor: '#ddd',
+            borderWidth: 1,
+            textStyle: {color: '#333'}
+        },
+        legend: {
+            data: ['已背单词', '单词本词汇数量'],
+            top: '40px',
+            textStyle: {color: '#666'}
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            data: noteList, // ✅ 真实笔记本名字（正确）
+            axisLine: {lineStyle: {color: '#eee'}},
+            axisLabel: {color: '#666'}
+        },
+        yAxis: {
+            type: 'value',
+            axisLine: {show: false},
+            splitLine: {lineStyle: {color: '#eee'}},
+            axisLabel: {color: '#666'}
+        },
+        series: [
+            {
+                name: '已背单词',
+                type: 'line',
+                data: noteWordCountList, // ✅ 这里换成真实数据！
+                smooth: true,
+                itemStyle: {color: '#409EFF'},
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {offset: 0, color: 'rgba(64, 158, 255, 0.3)'},
+                        {offset: 1, color: 'rgba(64, 158, 255, 0.05)'}
+                    ])
+                },
+                lineStyle: {width: 2}
+            },
+            {
+                name: '单词本词汇数量',
+                type: 'bar',
+                data: noteWordCountList, // ✅ 柱子也用真实数据
+                itemStyle: {color: '#997af0'},
+                barWidth: '60%'
+            }
+        ]
+    };
+
+    noteDataEchart.setOption(noteDataOption);
+}
 
 
 // 添加处理
@@ -227,8 +231,8 @@ var searchBookDoc = document.getElementById('searchBook');
 var itemMainDoc = document.getElementById('itemMain');
 var bookCountDoc = document.getElementById('bookCount');
 
-
-getDoc.addEventListener('click', async () => {
+//查询所有笔记本
+async function selectAllNote() {
     itemMainDoc.innerHTML = ""; //每次点击都初始化
     const token = localStorage.getItem("token");
     var bookName = null; //初始化bookName
@@ -251,18 +255,62 @@ getDoc.addEventListener('click', async () => {
                     <h5>${list[i].createTime}</h5>
                     <h5 style="color: rgb(98, 50, 211);">${list[i].wordCount}</h5>
                     <div class="accuracy"><h5>${list[i].accurcayAvg}</h5></div>
-                    <button onclick="entreNote(${getId})"></button>
+                    <button style="cursor: pointer;" onclick="entreNote(${getId})"></button>
                 </div>
             </div>`;
         itemMainDoc.innerHTML += row;
     }
     bookCountDoc.innerHTML = list.length;
-});
+}
+
+// getDoc.addEventListener('click', async () => {
+//     itemMainDoc.innerHTML = ""; //每次点击都初始化
+//     const token = localStorage.getItem("token");
+//     var bookName = null; //初始化bookName
+//     if (searchBookDoc.value != "" || searchBookDoc.value != '' || searchBookDoc != null) {
+//         bookName = searchBookDoc.value; //非null就给他赋值
+//     }
+//     const res = await axios.get('/note', {
+//         params: {bookName: bookName},
+//         headers: {userToken: token}
+//     })
+//     const list = res.data.data; //此时是数组
+//     console.log(list);
+//
+//     for (var i = 0; i < list.length; i++) {
+//         console.log(list[i].bookName);
+//         var getId = parseInt(list[i].id);
+//         var row = `<div class="itemMain_body">
+//                 <div class="item"><img src="../home_Img/动效.png" alt="">
+//                     <h4>${list[i].bookName}</h4>
+//                     <h5>${list[i].createTime}</h5>
+//                     <h5 style="color: rgb(98, 50, 211);">${list[i].wordCount}</h5>
+//                     <div class="accuracy"><h5>${list[i].accurcayAvg}</h5></div>
+//                     <button style="cursor: pointer;" onclick="entreNote(${getId})"></button>
+//                 </div>
+//             </div>`;
+//         itemMainDoc.innerHTML += row;
+//     }
+//     bookCountDoc.innerHTML = list.length;
+// });
+
+//清除input内容
+function clearInput(){
+    document.getElementById('noteName').value = '';
+    document.getElementById('searchBook').value = '';
+    selectAllNote();
+    return;
+}
 
 //进入此单词本
 function entreNote(id){
     localStorage.setItem('noteId' , id);
     window.location.href = `noteEntre.html`;
+}
+
+window.onload = function (){
+    selectAllNote();
+    noteAndNoteWordCountReport();
 }
 
 getDoc.click();

@@ -32,4 +32,5 @@ public interface WordService {
     public Word checkPublicVocabularyByRanDom();
     //判断输入单词是否正确
     public Boolean isCorrect(String word, String inputMeaning);
+    public List<Word> selectWordByCondition(QueryWordBody queryWordBody);
 }

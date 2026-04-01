@@ -366,8 +366,8 @@ function createWordTbody(words) {
                             <th><h4>${element.phrase}</h4></th>
                             <th><div class="passPercent_Best"><h4>${element.accuracy}%</h4></div></th>
                             <th>
-                                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
+                                <span class="delete_span"><button style="cursor: pointer;" onclick="deletePublicWord(${element.id})">删除</button></span>
+                                <span class="revise_span"><button style="cursor: pointer;" onclick="openUpdateBar(${element.id})">修改</button></span>
                             </th>
                         `;
             tbody.appendChild(row);
@@ -384,8 +384,8 @@ function createWordTbody(words) {
                             <th><h4>${element.phrase}</h4></th>
                             <th><div class="passPercent_hight"><h4>${element.accuracy}%</h4></div></th>
                             <th>
-                                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
+                                <span class="delete_span"><button style="cursor: pointer;" onclick="deletePublicWord(${element.id})">删除</button></span>
+                                <span class="revise_span"><button style="cursor: pointer;" onclick="openUpdateBar(${element.id})">修改</button></span>
                             </th>
                         `;
             tbody.appendChild(row);
@@ -402,8 +402,8 @@ function createWordTbody(words) {
                             <th><h4>${element.phrase}</h4></th>
                             <th><div class="passPercent_middle"><h4>${element.accuracy}%</h4></div></th>
                             <th>
-                                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
+                                <span class="delete_span"><button style="cursor: pointer;" onclick="deletePublicWord(${element.id})">删除</button></span>
+                                <span class="revise_span"><button style="cursor: pointer;" onclick="openUpdateBar(${element.id})">修改</button></span>
                             </th>
                         `;
             tbody.appendChild(row);
@@ -420,8 +420,8 @@ function createWordTbody(words) {
                             <th><h4>${element.phrase}</h4></th>
                             <th><div class="passPercent_less"><h4>${element.accuracy}%</h4></div></th>
                             <th>
-                                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
+                                <span class="delete_span"><button style="cursor: pointer;" onclick="deletePublicWord(${element.id})">删除</button></span>
+                                <span class="revise_span"><button style="cursor: pointer;" onclick="openUpdateBar(${element.id})">修改</button></span>
                             </th>
                         `;
             tbody.appendChild(row);
@@ -438,8 +438,8 @@ function createWordTbody(words) {
                             <th><h4>${element.phrase}</h4></th>
                             <th><div class="passPercent_null"><h4>暂无</h4></div></th>
                             <th>
-                                <span class="delete_span"><button onclick="deletePublicWord(${element.id})">删除</button></span>
-                                <span class="revise_span"><button onclick="openUpdateBar(${element.id})">修改</button></span>
+                                <span class="delete_span"><button style="cursor: pointer;" onclick="deletePublicWord(${element.id})">删除</button></span>
+                                <span class="revise_span"><button style="cursor: pointer;" onclick="openUpdateBar(${element.id})">修改</button></span>
                             </th>
                         `;
             tbody.appendChild(row);
@@ -526,11 +526,19 @@ function differentData() {
         })
 }
 
-setInterval(accuracyExhibit, 1000);
-setInterval(getNewWordTotal, 1000);
-setInterval(getWordTotal, 1000);
-setInterval(getMistakeTotal, 1000);
-setInterval(differentData, 1000);
+// setInterval(accuracyExhibit, 1000);
+// setInterval(getNewWordTotal, 1000);
+// setInterval(getWordTotal, 1000);
+// setInterval(getMistakeTotal, 1000);
+// setInterval(differentData, 1000);
+
+window.onload = function (){
+    accuracyExhibit();
+    getNewWordTotal();
+    getWordTotal();
+    getMistakeTotal();
+    differentData();
+}
 
 
 // 以下是更新/修改单词处理

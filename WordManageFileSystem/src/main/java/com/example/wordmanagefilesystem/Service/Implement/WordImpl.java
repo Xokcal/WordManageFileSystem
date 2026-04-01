@@ -3,6 +3,8 @@ package com.example.wordmanagefilesystem.Service.Implement;
 import StringHandler.XKStringHandler;
 import StringHandler.XkCommon;
 import ch.qos.logback.core.joran.util.ConfigurationWatchListUtil;
+import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
+import com.example.wordmanagefilesystem.Common.Redis.RedisUtil;
 import com.example.wordmanagefilesystem.Mapper.WordMapper;
 import com.example.wordmanagefilesystem.Pojo.*;
 import com.example.wordmanagefilesystem.Pojo.Check.CheckDataOriginal;
@@ -39,6 +41,9 @@ public class WordImpl implements WordService {
 
     @Autowired
     private ListUtil listUtil;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     /*
      * 缓存根据单词查询释义的map集合key为word*/
@@ -693,7 +698,7 @@ public class WordImpl implements WordService {
     }
 
     //每日更新用户CheckData
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void initializationUserCheckDataEveryDay() {
         clearCheckDataEveryDay();
     }
@@ -799,6 +804,22 @@ public class WordImpl implements WordService {
             }
         }
         return;
+    }
+
+    //根据条件查询单词
+    @Override
+    public List<Word> selectWordByCondition(QueryWordBody queryWordBody){
+        if (CheckValidUtil.isNull(queryWordBody)){
+            log.warn("根据条件查询单词，参数错误！！");
+            throw new BusinessExcept("根据条件查询单词，参数错误！！" ,400);
+        }
+        Integer start = (queryWordBody.getPage() - 1) * queryWordBody.getSize();
+        List<Word> words = wordMapper.selectWordByCondition(start, queryWordBody);
+        if (CheckValidUtil.isNull(words)){
+            log.warn("根据条件查询单词，结果错误！！");
+            throw new BusinessExcept("根据条件查询单词，结果错误！！" ,500);
+        }
+        return words;
     }
 
 }

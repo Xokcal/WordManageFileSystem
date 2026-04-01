@@ -24,6 +24,16 @@ public interface NoteMapper {
     List<NoteBookBody> getAllNoteBookByUserId(@Param("userId") Integer userId);
 
     //查询单词本
-    @Select("select * from note_book where book_name = #{bookName} and user_id = #{userId}")
+    @Select("select * from note_book where book_name like concat('%',#{bookName},'%')and user_id = #{userId}")
     List<NoteBookBody> searchNoteBook(@Param("bookName") String bookName , @Param("userId") Integer userId);
+
+    /*笔记本与词汇数量统计*/
+
+    //笔记本统计
+    @Select("select book_name from note_book where user_id = #{userId} group by book_name")
+    List<String> reportBookName(@Param("userId") Integer userId);
+
+    //词汇数量统计
+    @Select("select max(word_count) from note_book where user_id = #{userId} group by book_name")
+    List<Integer> reportNoteWordCount(@Param("userId") Integer userId);
 }
