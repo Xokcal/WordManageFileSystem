@@ -1,10 +1,8 @@
 package com.example.wordmanagefilesystem.Service.Implement;
 
-import StringHandler.XKStringHandler;
-import StringHandler.XkCommon;
-import ch.qos.logback.core.joran.util.ConfigurationWatchListUtil;
 import com.example.wordmanagefilesystem.Common.Except.BusinessExcept;
 import com.example.wordmanagefilesystem.Common.Redis.RedisUtil;
+import com.example.wordmanagefilesystem.Common.String.XkCommon;
 import com.example.wordmanagefilesystem.Mapper.WordMapper;
 import com.example.wordmanagefilesystem.Pojo.*;
 import com.example.wordmanagefilesystem.Pojo.Check.CheckDataOriginal;
@@ -14,9 +12,7 @@ import com.example.wordmanagefilesystem.Tool.ListUtil;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.Executor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,8 +20,6 @@ import org.springframework.web.client.ResourceAccessException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -44,6 +38,8 @@ public class WordImpl implements WordService {
 
     @Autowired
     private RedisUtil redisUtil;
+
+    private static final XkCommon xkCommon = new XkCommon();
 
     /*
      * 缓存根据单词查询释义的map集合key为word*/
@@ -537,7 +533,6 @@ public class WordImpl implements WordService {
     /*查询单词是，如果单词释义不为空（有释义），那么就直接拆从缓存查询*/
     @Override
     public List<Word> queryWordByCache(String meaning) {
-        XKStringHandler xkStringHandler = new XkCommon();
         List<Word> words = new ArrayList<>();   //由于前端 data 数据要求以集合（List<Word>）的形式响应
         for (int i = 1; i < wordCacheKeyId.size(); i++) {
             Word word = wordCacheKeyId.get(i);
@@ -545,7 +540,7 @@ public class WordImpl implements WordService {
             if (word == null) {
                 continue;
             }
-            String[] meaningArr = xkStringHandler.separateWordMeaning(word.getMeaning());
+            String[] meaningArr = xkCommon.separateWordMeaning(word.getMeaning());
             for (int j = 0; j < meaningArr.length; j++) {
                 if (meaning.equals(meaningArr[j])) {
                     log.info("查询缓存单词通过释义为{}", word);
@@ -570,8 +565,7 @@ public class WordImpl implements WordService {
                 log.error("通过单词{} ，获得此单词所有信息失败", word);
                 return false;
             }
-            XKStringHandler xkStringHandler = new XkCommon();
-            String[] meaningSeparate = xkStringHandler.separateWordMeaning(wordAll.getMeaning());
+            String[] meaningSeparate = xkCommon.separateWordMeaning(wordAll.getMeaning());
             log.info("抽查的单词{} 的所有释义为{}", word, meaningSeparate);
             for (String singleMeaning : meaningSeparate) {
                 if (inputMeaning.equals(singleMeaning)) {
