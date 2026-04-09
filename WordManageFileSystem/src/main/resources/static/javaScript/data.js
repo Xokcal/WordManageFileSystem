@@ -219,7 +219,6 @@ function loadAccuracyEChartData(){
             accurcyDataEchartOption = {
                 tooltip: {
                     trigger: 'item',
-                    // 提示框优化：白底+柔和边框
                     backgroundColor: '#fff',
                     borderColor: '#eee',
                     borderWidth: 1,
@@ -229,7 +228,6 @@ function loadAccuracyEChartData(){
                 legend: {
                     top: '5%',
                     left: 'center',
-                    // 图例样式优化
                     textStyle: { color: '#666', fontSize: 12 },
                     icon: 'circle',
                     itemWidth: 6,
@@ -237,31 +235,22 @@ function loadAccuracyEChartData(){
                 },
                 series: [
                     {
-                        name: 'Access From',
+                        name: '答题准确率',
                         type: 'pie',
                         radius: ['40%', '70%'],
-                        center: ['50%', '70%'],
+                        center: ['50%', '50%'], // 中心上移，避免下半部分被截断
                         startAngle: 180,
                         endAngle: 360,
                         data: accurcyDataEchartData.map((item, index) => {
-                            // 定制配色：浅蓝+淡绿+豆沙粉（稍深）+浅紫（补充）
-                            const colorList = [
-                                '#54b5de', // 浅蓝（天蓝色）
-                                '#98d298', // 淡绿（薄荷绿）
-                                '#cc7a90', // 豆沙粉（稍深的粉，不艳）
-                                '#99a8c9', // 浅紫灰（补充色，可选）
-                                '#e8d2a8'  // 浅黄（额外补充，按需用）
-                            ];
+                            const colorList = ['#54b5de', '#98d298'];
                             return {
                                 ...item,
                                 itemStyle: {
-                                    color: colorList[index % colorList.length], // 适配多数据循环配色
-                                    // 轻微阴影提升质感，不想要可删
+                                    color: colorList[index % colorList.length],
                                     shadowBlur: 3,
                                     shadowColor: 'rgba(0,0,0,0.05)',
                                     shadowOffsetY: 2
                                 },
-                                // 文字标签样式优化
                                 label: {
                                     color: '#666',
                                     fontSize: 11

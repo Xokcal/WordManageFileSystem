@@ -33,7 +33,7 @@ values
     ('fact', '事实；实际', 'n', null, null, null, null, null, 'list1'),
     ('load', '负载；工作量；负担；装载；载入', 'n', null, null, null, null, null, 'list1'),
     ('normal', '正常的；常态', 'adj/n', null, null, null, null, null, 'list1'),
-    ('goal', '球门，目标，进球得分；目的', 'n', null, null, null, null, null, 'list1'),
+    ('goal', '球门；目标；进球得分；目的', 'n', null, null, null, null, null, 'list1'),
     ('provide', '提供；供应；供给；给予', 'vt', null, null, null, null, null, 'list1'),
     ('according to', '根据；按照', 'prep', null, null, null, null, null, 'list1'),
     ('and', '又；和；并且；那么；然后；而', 'conj', null, null, null, null, null, 'list1'),
@@ -52,3 +52,318 @@ values
     ('predict', '预言；预料；预测', 'vt', null, null, null, null, null, 'list1'),
     ('close', '关闭；结束；终结；亲密的；亲近的；靠近的', 'n/adj', null, null, null, null, null, 'list1'),
     ('quality', '质量；品德', 'n', null, null, null, null, null, 'list1')
+
+
+-- list2
+insert into public_vocabulary(word, meaning, part_of_speech, belong_grade, similar_word, phrase, accuracy, belong, list)
+values
+    ('quantity', '量；数量', 'n', '高中',  null, null, null, null, 'list2'),
+    ('full', '满的，吃饱的；吃饱；完全的；忙的；肥大的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('fcareful', '小心的；仔细的；关心的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('environment', '环境', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('reply', '回答；回应', 'n', '高中',  null, null, null, null, 'list2'),
+    ('else', '别的，其他的', 'adv', '高中',  null, null, null, null, 'list2'),
+    ('opinion', '观点；看法；见解；意见', 'n', '高中',  null, null, null, null, 'list2'),
+    ('attitude', '态度；看法；立场', 'n', '高中',  null, null, null, null, 'list2'),
+    ('activity', '活动；行动', 'n', '高中',  null, null, null, null, 'list2'),
+    ('festival', '节日；节庆；会演', 'n', '高中',  null, null, null, null, 'list2'),
+    ('cycle', '自行车；周期；骑自行车；循环', 'n', '高中',  null, null, null, null, 'list2'),
+    ('regret', '可惜；遗憾；后悔', 'vt', '高中',  null, null, null, null, 'list2'),
+    ('public', '公共的；公众的；公众', 'n', '高中',  null, null, null, null, 'list2'),
+    ('able', '能够；可以；有能力的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('ability', '能力；才能；本领', 'n', '高中',  null, null, null, null, 'list2'),
+    ('hate', '讨厌；厌恶；憎恶；憎恨；恨', 'vt/n', '高中',  null, null, null, null, 'list2'),
+    ('while', '在..时；然而；虽然；尽管；一段时间', 'n', '高中',  null, null, null, null, 'list2'),
+    ('risk', '风险；冒险；冒危险', 'n', '高中',  null, null, null, null, 'list2'),
+    ('waste', '浪费；滥用；垃圾；废料‘废弃的；无用的', 'n/vt', '高中',  null, null, null, null, 'list2'),
+    ('present', '目前的；现在；礼物；颁发；陈述；呈现；呈递；出席的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('after', '后来；以后；在..之后', 'adv', '高中',  null, null, null, null, 'list2'),
+    ('fault', '缺点；毛病；过失', 'n', '高中',  null, null, null, null, 'list2'),
+    ('use', '使用；用；利用', 'vt/n', '高中',  null, null, null, null, 'list2'),
+    ('used', '用过的；旧的；习惯于；适应', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('occur', '发生；出现', 'vi', '高中',  null, null, null, null, 'list2'),
+    ('bother', '打扰；烦恼；困扰；阻挠', 'v', '高中',  null, null, null, null, 'list2'),
+    ('realise', '认识到；实现；意识到；了解到', 'vt', '高中',  null, null, null, null, 'list2'),
+    ('satisfy', '满足；使..满意；满意', 'vt', '高中',  null, null, null, null, 'list2'),
+    ('preserve', '保护；保存', 'vt', '高中',  null, null, null, null, 'list2'),
+    ('smart', '机灵的；时髦的；帅气的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('experiment', '实验；进行试验', 'n/vi', '高中',  null, null, null, null, 'list2'),
+    ('beauty', '美丽；漂亮；美人；美好事物', 'n', '高中',  null, null, null, null, 'list2'),
+    ('stop', '停车站；停止；阻止；停；停靠', 'n/v', '高中',  null, null, null, null, 'list2'),
+    ('pleasure', '高兴；乐事；开心', 'n', '高中',  null, null, null, null, 'list2'),
+    ('freeze', '冻结；冰冻；冻住；愣住', 'v', '高中',  null, null, null, null, 'list2'),
+    ('anxiety', '关心；担心；焦虑；渴望', 'n', '高中',  null, null, null, null, 'list2'),
+    ('push', '推动；推；努力；按下；劝说；督促', 'v', '高中',  null, null, null, null, 'list2'),
+    ('hardly', '几乎不；几乎没有', 'adv', '高中',  null, null, null, null, 'list2'),
+    ('polite', '有礼貌的；有教养的；礼貌', 'adv', '高中',  null, null, null, null, 'list2'),
+    ('scientific', '科学的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('independent', '独立的；独自的；有主见的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('board', '木板；布告牌；委员会；登上', 'n/v', '高中',  null, null, null, null, 'list2'),
+    ('even', '甚至；连即使；平坦的；更；愈加', 'adv', '高中',  null, null, null, null, 'list2'),
+    ('culture', '文化；文明', 'n', '高中',  null, null, null, null, 'list2'),
+    ('receive', '接收；收到；得到；收到；接纳', 'vt', '高中',  null, null, null, null, 'list2'),
+    ('similar', '相似的；详尽的；近似的', 'adj', '高中',  null, null, null, null, 'list2'),
+    ('evidence', '根据；证据', 'n', '高中',  'evident 明显的', null, null, null, 'list2'),
+    ('fight', '战斗；打架；争论', 'v', '高中',  null , null, null, null, 'list2'),
+    ('shine', '阳光；光泽；光亮；发光；照耀；杰出', 'n', '高中',  null , null, null, null, 'list2'),
+    ('certain', '某个；某些；确定的；无疑的；必然的', 'n', '高中',  null , null, null, null, 'list2'),
+    ('hang', '悬挂；吊着；吊起；绞死；吊死', 'v', '高中',  null , null, null, null, 'list2'),
+    ('certainly', '无疑；确定；当然；当然可以', 'v', '高中',  null , null, null, null, 'list2')
+
+
+-- list3
+insert into public_vocabulary(word, meaning, part_of_speech, belong_grade, similar_word, phrase, accuracy, belong, list)
+values
+    ('hire', '租用；租；雇；雇佣', 'n/v', '高中',  null, null, null, null, 'list3'),
+    ('try', '尝试；试图；努力；试', 'n/v', '高中',  null, null, null, null, 'list3'),
+    ('position', '位置；态度；职位；地位；身份；姿势；处境', 'n/v', '高中',  null, null, null, null, 'list3'),
+    ('whether', '是否', 'conj', '高中',  null, null, null, null, 'list3'),
+    ('nearly', '将近；几乎；近乎', 'adv', '高中',  null, null, null, null, 'list3'),
+    ('remember', '记得；想起；回忆；记起', 'v', '高中',  null, null, null, null, 'list3'),
+    ('let', '让；允许；准许；出租', 'v/n', '高中',  null, null, null, null, 'list3'),
+    ('absorb', '吸收；使..专心；吸引', 'vt', '高中',  null, null, null, null, 'list3'),
+    ('broad', '宽的；广泛的；概括的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('capable', '有能力的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('pressure', '压力；压强', 'n', '高中',  null, null, null, null, 'list3'),
+    ('commit', '犯；干；承诺；投入', 'v', '高中',  null, null, null, null, 'list3'),
+    ('excuse', '借口；理由；原谅；宽恕', 'n/v', '高中',  null, null, null, null, 'list3'),
+    ('business', '生意；交易；工作；职责；公司；营业额', 'n', '高中',  null, null, null, null, 'list3'),
+    ('carry', '拿；提；扛；搬；抱；运；哉；带；传播；具有；支撑；运输', 'v', '高中',  null, null, null, null, 'list3'),
+    ('career', '事业；职业', 'n', '高中',  null, null, null, null, 'list3'),
+    ('rest', '休息；其余的人；停止；倚靠', 'n', '高中',  null, null, null, null, 'list3'),
+    ('bored', '感到厌烦的；无聊的；无趣的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('boring', '令人厌烦的；无聊的；无趣的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('desire', '渴望；期望', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('welcome', '受欢迎的；欢迎', 'vi/n', '高中',  null, null, null, null, 'list3'),
+    ('chief', '主要的；首席的；领导；首领；主席', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('another', '另一；另一个；另外的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('frequently', '频繁的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('judge', '裁判；判断；判定；审判员；法官', 'n/v', '高中',  null, null, null, null, 'list3'),
+    ('ordinary', '普通的；平凡的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('sure', '的确；确信的；确认的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('give', '给；送给；付出；给予；支付', 'v', '高中',  null, null, null, null, 'list3'),
+    ('awake', '唤醒；醒着的；醒来；醒', 'v', '高中',  null, null, null, null, 'list3'),
+    ('feed', '喂养；进食；一餐；提供', 'v', '高中',  null, null, null, null, 'list3'),
+    ('except', '除..以外；只是；除了', 'v', '高中',  null, null, null, null, 'list3'),
+    ('example', '例子；榜样；样本', 'n', '高中',  null, null, null, null, 'list3'),
+    ('switch', '开关；转换', 'n/v', '高中',  null, null, null, null, 'list3'),
+    ('nothing', '没有东西；没有什么；一点都没有；什么都没有', 'pron', '高中',  null, null, null, null, 'list3'),
+    ('concentrate', '集中注意力；集中；专心；汇合；聚集；专注', 'v', '高中',  null, null, null, null, 'list3'),
+    ('devote', '奉献；捐献；致力于；付出；献身', 'vt', '高中',  null, null, null, null, 'list3'),
+    ('explain', '解释；说明；', 'v', '高中',  null, null, null, null, 'list3'),
+    ('admire', '赞赏；赞扬；钦佩；欣赏', 'vt', '高中',  null, null, null, null, 'list3'),
+    ('terrible', '可怕的；糟糕的；厉害的；剧烈的；非常；严重的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('contact', '联系；关联；联络；接触；熟人', 'v/n', '高中',  null, null, null, null, 'list3'),
+    ('employ', '雇佣；雇；使用', 'vt', '高中',  null, null, null, null, 'list3'),
+    ('fond', '喜爱的；爱好的；喜欢的', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('diet', '日常饮食；规定饮食；节食', 'v', '高中',  null, null, null, null, 'list3'),
+    ('hesitate', '踟蹰；踌躇；犹豫；不情愿的', 'v', '高中',  null, null, null, null, 'list3'),
+    ('owe', '欠；归功于', 'v', '高中',  null, null, null, null, 'list3'),
+    ('silence', '安静；沉默', 'n', '高中',  null, null, null, null, 'list3'),
+    ('creative', '创造的；有创造力的；创意', 'adj', '高中',  null, null, null, null, 'list3'),
+    ('intention', '目的；意图；意向', 'n', '高中',  null, null, null, null, 'list3'),
+    ('intend', '打算；想要；将要', 'vt', '高中',  null, null, null, null, 'list3'),
+    ('notice', '公告；通告；注意；通知；注意；注意到；看到；感觉到', 'n', '高中',  null, null, null, null, 'list3'),
+    ('check', '检查；支票；核对；抽查', 'n', '高中',  null, null, null, null, 'list3'),
+    ('courage', '勇气；胆量', 'n', '高中',  null, null, null, null, 'list3')
+
+
+-- list4
+insert into public_vocabulary(word, meaning, part_of_speech, belong_grade, similar_word, phrase, accuracy, belong, list)
+values
+    ('calm', '镇静的；使..平静；平静的；无风的', 'adj', '高中',  null, null, null, null, 'list4'),
+    ('much', '大量的；许多的；非常；更加', 'adj', '高中',  null, null, null, null, 'list4'),
+    ('block', '大块；阻塞；街区；大楼；路障', 'n', '高中',  null, null, null, null, 'list4'),
+    ('answer', '回答；答案；回信；回复', 'n', '高中',  null, null, null, null, 'list4'),
+    ('understand', '理解；明白；懂得；了解', 'v', '高中',  null, null, null, null, 'list4'),
+    ('instead', '代替；顶替；取代；相反；却；而不是', 'adv', '高中',  null, null, null, null, 'list4'),
+    ('send', '发送；派遣；寄；发送；传达', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('glad', '高兴的；乐意的；开心的', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('demand', '命令；要求；请求', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('wonder', '感到诧异；想知道；奇迹；惊讶；惊叹', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('forgive', '原谅；宽恕；谅解', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('defeat', '击败；打败；失败', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('danger', '危险；危害；危机', 'n', '高中',  null, null, null, null, 'list4'),
+    ('recover', '治愈；痊愈；取回；挽回', 'v', '高中',  null, null, null, null, 'list4'),
+    ('step', '脚步；台阶；阶段；步骤；措施；迈步', 'n', '高中',  null, null, null, null, 'list4'),
+    ('definitely', '确切地；肯定地；明确地', 'adv', '高中',  null, null, null, null, 'list4'),
+    ('most', '最多的；大部分的；最；大多数；很', 'adj', '高中',  null, null, null, null, 'list4'),
+    ('finish', '结束；做完；完成；吃过；结尾；结尾部分', 'v', '高中',  null, null, null, null, 'list4'),
+    ('look', '表情；看；瞧；寻找；风格；看起来', 'n', '高中',  null, null, null, null, 'list4'),
+    ('reduce', '减少；缩减', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('despite', '尽管', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('until', '直到；直到..为止', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('work', '工作；作品；工厂', 'n/v', '高中',  null, null, null, null, 'list4'),
+    ('along', '向前；沿着；一同', 'adv', '高中',  null, null, null, null, 'list4'),
+    ('mention', '提及', 'n', '高中',  null, null, null, null, 'list4'),
+    ('as', '当..时候；随着；正如；当作；像', 'conj', '高中',  null, null, null, null, 'list4'),
+    ('achieve', '达到；取得；实现', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('lay', '放置；产卵；提交', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('problem', '问题；难题', 'vt', '高中',  null, null, null, null, 'list4'),
+    ('view', '看法；见解；视野；视线', 'n', '高中',  null, null, null, null, 'list4'),
+    ('due to', '由于；归功于', 'prep', '高中',  null, null, null, null, 'list4'),
+    ('because', '因为', 'conj', '高中',  null, null, null, null, 'list4'),
+    ('detail', '细节；详情；详细情况', 'n', '高中',  null, null, null, null, 'list4'),
+    ('match', '相配；匹配；比赛；火柴；竞赛', 'n', '高中',  null, null, null, null, 'list4'),
+    ('learn', '学习；学；学会；听说；获悉', 'n', '高中',  null, null, null, null, 'list4'),
+    ('honor', '荣誉；尊敬；敬佩；敬仰', 'n', '高中',  null, null, null, null, 'list4'),
+    ('freedom', '自由', 'n', '高中',  null, null, null, null, 'list4'),
+    ('trust', '相信；信任；信赖', 'vi/n', '高中',  null, null, null, null, 'list4'),
+    ('distance', '距离；远处；远方；疏远', 'vi/n', '高中',  null, null, null, null, 'list4'),
+    ('wear', '穿；戴；留发；耐用', 'vi/n', '高中',  null, null, null, null, 'list4'),
+    ('interest', '有趣；兴趣；利益；爱好', 'n', '高中',  null, null, null, null, 'list4'),
+    ('interesting', '有趣的；感兴趣的；有吸引力的', 'adj', '高中',  null, null, null, null, 'list4'),
+    ('power', '力量；动力；电力；影响力；能力；权力；权威', 'n', '高中',  null, null, null, null, 'list4'),
+    ('afraid', '害怕的；担心的', 'adj', '高中',  null, null, null, null, 'list4'),
+    ('engage', '参加；参与；邀请；聘请', 'adj', '高中',  null, null, null, null, 'list4'),
+    ('once', '一次；一度；从前；一旦；一经', 'adv', '高中',  null, null, null, null, 'list4'),
+    ('profit', '益处；利益；得益', 'n', '高中',  null, null, null, null, 'list4'),
+    ('function', '函数；功能；起作用；运行', 'n', '高中',  null, null, null, null, 'list4'),
+    ('ensure', '保证；担保；确保', 'n', '高中',  null, null, null, null, 'list4'),
+    ('ask', '恳求；请求；要求', 'v', '高中',  null, null, null, null, 'list4')
+
+
+
+-- list5
+insert into public_vocabulary(word, meaning, part_of_speech, belong_grade, similar_word, phrase, accuracy, belong, list)
+values
+    ('handle', '把柄；柄；应付；处理；拿；操作', 'n', '高中',  null, null, null, null, 'list5'),
+    ('way', '路；道路；路线；方式；手段；方面', 'n', '高中',  null, null, null, null, 'list5'),
+    ('choice', '选择；抉择', 'n', '高中',  null, null, null, null, 'list5'),
+    ('combine', '联合；结合', 'v', '高中',  null, null, null, null, 'list5'),
+    ('establish', '建立；创建；创立', 'vt', '高中',  null, null, null, null, 'list5'),
+    ('count', '数；很重要；把..算入', 'v', '高中',  null, null, null, null, 'list5'),
+    ('heart', '心脏；心', 'n', '高中',  null, null, null, null, 'list5'),
+    ('weak', '脆弱；懦弱；差的；虚弱的；弱的', 'adj', '高中',  null, null, null, null, 'list5'),
+    ('voice', '嗓音；语态；表达', 'vt', '高中',  null, null, null, null, 'list5'),
+    ('extent', '程度；面积', 'n', '高中',  null, null, null, null, 'list5'),
+    ('accept', '接收；同意；承认；采纳；忍受；相信', 'v', '高中',  null, null, null, null, 'list5'),
+    ('exhibition', '展览；展览会', 'n', '高中',  null, null, null, null, 'list5'),
+    ('watch', '手表；观看；注视；当心；看', 'v', '高中',  null, null, null, null, 'list5'),
+    ('probably', '很可能；大概', 'adv', '高中',  null, null, null, null, 'list5'),
+    ('late', '晚的；迟的；已故的', 'adj', '高中',  null, null, null, null, 'list5'),
+    ('strict', '严格的；严密的；精确的', 'adj', '高中',  null, null, null, null, 'list5'),
+    ('sight', '景象；景点；视力；看见；目睹', 'n', '高中',  null, null, null, null, 'list5'),
+    ('consider', '考虑；认为；觉得', 'v', '高中',  'considerable 相当大的；大量的', null, null, null, 'list5'),
+    ('about', '大约；四处；将近；关于；在..各处', 'adv', '高中', null, null, null, null, 'list5'),
+    ('attend', '看护；照料；出席；参加', 'v', '高中', null, null, null, null, 'list5'),
+    ('entry', '进入；条目；项目；入口；输入；参赛作品', 'n', '高中', null, null, null, null, 'list5'),
+    ('frank', '坦白的；直率的', 'adj', '高中', null, null, null, null, 'list5'),
+    ('regard', '看作；当作；关心；在乎；问候；致意', 'adj', '高中', null, null, null, null, 'list5'),
+    ('truth', '真理；事实', 'n', '高中', null, null, null, null, 'list5'),
+    ('grow', '变成；生长；种植', 'v', '高中', null, null, null, null, 'list5'),
+    ('pride', '自豪；骄傲；自尊心', 'n', '高中', null, null, null, null, 'list5'),
+    ('effort', '精力；努力；尽力', 'n', '高中', null, null, null, null, 'list5'),
+    ('variety', '种类；变化', 'n', '高中', null, null, null, null, 'list5'),
+    ('tend', '照管；照顾；护理；趋势；有..趋势', 'v', '高中', null, null, null, null, 'list5'),
+    ('fund', '基金会；转款；基金；资助；资金', 'n', '高中', null, null, null, null, 'list5'),
+    ('fill', '装满；消磨；满足', 'v', '高中', null, null, null, null, 'list5'),
+    ('across', '横过；穿过；跨越；宽；横跨', 'prep', '高中', null, null, null, null, 'list5'),
+    ('favour', '偏爱；较喜欢；帮助；较喜欢；有助于', 'n', '高中', null, null, null, null, 'list5'),
+    ('ill', '有病的；有害的；坏的；坏地', 'adj', '高中', null, null, null, null, 'list5'),
+    ('entrance', '入口；入场；进入；进入的特权', 'n', '高中', null, null, null, null, 'list5'),
+    ('introduce', '介绍；引进；传入', 'vt', '高中', null, null, null, null, 'list5'),
+    ('have', '有；吃；喝；进行；经受', 'vt', '高中', null, null, null, null, 'list5'),
+    ('again', '再一次；再；又', 'adv', '高中', null, null, null, null, 'list5'),
+    ('further', '更多的；更深的；更大程度上；更远', 'adj', '高中', null, null, null, null, 'list5'),
+    ('destroy', '破坏；毁坏；消灭', 'vt', '高中', null, null, null, null, 'list5'),
+    ('continue', '继续；任然；依旧', 'v', '高中', null, null, null, null, 'list5'),
+    ('chance', '机会；可能性；偶然性；碰巧', 'v', '高中', null, null, null, null, 'list5'),
+    ('can', '能；能够；可以；可能；金属管；易拉罐；罐子', 'v', '高中', null, null, null, null, 'list5'),
+    ('access', '接近；进入；靠近；入口；可接近；获取', 'vt/n', '高中', null, null, null, null, 'list5'),
+    ('describe', '描写；叙述', 'vt', '高中', null, null, null, null, 'list5'),
+    ('gain', '获得；增加；收益；得到', 'vt', '高中', null, null, null, null, 'list5'),
+    ('seem', '似乎；好像', 'v', '高中', null, null, null, null, 'list5'),
+    ('determine', '查明；决定；确定；决心', 'v', '高中', null, null, null, null, 'list5'),
+    ('recommend', '推荐；建议', 'v', '高中', null, null, null, null, 'list5'),
+    ('health', '健康；卫生', 'n', '高中', null, null, null, null, 'list5'),
+    ('equal', '平等地；相等地；等于', 'adj', '高中', null, null, null, null, 'list5'),
+    ('below', '在..下面；下面', 'prep', '高中', null, null, null, null, 'list5');
+
+
+-- list6
+insert into public_vocabulary(word, meaning, part_of_speech, belong_grade, similar_word, phrase, accuracy, belong, list)
+values
+    ('ignore', '忽视；不理会；忽略', 'v', '高中',  null, null, null, null, 'list6'),
+    ('score', '得分；乐谱；大量；很多；给..评分', 'n/v', '高中',  null, null, null, null, 'list6'),
+    ('anger', '生气；使..发怒；发怒', 'n/v', '高中',  null, null, null, null, 'list6'),
+    ('mean', '意指；意图；小气的；意味；意味着', 'v', '高中',  null, null, null, null, 'list6'),
+    ('angry', '生气的；狂风暴雨的', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('join', '参加；加入；连接；汇合；会合', 'v', '高中',  null, null, null, null, 'list6'),
+    ('error', '错误', 'n', '高中',  null, null, null, null, 'list6'),
+    ('acciden', '意外；事故', 'n', '高中',  null, null, null, null, 'list6'),
+    ('adjust', '调整；调节；适应', 'v', '高中',  null, null, null, null, 'list6'),
+    ('interrupt', '打断；打扰；扰乱', 'v', '高中',  null, null, null, null, 'list6'),
+    ('brief', '简洁的；短暂的；简短的；简单的', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('moment', '片刻；瞬间', 'v', '高中',  null, null, null, null, 'list6'),
+    ('degree', '程度；学位', 'n', '高中',  null, null, null, null, 'list6'),
+    ('base', '以..为据点；基地；底部；源泉；总部', 'n', '高中',  null, null, null, null, 'list6'),
+    ('basic', '基本的；基础的', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('basis', '基础', 'n', '高中',  null, null, null, null, 'list6'),
+    ('begin', '开始；着手', 'v', '高中',  null, null, null, null, 'list6'),
+    ('image', '形象；印象；图像', 'n', '高中',  null, null, null, null, 'list6'),
+    ('shout', '喊；大喊；高呼', 'v/n', '高中',  null, null, null, null, 'list6'),
+    ('cheer', '欢呼；喝彩', 'n', '高中',  null, null, null, null, 'list6'),
+    ('lose', '失去；输掉；迷失', 'n', '高中',  null, null, null, null, 'list6'),
+    ('account', '账户；说明；描述；账目；解释；说明；占据；占', 'n', '高中',  null, null, null, null, 'list6'),
+    ('produce', '生产；制造；引起；繁育；农产品；出示', 'vt', '高中',  null, null, null, null, 'list6'),
+    ('hit', '打；击；撞；击中', 'n', '高中',  null, null, null, null, 'list6'),
+    ('sort', '把..分类；分类；种类；排序', 'vt', '高中',  null, null, null, null, 'list6'),
+    ('lecture', '演讲；讲座；讲课', 'n', '高中',  null, null, null, null, 'list6'),
+    ('follow', '跟随；跟着；紧随其后', 'v', '高中',  null, null, null, null, 'list6'),
+    ('impact', '冲击力；影响力；作用；影响；产生影响', 'n/v', '高中',  null, null, null, null, 'list6'),
+    ('show', '展览；节目；演出；展出；表名；说明', 'n', '高中',  null, null, null, null, 'list6'),
+    ('plenty', '充足；大量', 'pron', '高中',  null, null, null, null, 'list6'),
+    ('over', '在..上方；越过；遍及；覆盖；更多；在..上面；越过；结束', 'pron', '高中',  null, null, null, null, 'list6'),
+    ('conversation', '谈话；交谈', 'n', '高中',  null, null, null, null, 'list6'),
+    ('aid', '援助；帮助；辅助', 'n', '高中',  null, null, null, null, 'list6'),
+    ('skill', '技巧；技能', 'n', '高中',  null, null, null, null, 'list6'),
+    ('suppose', '认为；猜想；假定', 'n', '高中',  null, null, null, null, 'list6'),
+    ('information', '信息；情报；资料；消息', 'n', '高中',  null, null, null, null, 'list6'),
+    ('breath', '呼吸地空气；空气；一口气；呼气', 'n', '高中',  null, null, null, null, 'list6'),
+    ('breathe', '呼吸；吸入', 'v', '高中',  null, null, null, null, 'list6'),
+    ('well', '好；令人满意地；完全地；好的；健康的；好吧；井水', 'adj/adv/n', '高中',  null, null, null, null, 'list6'),
+    ('do', '做；干；行；适合；进展', 'v', '高中',  null, null, null, null, 'list6'),
+    ('act', '法令；行为；行动；举动；表现；起作用', 'n/v', '高中',  null, null, null, null, 'list6'),
+    ('action', '行动；行为；起诉；作用；开拍', 'n', '高中',  null, null, null, null, 'list6'),
+    ('direct', '直接的；指导；导演；给..指路', 'adv', '高中',  null, null, null, null, 'list6'),
+    ('measure', '措施；估量；测量；估计；方法；衡量', 'n', '高中',  null, null, null, null, 'list6'),
+    ('mass', '大量的；群众地；大量；群众；大部分；推', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('personal', '个人的；私人的', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('company', '公司；陪伴；朋友；宾客', 'n', '高中',  null, null, null, null, 'list6'),
+    ('positive', '肯定的；正面的；乐观的；积极的', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('surprise', '使惊奇；惊奇；惊讶；诧异；出人意料的', 'vt', '高中',  null, null, null, null, 'list6'),
+    ('major', '重大的；主要的；主修；主修科目；专业', 'adj', '高中',  null, null, null, null, 'list6'),
+    ('majority', '大多数；多数', 'n', '高中',  null, null, null, null, 'list6'),
+    ('reality', '现实；实际的；事实；实际经历', 'n', '高中',  null, null, null, null, 'list6');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

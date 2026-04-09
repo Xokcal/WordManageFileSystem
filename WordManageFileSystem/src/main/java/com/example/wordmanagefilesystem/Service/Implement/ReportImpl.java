@@ -45,7 +45,7 @@ public class ReportImpl implements ReportService {
 
     /*处理每凌晨0点更新数据*/
     @Transactional
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 * * * * ?")
     public void refreshOverLookDataInZeroOClock(){
         int[] getOverLookNewData = getOverLookTextDataOriginalData();//获得最新数据数组
         //获得更改好的单一数组
