@@ -729,6 +729,7 @@ queryAttachConditionDoc.addEventListener('click', async () => {
     const getHasSearchTotal = dataWord.hasSearchTotal;
     var getHasSearchTotalDoc = document.getElementById('hasSearchTotal');
     getHasSearchTotalDoc.innerHTML = getHasSearchTotal;
+    console.log("主页查询单词结果："+words)
     wordBaseShowFunc(words);
 })
 

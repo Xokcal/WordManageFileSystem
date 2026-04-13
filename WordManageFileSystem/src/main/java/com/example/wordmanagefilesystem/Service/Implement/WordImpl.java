@@ -807,8 +807,7 @@ public class WordImpl implements WordService {
             log.warn("根据条件查询单词，参数错误！！");
             throw new BusinessExcept("根据条件查询单词，参数错误！！" ,400);
         }
-        Integer start = (queryWordBody.getPage() - 1) * queryWordBody.getSize();
-        List<Word> words = wordMapper.selectWordByCondition(start, queryWordBody);
+        List<Word> words = wordMapper.selectWordByCondition(queryWordBody);
         if (CheckValidUtil.isNull(words)){
             log.warn("根据条件查询单词，结果错误！！");
             throw new BusinessExcept("根据条件查询单词，结果错误！！" ,500);

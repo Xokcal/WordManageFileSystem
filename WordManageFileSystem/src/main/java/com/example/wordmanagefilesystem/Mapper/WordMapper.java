@@ -180,7 +180,6 @@ public interface WordMapper {
     CheckDataOriginal getCheckDataOriginal(@Param("userId") Integer userId);
 
     //根据条件查询参数
-    List<Word> selectWordByCondition(@Param("start") Integer start
-            ,@Param("p") QueryWordBody queryWordBody);
+    List<Word> selectWordByCondition(@Param("p") QueryWordBody queryWordBody);
 
 }
