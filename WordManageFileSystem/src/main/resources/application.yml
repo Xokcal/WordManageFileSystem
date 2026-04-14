@@ -4,7 +4,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/小卡单词管理文档?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username:
-    password: 
+    password:
     type: com.zaxxer.hikari.HikariDataSource
   #redis配置
   redis:
