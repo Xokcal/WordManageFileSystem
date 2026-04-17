@@ -38,9 +38,67 @@ function loadUserDataEchart(){
                 yAxis: {
                     type: 'value'
                 },
-                series: userDataEchartData
+                // 👇 下面我帮你统一配置好 浅色+面积填充
+                series: userDataEchartData.map((item, index) => {
+                    // 定义你要的 浅粉、浅紫、浅橙 循环配色
+                    const colors = [
+                        { line: '#F8BBD0', area: 'rgba(248, 187, 208, 0.3)' }, // 浅粉
+                        { line: '#D1C4E9', area: 'rgba(209, 196, 233, 0.3)' }, // 浅紫
+                        { line: '#FFE0B2', area: 'rgba(255, 224, 178, 0.3)' }, // 浅橙
+                        { line: '#B2EBF2', area: 'rgba(178, 235, 242, 0.3)' }, // 浅蓝（补充）
+                        { line: '#C8E6C9', area: 'rgba(200, 230, 201, 0.3)' }  // 浅绿（补充）
+                    ];
+                    const color = colors[index % colors.length];
 
+                    return {
+                        ...item,
+                        type: 'line',
+                        smooth: true,        // 平滑曲线
+                        lineStyle: {
+                            color: color.line,
+                            width: 2
+                        },
+                        areaStyle: {
+                            // 浅色从上到下渐变（超级柔和）
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: color.area },
+                                { offset: 1, color: color.area.replace('0.3', '0.02') }
+                            ])
+                        }
+                    };
+                })
             };
+
+            // userDataEchartOption = {
+            //     title: {},
+            //     tooltip: {
+            //         trigger: 'axis'
+            //     },
+            //     legend: {
+            //         data: ['四天前', '三天前', '两天前', '一天前', '今天']
+            //     },
+            //     grid: {
+            //         left: '3%',
+            //         right: '4%',
+            //         bottom: '3%',
+            //         containLabel: true
+            //     },
+            //     toolbox: {
+            //         feature: {
+            //             saveAsImage: {}
+            //         }
+            //     },
+            //     xAxis: {
+            //         type: 'category',
+            //         boundaryGap: false,
+            //         data: ['四天前', '三天前', '两天前', '一天前', '今天']
+            //     },
+            //     yAxis: {
+            //         type: 'value'
+            //     },
+            //     series: userDataEchartData
+            //
+            // };
 
             userDataEchart.setOption(userDataEchartOption);
         })
